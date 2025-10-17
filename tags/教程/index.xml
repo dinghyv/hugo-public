@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>教程 on Antwen</title>
+    <link>http://localhost:1313/tags/%E6%95%99%E7%A8%8B/</link>
+    <description>Recent content in 教程 on Antwen</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>© 2025 安稳Antwen</copyright>
+    <lastBuildDate>Sat, 03 May 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/%E6%95%99%E7%A8%8B/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>PS5版德瑞Bot使用教程（内含免费Bot群）</title>
+      <link>http://localhost:1313/posts/1746274318324-ps5bot/</link>
+      <pubDate>Sat, 03 May 2025 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/1746274318324-ps5bot/</guid>
+      <description></description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/posts/1746274318324-ps5bot/featured.png" />
+    </item>
+    
+  </channel>
+</rss>

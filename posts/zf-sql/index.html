@@ -1,0 +1,2847 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr" class="scroll-smooth" data-default-appearance="dark"
+  data-auto-appearance="true"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8" />
+  
+  <meta http-equiv="content-language" content="zh-cn" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  
+  <title>常用SQL/Linux语句 &middot; Antwen</title>
+  <meta name="title" content="常用SQL/Linux语句 &middot; Antwen" />
+  
+  <meta name="description" content="常用SQL/Linux语句" />
+  <meta name="keywords" content="ZF, 实施, " />
+  
+  
+  <link rel="canonical" href="http://localhost:1313/posts/zf-sql/" />
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <link type="text/css" rel="stylesheet" href="/css/main.bundle.min.2ca0b1a00ef4973a5286bec5771e38ee66eff626a5052ffd60756c02e78db48798c8c9636e3985ab996a0c392d2b1c58aaf7ffd3599a7e77ab7aa9c7df322631.css"
+    integrity="sha512-LKCxoA70lzpShr7Fdx447mbv9ialBS/9YHVsAueNtIeYyMljbjmFq5lqDDktKxxYqvf/01mafnereqnH3zImMQ==" />
+  
+  
+  <script type="text/javascript" src="/js/appearance.min.516a16745bea5a9bd011138d254cc0fd3973cd55ce6e15f3dec763e7c7c2c7448f8fe7b54cca811cb821b0c7e12cd161caace1dd794ac3d34d40937cbcc9ee12.js"
+    integrity="sha512-UWoWdFvqWpvQERONJUzA/TlzzVXObhXz3sdj58fCx0SPj&#43;e1TMqBHLghsMfhLNFhyqzh3XlKw9NNQJN8vMnuEg=="></script>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script defer type="text/javascript" id="script-bundle" src="/js/main.bundle.min.3ad74b33440334ca29f8801ec6dac1f314951cf580e503d49631816b48d1f28d03543275f92b651565b48045b90731f47595b1396214b8b6aa11c6990f867f7e.js"
+    integrity="sha512-OtdLM0QDNMop&#43;IAextrB8xSVHPWA5QPUljGBa0jR8o0DVDJ1&#43;StlFWW0gEW5BzH0dZWxOWIUuLaqEcaZD4Z/fg==" data-copy="复制" data-copied="已复制"></script>
+  
+  
+  
+  <script src="/lib/zoom/zoom.min.f592a181a15d2a5b042daa7f746c3721acf9063f8b6acd175d989129865a37d400ae0e85b640f9ad42cd98d1f8ad30931718cf8811abdcc5fcb264400d1a2b0c.js" integrity="sha512-9ZKhgaFdKlsELap/dGw3Iaz5Bj&#43;Las0XXZiRKYZaN9QArg6FtkD5rULNmNH4rTCTFxjPiBGr3MX8smRADRorDA=="></script>
+  
+  
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:url" content="http://localhost:1313/posts/zf-sql/">
+  <meta property="og:site_name" content="Antwen">
+  <meta property="og:title" content="常用SQL/Linux语句">
+  <meta property="og:description" content="常用SQL/Linux语句">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-09-06T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-09-06T00:00:00+00:00">
+    <meta property="article:tag" content="ZF">
+    <meta property="article:tag" content="实施">
+    <meta property="og:image" content="http://localhost:1313/posts/zf-sql/featured.png">
+
+  
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="http://localhost:1313/posts/zf-sql/featured.png">
+  <meta name="twitter:title" content="常用SQL/Linux语句">
+  <meta name="twitter:description" content="常用SQL/Linux语句">
+
+  
+  <script type="application/ld+json">
+  [{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "articleSection": "Posts",
+    "name": "常用SQL\/Linux语句",
+    "headline": "常用SQL\/Linux语句",
+    "description": "常用SQL\/Linux语句",
+    
+    "inLanguage": "zh-cn",
+    "url" : "http:\/\/localhost:1313\/posts\/zf-sql\/",
+    "author" : {
+      "@type": "Person",
+      "name": "安稳Antwen"
+    },
+    "copyrightYear": "2025",
+    "dateCreated": "2025-09-06T00:00:00\u002b00:00",
+    "datePublished": "2025-09-06T00:00:00\u002b00:00",
+    
+    "dateModified": "2025-09-06T00:00:00\u002b00:00",
+    
+    "keywords": ["ZF","实施"],
+    
+    "mainEntityOfPage": "true",
+    "wordCount": "2259"
+  }]
+  </script>
+
+
+  
+  
+  <meta name="author" content="安稳Antwen" />
+  
+  
+  
+  
+  
+  
+  
+  
+  <link href="https://github.com/dinghy421" rel="me" />
+  
+  
+  
+  
+  <link href="https://share.antwen.com" rel="me" />
+  
+  
+  
+  
+  <link href="https://space.bilibili.com/513000931?spm_id_from=333.1007.0.0" rel="me" />
+  
+  
+  
+  
+  
+
+<script src="/lib/jquery/jquery.slim.min.b0dca576e87d7eaa5850ae4e61759c065786cdb6489d68fcc82240539eebd5da522bdb4fda085ffd245808c8fe2acb2516408eb774ef26b5f6015fc6737c0ea8.js" integrity="sha512-sNylduh9fqpYUK5OYXWcBleGzbZInWj8yCJAU57r1dpSK9tP2ghf/SRYCMj&#43;KsslFkCOt3TvJrX2AV/Gc3wOqA=="></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+  
+  
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <meta name="theme-color"/>
+  
+  
+</head>
+<body
+  class="flex flex-col h-screen px-6 m-auto text-lg leading-7 max-w-7xl bg-neutral text-neutral-900 dark:bg-neutral-800 dark:text-neutral sm:px-14 md:px-24 lg:px-32 scrollbar-thin scrollbar-track-neutral-200 scrollbar-thumb-neutral-400 dark:scrollbar-track-neutral-800 dark:scrollbar-thumb-neutral-600">
+  <div id="the-top" class="absolute flex self-center">
+    <a class="px-3 py-1 text-sm -translate-y-8 rounded-b-lg bg-primary-200 focus:translate-y-0 dark:bg-neutral-600"
+      href="#main-content"><span
+        class="font-bold text-primary-600 ltr:pr-2 rtl:pl-2 dark:text-primary-400">&darr;</span>跳过正文</a>
+  </div>
+  
+  
+  <div class="min-h-[148px]"></div>
+
+
+<div id="island-header"
+  class="fixed rounded-full place-self-center top-4 pl-[24px] pr-[24px] w-full min-w-se max-w-se se:max-w-sm sm:max-w-md md:max-w-xl lg:max-w-2xl"
+  style="z-index: 100;">
+  <div id="menu-blur"
+    class="absolute rounded-full opacity-0 inset-x-0 h-full nozoom shadow-2xl backdrop-blur-2xl shadow-lg">
+  </div>
+  <div class="relative max-w-[64rem] ml-auto mr-auto">
+    <div style="padding-left:0;padding-right:0;padding-top:2px;padding-bottom:3px"
+      class="main-menu flex items-center justify-between px-4 py-6 sm:px-6 md:justify-start space-x-3">
+      
+      <div class="flex flex-1 items-center justify-between">
+        <nav id="title-bar"  class="hidden se:flex md:ml-7">
+
+          
+          <a id="page-title-bar" href="/"
+            class="relative text-base font-bold text-gray-500 hover:text-gray-900">Antwen</a>
+          
+          <a id="article-title-bar" href="#the-top"
+            class="absolute se:flex text-sm md:text-base font-bold text-gray-500 hover:text-gray-900">常用SQL/Linux语句</a>
+        </nav>
+        <nav class="space-x-3"></nav>
+        <nav class="main-menu hidden md:flex items-center space-x-5 md:ml-12 h-12">
+            
+            
+            
+  <a href="/"  class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+    
+    <p class="text-base font-medium" title="">
+        Home
+    </p>
+</a>
+
+
+
+            
+            
+  <a href="/tags/gta/"  class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+    
+    <p class="text-base font-medium" title="GTA">
+        GTAO
+    </p>
+</a>
+
+
+
+            
+            
+  <a href="/tags/gta5/"  class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+    
+    <p class="text-base font-medium" title="GTA5">
+        GTA5
+    </p>
+</a>
+
+
+
+            
+            
+  <a href=""  class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+    
+    <p class="text-base font-medium" title="">
+        RDR2
+    </p>
+</a>
+
+
+
+            
+            
+  <a href="/tags/gta6/"  class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+    
+    <p class="text-base font-medium" title="GTA6">
+        GTA6
+    </p>
+</a>
+
+
+
+            
+            
+  <a href=""  class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+    
+    <p class="text-base font-medium" title="">
+        
+    </p>
+</a>
+
+
+
+            
+            
+
+            
+
+
+            
+            <button id="search-button" aria-label="Search"
+              class="text-base hover:text-primary-600 dark:hover:text-primary-400" title="搜索 (/)">
+              
+
+  <span class="relative block icon">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+
+  </span>
+
+
+            </button>
+            
+
+          
+          
+
+        </nav>
+        <div class="flex md:hidden items-center space-x-5 md:ml-12 h-12">
+
+          <span></span>
+
+          
+
+
+          
+          <button id="search-button-mobile" aria-label="Search"
+            class="text-base hover:text-primary-600 dark:hover:text-primary-400" title="搜索 (/)">
+            
+
+  <span class="relative block icon">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+
+  </span>
+
+
+          </button>
+          
+
+          
+          
+
+        </div>
+      </div>
+      <div class="-my-2 -mr-2 md:hidden">
+
+        <label id="menu-button" class="block">
+          
+          <div class="cursor-pointer hover:text-primary-600 dark:hover:text-primary-400">
+            
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M0 96C0 78.33 14.33 64 32 64H416C433.7 64 448 78.33 448 96C448 113.7 433.7 128 416 128H32C14.33 128 0 113.7 0 96zM0 256C0 238.3 14.33 224 32 224H416C433.7 224 448 238.3 448 256C448 273.7 433.7 288 416 288H32C14.33 288 0 273.7 0 256zM416 448H32C14.33 448 0 433.7 0 416C0 398.3 14.33 384 32 384H416C433.7 384 448 398.3 448 416C448 433.7 433.7 448 416 448z"/></svg>
+
+  </span>
+
+
+          </div>
+          <div id="menu-wrapper" style="padding-top:5px;"
+            class="fixed inset-0 z-30 invisible w-screen h-screen m-0 overflow-auto transition-opacity opacity-0 cursor-default bg-neutral-100/50 backdrop-blur-sm dark:bg-neutral-900/50">
+            <ul
+              class="flex space-y-2 mt-3 flex-col items-end w-full px-6 py-6 mx-auto overflow-visible list-none ltr:text-right rtl:text-left max-w-7xl">
+
+              <li id="menu-close-button">
+                <span
+                  class="cursor-pointer inline-block align-text-bottom hover:text-primary-600 dark:hover:text-primary-400">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+
+  </span>
+
+</span>
+              </li>
+
+              
+
+              
+  <li class="mt-1">
+    <a href="/"  class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+        
+        <p class="text-bg font-bg" title="">
+            Home
+        </p>
+    </a>
+</li>
+
+
+
+
+              
+
+              
+  <li class="mt-1">
+    <a href="/tags/gta/"  class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+        
+        <p class="text-bg font-bg" title="GTA">
+            GTAO
+        </p>
+    </a>
+</li>
+
+
+
+
+              
+
+              
+  <li class="mt-1">
+    <a href="/tags/gta5/"  class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+        
+        <p class="text-bg font-bg" title="GTA5">
+            GTA5
+        </p>
+    </a>
+</li>
+
+
+
+
+              
+
+              
+  <li class="mt-1">
+    <a href=""  class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+        
+        <p class="text-bg font-bg" title="">
+            RDR2
+        </p>
+    </a>
+</li>
+
+
+
+
+              
+
+              
+  <li class="mt-1">
+    <a href="/tags/gta6/"  class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+        
+        <p class="text-bg font-bg" title="GTA6">
+            GTA6
+        </p>
+    </a>
+</li>
+
+
+
+
+              
+
+              
+  <li class="mt-1">
+    <a href=""  class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+        
+        <p class="text-bg font-bg" title="">
+            
+        </p>
+    </a>
+</li>
+
+
+
+
+              
+
+            </ul>
+            
+            
+
+          </div>
+        </label>
+      </div>
+    </div>
+
+    
+
+    
+
+  </div>
+</div>
+
+<style>
+ 
+.main-menu nav:not(#title-bar),
+.subnavigation-section {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+ 
+.title-switched + nav,
+.title-switched ~ .subnavigation-section {
+  opacity: 0;
+  pointer-events: none;
+}
+</style>
+
+<script>
+let lastScroll = 0;
+let isArticleTitleVisible = false;
+
+window.addEventListener("scroll", function (e) {
+  const scroll = window.pageYOffset || document.documentElement.scrollTop;
+  const scrollDirection = scroll > lastScroll ? "down" : "up";
+
+  const title_bar = document.getElementById("title-bar");
+  const heading = document.querySelector("h1");
+  const mainMenu = document.querySelectorAll('.main-menu nav:not(#title-bar)');
+  const subnavigationSections = document.querySelectorAll('.main-menu');
+  const menuBlur = document.getElementById('menu-blur');
+
+  
+  if (menuBlur) {
+    menuBlur.style.opacity = Math.min(scroll / 300, 1);
+    menuBlur.style.transition = 'opacity 0.3s ease';
+  }
+
+  
+  if (window.location.pathname === "/" || window.location.pathname.startsWith("/page/")) {
+    
+    title_bar.classList.remove("title-switched");
+    isArticleTitleVisible = false;
+    mainMenu.forEach(menu => {
+      menu.style.opacity = '1';
+      menu.style.pointerEvents = 'auto';
+    });
+  } 
+  
+  else if (heading) {
+    const headingRect = heading.getBoundingClientRect();
+    const headingOffset = headingRect.bottom + scroll;
+    const switchPoint = headingOffset - 200; 
+    const restorePoint = headingOffset + 100; 
+
+    if (scrollDirection === "down" && scroll > switchPoint && !isArticleTitleVisible) {
+      
+      title_bar.classList.add("title-switched");
+      isArticleTitleVisible = true;
+      
+      
+      mainMenu.forEach(menu => {
+        menu.style.opacity = '0';
+        menu.style.pointerEvents = 'none';
+        menu.style.transition = 'opacity 0.3s ease';
+      });
+    } else if (scrollDirection === "up" && scroll < restorePoint && isArticleTitleVisible) {
+      
+      title_bar.classList.remove("title-switched");
+      isArticleTitleVisible = false;
+      
+      
+      mainMenu.forEach(menu => {
+        menu.style.opacity = '1';
+        menu.style.pointerEvents = 'auto';
+      });
+    }
+  }
+
+  lastScroll = scroll <= 0 ? 0 : scroll; 
+});
+</script>
+
+  
+  <div class="relative flex flex-col grow">
+    <main id="main-content" class="grow">
+      
+
+
+<article>
+  
+  
+  
+  
+  
+  
+
+
+<div id="hero" class="h-[150px] md:h-[200px]"></div>
+
+
+
+    
+    <div class="fixed inset-x-0 top-0 h-[800px] single_hero_background nozoom"
+    style="background-image:url(/posts/zf-sql/featured_hu_a851833aaad960cf.png);">
+    
+
+
+    <div class="absolute inset-0 bg-gradient-to-t from-neutral dark:from-neutral-800 to-transparent mix-blend-normal">
+    </div>
+    <div
+        class="absolute inset-0 opacity-60 bg-gradient-to-t from-neutral dark:from-neutral-800 to-neutral-100 dark:to-neutral-800 mix-blend-normal">
+    </div>
+</div>
+
+<div id="background-blur" class="fixed opacity-0 inset-x-0 top-0 h-full single_hero_background nozoom backdrop-blur-2xl"></div>
+<script>
+    window.addEventListener('scroll', function (e) {
+        var scroll = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+        var background_blur = document.getElementById('background-blur');
+        background_blur.style.opacity = (scroll / 300)
+    });
+</script>
+
+  
+  
+
+  <header id="single_header" class="mt-5 max-w-prose">
+    
+    <ol class="text-sm text-neutral-500 dark:text-neutral-400 print:hidden">
+  
+  
+    
+  
+    
+  
+  <li class="hidden">
+    <a
+      class="hover:underline decoration-neutral-300 dark:underline-neutral-600"
+      href="/"
+      ></a
+    ><span class="px-1 text-primary-500">/</span>
+  </li>
+
+  
+  <li class="inline">
+    <a
+      class="hover:underline decoration-neutral-300 dark:underline-neutral-600"
+      href="/posts/"
+      >Posts</a
+    ><span class="px-1 text-primary-500">/</span>
+  </li>
+
+  
+  <li class="hidden">
+    <a
+      class="hover:underline decoration-neutral-300 dark:underline-neutral-600"
+      href="/posts/zf-sql/"
+      >常用SQL/Linux语句</a
+    ><span class="px-1 text-primary-500">/</span>
+  </li>
+
+</ol>
+
+
+    
+    <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
+      常用SQL/Linux语句
+    </h1>
+    <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
+      
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+  <time datetime="2025-09-06T00:00:00&#43;00:00">6 September 2025</time><span class="px-2 text-primary-500">&middot;</span><span>2259 字</span><span class="px-2 text-primary-500">&middot;</span><span title="预计阅读">11 分钟</span>
+  
+
+  
+  
+</div>
+
+
+
+
+
+
+
+
+    </div>
+
+    
+    
+    
+    
+    
+
+    
+
+    
+      
+      
+        
+        
+<div class="flex author">
+  
+    
+    
+      
+    
+    
+      
+        
+      
+      <img class="!mt-0 !mb-0 h-24 w-24 rounded-full ltr:mr-4 rtl:ml-4" width="96" height="96"
+      alt="安稳Antwen" src="/421_hu_cb5721ad2e2dc727.jpg" />
+    
+  
+  <div class="place-self-center">
+    
+    <div class="text-[0.6rem] uppercase leading-3 text-neutral-500 dark:text-neutral-400">
+      作者
+    </div>
+    <div class="font-semibold leading-6 text-neutral-800 dark:text-neutral-300">
+      安稳Antwen
+    </div>
+    
+    
+    <div class="text-sm text-neutral-700 dark:text-neutral-400">一个GTA玩家</div>
+    
+    <div class="text-2xl sm:text-lg">
+  <div class="flex flex-wrap text-neutral-400 dark:text-neutral-500">
+    
+      
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="mailto:me@antwen.info"
+          target="_blank"
+          aria-label="Email"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M207.8 20.73c-93.45 18.32-168.7 93.66-187 187.1c-27.64 140.9 68.65 266.2 199.1 285.1c19.01 2.888 36.17-12.26 36.17-31.49l.0001-.6631c0-15.74-11.44-28.88-26.84-31.24c-84.35-12.98-149.2-86.13-149.2-174.2c0-102.9 88.61-185.5 193.4-175.4c91.54 8.869 158.6 91.25 158.6 183.2l0 16.16c0 22.09-17.94 40.05-40 40.05s-40.01-17.96-40.01-40.05v-120.1c0-8.847-7.161-16.02-16.01-16.02l-31.98 .0036c-7.299 0-13.2 4.992-15.12 11.68c-24.85-12.15-54.24-16.38-86.06-5.106c-38.75 13.73-68.12 48.91-73.72 89.64c-9.483 69.01 43.81 128 110.9 128c26.44 0 50.43-9.544 69.59-24.88c24 31.3 65.23 48.69 109.4 37.49C465.2 369.3 496 324.1 495.1 277.2V256.3C495.1 107.1 361.2-9.332 207.8 20.73zM239.1 304.3c-26.47 0-48-21.56-48-48.05s21.53-48.05 48-48.05s48 21.56 48 48.05S266.5 304.3 239.1 304.3z"/></svg>
+
+  </span>
+
+</span></a
+        >
+      
+    
+      
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="https://github.com/dinghy421"
+          target="_blank"
+          aria-label="Github"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+
+  </span>
+
+</span></a
+        >
+      
+    
+      
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="https://share.antwen.com"
+          target="_blank"
+          aria-label="Twitter"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+
+  </span>
+
+</span></a
+        >
+      
+    
+      
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="https://space.bilibili.com/513000931?spm_id_from=333.1007.0.0"
+          target="_blank"
+          aria-label="Youtube"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
+
+  </span>
+
+</span></a
+        >
+      
+    
+  </div>
+
+</div>
+  </div>
+</div>
+
+      
+
+      
+
+      
+      <div class="mb-5"></div>
+      
+
+    
+
+  </header>
+  
+  <section class="flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row">
+    
+     <div
+      class="order-first lg:ml-auto px-0 lg:order-last ltr:lg:pl-8 rtl:lg:pr-8">
+      <div class="toc ltr:pl-5 rtl:pr-5 print:hidden lg:sticky lg:top-10">
+
+         <details open id="TOCView"
+  class="toc-right mt-0 overflow-y-scroll overscroll-contain scrollbar-thin scrollbar-track-neutral-200 scrollbar-thumb-neutral-400 dark:scrollbar-track-neutral-800 dark:scrollbar-thumb-neutral-600 rounded-lg ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 hidden lg:block">
+  <summary
+    class="block py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
+    目录
+  </summary>
+  <div
+    class="min-w-[220px] py-2 border-dotted ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#表空间">表空间</a>
+      <ul>
+        <li><a href="#1-查询所有表空间">1. 查询所有表空间</a></li>
+        <li><a href="#2-创建表空间">2. 创建表空间</a></li>
+      </ul>
+    </li>
+    <li><a href="#用户">用户</a>
+      <ul>
+        <li><a href="#1-查询所有用户">1. 查询所有用户</a></li>
+        <li><a href="#2-创建用户">2. 创建用户</a></li>
+      </ul>
+    </li>
+    <li><a href="#导入dmp">导入dmp</a></li>
+    <li><a href="#linux命令">Linux命令</a>
+      <ul>
+        <li><a href="#1查看所有tomcat进程">1.查看所有tomcat进程</a></li>
+        <li><a href="#2-捕获教务系统实时查看日志">2. 捕获教务系统实时查看日志</a></li>
+        <li><a href="#3-启动教务系统的语句日志打印在前台">3. 启动教务系统的语句（日志打印在前台）</a></li>
+      </ul>
+    </li>
+    <li><a href="#日常用到的">日常用到的</a>
+      <ul>
+        <li><a href="#控制功能模块是否启用">控制功能模块是否启用</a></li>
+        <li><a href="#删除配课记录">删除配课记录</a></li>
+        <li><a href="#教学任务设置添加可修改字段">教学任务设置添加可修改字段</a></li>
+      </ul>
+    </li>
+    <li><a href="#nginx">Nginx</a></li>
+    <li><a href="#txt">TXT</a>
+      <ul>
+        <li><a href="#新项目部署后参数设置">新项目部署后参数设置</a></li>
+        <li><a href="#n302005成绩录入设置">N302005成绩录入设置</a></li>
+        <li><a href="#n302010-补考成绩录入设置">N302010 补考成绩录入设置</a></li>
+        <li><a href="#n153505-教学执行计划">N153505 教学执行计划</a></li>
+        <li><a href="#n300403-教学班成绩分项设置">N300403-教学班成绩分项设置</a></li>
+        <li><a href="#n300402-成绩分项比例维护">N300402-成绩分项比例维护</a></li>
+        <li><a href="#ftp服务器重启tomcat">ftp服务器重启tomcat</a></li>
+        <li><a href="#数据库删除归档日志-ora-00257-archiver-error-connect-internal-only-until-freed">数据库删除归档日志 ORA-00257: archiver error. Connect internal only, until freed.</a></li>
+        <li><a href="#创建定时任务">创建定时任务</a>
+          <ul>
+            <li><a href="#1创建存储过程">1.创建存储过程</a></li>
+            <li><a href="#2查询当前定时任务">2.查询当前定时任务</a></li>
+            <li><a href="#删除定时任务语句">删除定时任务语句</a></li>
+            <li><a href="#3创建定时任务">3.创建定时任务</a></li>
+            <li><a href="#4查询当前定时任务检查是否创建成功">4.查询当前定时任务（检查是否创建成功）</a></li>
+          </ul>
+        </li>
+        <li><a href="#死锁查询并杀死">死锁查询并杀死</a></li>
+        <li><a href="#教学任务设置增加修改字段">教学任务设置增加修改字段：</a></li>
+        <li><a href="#学生选课提示未完全评教">学生选课提示未完全评教</a></li>
+        <li><a href="#打印成绩总表时选择等级考试项目">打印成绩总表时选择等级考试项目</a></li>
+        <li><a href="#批量给老师学生管理员插入我的应用">批量给老师、学生、管理员插入我的应用</a></li>
+        <li><a href="#学生密码批量初始化为身份证后6位">学生密码批量初始化为身份证后6位</a></li>
+        <li><a href="#2">2</a></li>
+        <li><a href="#查服务器系统环境">查服务器系统环境</a></li>
+        <li><a href="#日均访问登录量需替换日期">日均访问登录量，需替换日期</a></li>
+        <li><a href="#访问量最高值需替换日期">访问量最高值，需替换日期</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</details>
+<details class="toc-inside mt-0 overflow-hidden rounded-lg ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 lg:hidden">
+  <summary
+    class="py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
+    目录
+  </summary>
+  <div
+    class="py-2 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#表空间">表空间</a>
+      <ul>
+        <li><a href="#1-查询所有表空间">1. 查询所有表空间</a></li>
+        <li><a href="#2-创建表空间">2. 创建表空间</a></li>
+      </ul>
+    </li>
+    <li><a href="#用户">用户</a>
+      <ul>
+        <li><a href="#1-查询所有用户">1. 查询所有用户</a></li>
+        <li><a href="#2-创建用户">2. 创建用户</a></li>
+      </ul>
+    </li>
+    <li><a href="#导入dmp">导入dmp</a></li>
+    <li><a href="#linux命令">Linux命令</a>
+      <ul>
+        <li><a href="#1查看所有tomcat进程">1.查看所有tomcat进程</a></li>
+        <li><a href="#2-捕获教务系统实时查看日志">2. 捕获教务系统实时查看日志</a></li>
+        <li><a href="#3-启动教务系统的语句日志打印在前台">3. 启动教务系统的语句（日志打印在前台）</a></li>
+      </ul>
+    </li>
+    <li><a href="#日常用到的">日常用到的</a>
+      <ul>
+        <li><a href="#控制功能模块是否启用">控制功能模块是否启用</a></li>
+        <li><a href="#删除配课记录">删除配课记录</a></li>
+        <li><a href="#教学任务设置添加可修改字段">教学任务设置添加可修改字段</a></li>
+      </ul>
+    </li>
+    <li><a href="#nginx">Nginx</a></li>
+    <li><a href="#txt">TXT</a>
+      <ul>
+        <li><a href="#新项目部署后参数设置">新项目部署后参数设置</a></li>
+        <li><a href="#n302005成绩录入设置">N302005成绩录入设置</a></li>
+        <li><a href="#n302010-补考成绩录入设置">N302010 补考成绩录入设置</a></li>
+        <li><a href="#n153505-教学执行计划">N153505 教学执行计划</a></li>
+        <li><a href="#n300403-教学班成绩分项设置">N300403-教学班成绩分项设置</a></li>
+        <li><a href="#n300402-成绩分项比例维护">N300402-成绩分项比例维护</a></li>
+        <li><a href="#ftp服务器重启tomcat">ftp服务器重启tomcat</a></li>
+        <li><a href="#数据库删除归档日志-ora-00257-archiver-error-connect-internal-only-until-freed">数据库删除归档日志 ORA-00257: archiver error. Connect internal only, until freed.</a></li>
+        <li><a href="#创建定时任务">创建定时任务</a>
+          <ul>
+            <li><a href="#1创建存储过程">1.创建存储过程</a></li>
+            <li><a href="#2查询当前定时任务">2.查询当前定时任务</a></li>
+            <li><a href="#删除定时任务语句">删除定时任务语句</a></li>
+            <li><a href="#3创建定时任务">3.创建定时任务</a></li>
+            <li><a href="#4查询当前定时任务检查是否创建成功">4.查询当前定时任务（检查是否创建成功）</a></li>
+          </ul>
+        </li>
+        <li><a href="#死锁查询并杀死">死锁查询并杀死</a></li>
+        <li><a href="#教学任务设置增加修改字段">教学任务设置增加修改字段：</a></li>
+        <li><a href="#学生选课提示未完全评教">学生选课提示未完全评教</a></li>
+        <li><a href="#打印成绩总表时选择等级考试项目">打印成绩总表时选择等级考试项目</a></li>
+        <li><a href="#批量给老师学生管理员插入我的应用">批量给老师、学生、管理员插入我的应用</a></li>
+        <li><a href="#学生密码批量初始化为身份证后6位">学生密码批量初始化为身份证后6位</a></li>
+        <li><a href="#2">2</a></li>
+        <li><a href="#查服务器系统环境">查服务器系统环境</a></li>
+        <li><a href="#日均访问登录量需替换日期">日均访问登录量，需替换日期</a></li>
+        <li><a href="#访问量最高值需替换日期">访问量最高值，需替换日期</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</details>
+
+<script>
+
+  var margin = 200;
+  var marginError = 50;
+
+  (function () {
+    var $window = $(window);
+    var $toc = $('#TOCView');
+    var tocHeight = $toc.height();
+
+    function onResize() {
+      var windowAndMarginHeight = $window.height() - margin;
+      if(tocHeight >= windowAndMarginHeight) {
+        $toc.css("overflow-y", "scroll")
+        $toc.css("max-height", (windowAndMarginHeight + marginError) + "px")
+      } else {
+        $toc.css("overflow-y", "hidden")
+        $toc.css("max-height", "9999999px")
+      }
+    }
+
+    $window.on('resize', onResize);
+    $(document).ready(onResize);
+  })();
+
+
+
+  (function () {
+    var $toc = $('#TableOfContents');
+    if ($toc.length > 0) {
+      var $window = $(window);
+
+      function onScroll() {
+        var currentScroll = $window.scrollTop();
+        var h = $('.anchor');
+        var id = "";
+        h.each(function (i, e) {
+          e = $(e);
+          if (e.offset().top - $(window).height()/3 <= currentScroll) {
+            id = decodeURIComponent(e.attr('id'));
+          }
+        });
+        var active = $toc.find('a.active');      
+        if (active.length == 1 && active.eq(0).attr('href') == '#' + id) return true;
+
+        active.each(function (i, e) {
+          
+            $(e).removeClass('active');
+          
+        });
+        $toc.find('a[href="#' + id + '"]').addClass('active')
+        $toc.find('a[href="#' + id + '"]').parentsUntil('#TableOfContents').each(function (i, e) {
+          $(e).children('a').parents('ul').show();          
+        });
+      }
+
+      $window.on('scroll', onScroll);
+      $(document).ready(function () {
+        
+        onScroll();
+      });
+    }
+  })();
+
+
+</script>
+   </div>
+      </div>
+      
+
+      <div class="min-w-0 min-h-0 max-w-fit">
+        
+        
+
+
+        <div class="article-content max-w-prose mb-20">
+          
+
+<h1 class="relative group">SQL/Linux语句 
+    <div id="sqllinux%E8%AF%AD%E5%8F%A5" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#sqllinux%E8%AF%AD%E5%8F%A5" aria-label="锚点">#</a>
+    </span>        
+    
+</h1>
+
+
+<h2 class="relative group">表空间 
+    <div id="%E8%A1%A8%E7%A9%BA%E9%97%B4" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%E8%A1%A8%E7%A9%BA%E9%97%B4" aria-label="锚点">#</a>
+    </span>        
+    
+</h2>
+
+
+<h3 class="relative group">1. 查询所有表空间 
+    <div id="1-%E6%9F%A5%E8%AF%A2%E6%89%80%E6%9C%89%E8%A1%A8%E7%A9%BA%E9%97%B4" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#1-%E6%9F%A5%E8%AF%A2%E6%89%80%E6%9C%89%E8%A1%A8%E7%A9%BA%E9%97%B4" aria-label="锚点">#</a>
+    </span>        
+    
+</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">tablespace_name</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">status</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">contents</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">logging</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">FROM</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">dba_tablespaces</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">tablespace_name</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></div>
+
+<h3 class="relative group">2. 创建表空间 
+    <div id="2-%E5%88%9B%E5%BB%BA%E8%A1%A8%E7%A9%BA%E9%97%B4" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#2-%E5%88%9B%E5%BB%BA%E8%A1%A8%E7%A9%BA%E9%97%B4" aria-label="锚点">#</a>
+    </span>        
+    
+</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">CREATE</span><span class="w"> </span><span class="n">TABLESPACE</span><span class="w"> </span><span class="n">zfclob</span><span class="w"> </span><span class="n">DATAFILE</span><span class="w"> </span><span class="s1">&#39;/u01/oracle/oradata/zfclob01.dbf&#39;</span><span class="w"> </span><span class="k">SIZE</span><span class="w"> </span><span class="mi">10240</span><span class="n">m</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">create</span><span class="w"> </span><span class="n">smallfile</span><span class="w"> </span><span class="n">tablespace</span><span class="w"> </span><span class="n">zfclob</span><span class="w"> </span><span class="n">datafile</span><span class="w"> </span><span class="s1">&#39;/u01/app/oracle/oradata/orcl/zfclob.dbf&#39;</span><span class="w"> </span><span class="k">size</span><span class="w"> </span><span class="mi">1024</span><span class="n">m</span><span class="w"> </span><span class="n">autoextend</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="k">next</span><span class="w"> </span><span class="mi">10240</span><span class="n">K</span><span class="w"> </span><span class="n">maxsize</span><span class="w"> </span><span class="n">unlimited</span><span class="w"> </span><span class="n">logging</span><span class="w"> </span><span class="n">extent</span><span class="w"> </span><span class="n">management</span><span class="w"> </span><span class="k">local</span><span class="w"> </span><span class="n">segment</span><span class="w"> </span><span class="k">space</span><span class="w"> </span><span class="n">management</span><span class="w"> </span><span class="n">auto</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></div>
+
+<h2 class="relative group">用户 
+    <div id="%E7%94%A8%E6%88%B7" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%E7%94%A8%E6%88%B7" aria-label="锚点">#</a>
+    </span>        
+    
+</h2>
+
+
+<h3 class="relative group">1. 查询所有用户 
+    <div id="1-%E6%9F%A5%E8%AF%A2%E6%89%80%E6%9C%89%E7%94%A8%E6%88%B7" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#1-%E6%9F%A5%E8%AF%A2%E6%89%80%E6%9C%89%E7%94%A8%E6%88%B7" aria-label="锚点">#</a>
+    </span>        
+    
+</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">username</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">default_tablespace</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">temporary_tablespace</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">FROM</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">dba_users</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">username</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></div>
+
+<h3 class="relative group">2. 创建用户 
+    <div id="2-%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#2-%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7" aria-label="锚点">#</a>
+    </span>        
+    
+</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">create</span><span class="w"> </span><span class="k">user</span><span class="w"> </span><span class="n">jw_user</span><span class="w"> </span><span class="n">identified</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">jw_user_pyzy</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="n">tablespace</span><span class="w"> </span><span class="n">zf</span><span class="w"> </span><span class="k">temporary</span><span class="w"> </span><span class="n">tablespace</span><span class="w"> </span><span class="n">temp</span><span class="w"> </span><span class="n">profile</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="n">quota</span><span class="w"> </span><span class="n">unlimited</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">zf</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></div><p><code>jw_user_pyzy</code> 是密码，要求使用8位以上、包含字符、数字和字母的强密码 。</p>
+
+
+<h2 class="relative group">导入dmp 
+    <div id="%E5%AF%BC%E5%85%A5dmp" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%E5%AF%BC%E5%85%A5dmp" aria-label="锚点">#</a>
+    </span>        
+    
+</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="n">imp</span><span class="w"> </span><span class="n">JAVAJW</span><span class="o">/</span><span class="n">ZFSoft123</span><span class="w"> </span><span class="n">file</span><span class="o">=/</span><span class="n">home</span><span class="o">/</span><span class="n">oracle</span><span class="o">/</span><span class="n">utf</span><span class="o">-</span><span class="mi">8</span><span class="o">-</span><span class="n">javajw_cshV9</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">4</span><span class="o">-</span><span class="mi">20240531</span><span class="p">.</span><span class="n">dmp</span><span class="w"> </span><span class="k">full</span><span class="o">=</span><span class="n">y</span><span class="w"> </span><span class="n">log</span><span class="o">=</span><span class="n">import</span><span class="p">.</span><span class="n">log</span><span class="w">
+</span></span></span></code></pre></div>
+
+<h2 class="relative group">Linux命令 
+    <div id="linux%E5%91%BD%E4%BB%A4" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#linux%E5%91%BD%E4%BB%A4" aria-label="锚点">#</a>
+    </span>        
+    
+</h2>
+
+
+<h3 class="relative group">1.查看所有tomcat进程 
+    <div id="1%E6%9F%A5%E7%9C%8B%E6%89%80%E6%9C%89tomcat%E8%BF%9B%E7%A8%8B" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#1%E6%9F%A5%E7%9C%8B%E6%89%80%E6%9C%89tomcat%E8%BF%9B%E7%A8%8B" aria-label="锚点">#</a>
+    </span>        
+    
+</h3>
+<p>此命令用于检查Tomcat对应的Java进程是否正在运行。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ps -ef <span class="p">|</span> grep tomcat
+</span></span></code></pre></div><p><strong>说明</strong>：该命令会列出系统所有正在运行的进程，并通过<code>grep</code>过滤出包含“tomcat”关键字的行，从而找到Tomcat进程的详细信息。</p>
+
+
+<h3 class="relative group">2. 捕获教务系统实时查看日志 
+    <div id="2-%E6%8D%95%E8%8E%B7%E6%95%99%E5%8A%A1%E7%B3%BB%E7%BB%9F%E5%AE%9E%E6%97%B6%E6%9F%A5%E7%9C%8B%E6%97%A5%E5%BF%97" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#2-%E6%8D%95%E8%8E%B7%E6%95%99%E5%8A%A1%E7%B3%BB%E7%BB%9F%E5%AE%9E%E6%97%B6%E6%9F%A5%E7%9C%8B%E6%97%A5%E5%BF%97" aria-label="锚点">#</a>
+    </span>        
+    
+</h3>
+<p>此命令用于实时监控Tomcat的<code>catalina.out</code>日志文件，观察应用的运行状态和错误信息。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">tail -f /usr/local/zhengfang/dist-deluxe-v1/logs/catalina.out
+</span></span></code></pre></div><p><strong>说明</strong>：</p>
+<ul>
+<li>
+<p>该命令使用<code>tail -f</code>来持续监控并显示文件末尾的最新内容。</p>
+</li>
+<li>
+<p>路径</p>
+<p><code>/usr/local/zhengfang/dist-deluxe-v1/logs/</code>是<code>dist-deluxe</code>包中Tomcat容器存放日志文件的标准位置 。</p>
+</li>
+</ul>
+
+
+<h3 class="relative group">3. 启动教务系统的语句（日志打印在前台） 
+    <div id="3-%E5%90%AF%E5%8A%A8%E6%95%99%E5%8A%A1%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%AF%AD%E5%8F%A5%E6%97%A5%E5%BF%97%E6%89%93%E5%8D%B0%E5%9C%A8%E5%89%8D%E5%8F%B0" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#3-%E5%90%AF%E5%8A%A8%E6%95%99%E5%8A%A1%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%AF%AD%E5%8F%A5%E6%97%A5%E5%BF%97%E6%89%93%E5%8D%B0%E5%9C%A8%E5%89%8D%E5%8F%B0" aria-label="锚点">#</a>
+    </span>        
+    
+</h3>
+<p>此命令用于在前台模式下启动Tomcat，所有日志会直接输出到当前屏幕，便于实时调试。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">/usr/local/zhengfang/dist-deluxe-v1/server/bin/catalina.sh run
+</span></span></code></pre></div><p><strong>说明</strong>：</p>
+<ul>
+<li>该命令直接调用Tomcat的核心启动脚本<code>catalina.sh</code> 。</li>
+<li><code>run</code>参数使其在前台运行，而不是在后台。这对于捕获启动瞬间的错误信息非常有用。</li>
+</ul>
+
+
+<h2 class="relative group">日常用到的 
+    <div id="%E6%97%A5%E5%B8%B8%E7%94%A8%E5%88%B0%E7%9A%84" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%E6%97%A5%E5%B8%B8%E7%94%A8%E5%88%B0%E7%9A%84" aria-label="锚点">#</a>
+    </span>        
+    
+</h2>
+
+
+<h3 class="relative group">控制功能模块是否启用 
+    <div id="%E6%8E%A7%E5%88%B6%E5%8A%9F%E8%83%BD%E6%A8%A1%E5%9D%97%E6%98%AF%E5%90%A6%E5%90%AF%E7%94%A8" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%E6%8E%A7%E5%88%B6%E5%8A%9F%E8%83%BD%E6%A8%A1%E5%9D%97%E6%98%AF%E5%90%A6%E5%90%AF%E7%94%A8" aria-label="锚点">#</a>
+    </span>        
+    
+</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">jw_jh_zdxxkzb</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">GNMKDM</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;N153005&#39;</span><span class="k">and</span><span class="w"> </span><span class="n">BZ</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;是否专业开放课程&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">jw_jh_zdxxkzb</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">GNMKDM</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;N153005&#39;</span><span class="k">and</span><span class="w"> </span><span class="n">BZ</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="s1">&#39;%开放%&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">for</span><span class="w"> </span><span class="k">update</span><span class="w"> 
+</span></span></span></code></pre></div>
+
+<h3 class="relative group">删除配课记录 
+    <div id="%E5%88%A0%E9%99%A4%E9%85%8D%E8%AF%BE%E8%AE%B0%E5%BD%95" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%E5%88%A0%E9%99%A4%E9%85%8D%E8%AF%BE%E8%AE%B0%E5%BD%95" aria-label="锚点">#</a>
+    </span>        
+    
+</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">delete</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">FROM</span><span class="w"> </span><span class="n">jw_xk_xsxkb</span><span class="w"> </span><span class="n">t</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">WHERE</span><span class="w"> </span><span class="n">t</span><span class="p">.</span><span class="n">xh_id</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">SELECT</span><span class="w"> </span><span class="n">xh_id</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">FROM</span><span class="w"> </span><span class="n">jw_xjgl_xsxjxxb</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">WHERE</span><span class="w"> </span><span class="n">xnm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;2025&#39;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">xqm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;12&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">AND</span><span class="w"> </span><span class="n">bh_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="c1">-- 根据班级名称查询 bh_id
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">      </span><span class="k">SELECT</span><span class="w"> </span><span class="n">BH_ID</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">zftal_xtgl_bjdmb</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">BJ</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;计科2501班&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">delete</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">FROM</span><span class="w"> </span><span class="n">jw_xk_pksbyyb</span><span class="w"> </span><span class="n">t</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">WHERE</span><span class="w"> </span><span class="n">t</span><span class="p">.</span><span class="n">xh_id</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">SELECT</span><span class="w"> </span><span class="n">xh_id</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">FROM</span><span class="w"> </span><span class="n">jw_xjgl_xsxjxxb</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">WHERE</span><span class="w"> </span><span class="n">xnm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;2025&#39;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">xqm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;12&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">AND</span><span class="w"> </span><span class="n">bh_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="c1">-- 根据班级名称查询 bh_id
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">      </span><span class="k">SELECT</span><span class="w"> </span><span class="n">BH_ID</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">zftal_xtgl_bjdmb</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">BJ</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;计科2501班&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">commit</span><span class="w">
+</span></span></span></code></pre></div>
+
+<h3 class="relative group">教学任务设置添加可修改字段 
+    <div id="%E6%95%99%E5%AD%A6%E4%BB%BB%E5%8A%A1%E8%AE%BE%E7%BD%AE%E6%B7%BB%E5%8A%A0%E5%8F%AF%E4%BF%AE%E6%94%B9%E5%AD%97%E6%AE%B5" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%E6%95%99%E5%AD%A6%E4%BB%BB%E5%8A%A1%E8%AE%BE%E7%BD%AE%E6%B7%BB%E5%8A%A0%E5%8F%AF%E4%BF%AE%E6%94%B9%E5%AD%97%E6%AE%B5" aria-label="锚点">#</a>
+    </span>        
+    
+</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">insert</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="n">ZFTAL_XTGL_PLXGXXB</span><span class="w"> </span><span class="p">(</span><span class="n">GNMKDM</span><span class="p">,</span><span class="w"> </span><span class="n">ZDDM</span><span class="p">,</span><span class="w"> </span><span class="n">ZDMC</span><span class="p">,</span><span class="w"> </span><span class="n">ZDBM</span><span class="p">,</span><span class="w"> </span><span class="n">XSSX</span><span class="p">,</span><span class="w"> </span><span class="n">SFQY</span><span class="p">,</span><span class="w"> </span><span class="n">ZDCD</span><span class="p">,</span><span class="w"> </span><span class="n">ZDZYQ</span><span class="p">,</span><span class="w"> </span><span class="n">ZDLX</span><span class="p">,</span><span class="w"> </span><span class="n">ZDLY</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">values</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;N154501&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;jxbmc&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;教学班名称&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;jw_jxrw_jxbxxb&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;1&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;50&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;basedata:isNot&#39;</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></div>
+
+<h2 class="relative group">Nginx 
+    <div id="nginx" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#nginx" aria-label="锚点">#</a>
+    </span>        
+    
+</h2>
+<p>vim /u01/nginx/nginx/conf/nginx.conf</p>
+
+
+<h2 class="relative group">TXT 
+    <div id="txt" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#txt" aria-label="锚点">#</a>
+    </span>        
+    
+</h2>
+
+
+<h3 class="relative group">新项目部署后参数设置 
+    <div id="%E6%96%B0%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2%E5%90%8E%E5%8F%82%E6%95%B0%E8%AE%BE%E7%BD%AE" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%E6%96%B0%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2%E5%90%8E%E5%8F%82%E6%95%B0%E8%AE%BE%E7%BD%AE" aria-label="锚点">#</a>
+    </span>        
+    
+</h3>
+<p>select * from jw_jcdml_xtnzb where zs||bz like &lsquo;%教学班生成方式%&rsquo; for update
+select * from jw_jcdml_xtnzb where zs||bz like &lsquo;%配课关联任务面向对象开关%&rsquo; for update
+select * from  jw_jcdml_xtnzb where zs||bz like &lsquo;%板块课配课方式%&rsquo; for update
+select * from  jw_jcdml_xtnzb where zs||bz like &lsquo;%开课部门取值方式%&rsquo; for update
+select * from  jw_jcdml_xtnzb where zs||bz like &lsquo;%学分取值方式%&rsquo; for update</p>
+<p>Q：课程信息字段设置
+select * from JW_JH_KCXXXGCXZDSQB</p>
+<p>Q 成绩录入设置中不出现教学班记录
+1.学时代码为空或者教学班分项比例设置中未设置比例或者“是否过程管理”列为空
+2.&mdash;&mdash;&ndash;换教师导致成绩录入教师丢失，把sfcjlrjs改成1
+select * from jw_jxrw_jxbjsrkb where jxb_id in (select jxb_id from jw_jxrw_jxbjsrkb where jxb_id in (select jxb_id from jw_jxrw_jxbxxb where xnm=&lsquo;2023&rsquo; and xqm=&lsquo;12&rsquo;) group by jxb_id having count(*)=1)
+and sfcjlrjs=&lsquo;0&rsquo; for update</p>
+<p>Q 修改数据库服务器时区/时间
+timedatectl set-timezone Asia/Shanghai<br>
+timedatectl set-time &lsquo;2024-03-13 11:24:30&rsquo;</p>
+<p>date -s   &lsquo;2024-03-13 11:24:30&rsquo;</p>
+<p>Q成绩录入后，需要删掉教学班中的成绩
+1.保存状态删掉jw_cj_xscjb_ls和jw_cj_xmcjb
+提交状态删掉jw_cj_xscjb和jw_cj_xmcjb</p>
+<p>Q人机交互排课排时间或者场地时没有从第一周开始排
+1.看下排课日周次的第一周中是否包含星期一</p>
+<p>Q.成绩替代后发现替代后的课程的绩点为空或者有误
+1.修改jw_cj_xsgrjhdtb表</p>
+<p>Q.成绩总表没有考虑课程替代以及学分认定
+select * from jw_bygl_cjzbgsxxb where xxdm=&lsquo;13687&rsquo; for update;
+select * from jW_BYGL_CJZBDYSZXXXB where xxdm=&lsquo;13687&rsquo; for update</p>
+<p>Q.表空间扩容
+SELECT UPPER(F.TABLESPACE_NAME)         &ldquo;表空间名&rdquo;,
+D.TOT_GROOTTE_MB                 &ldquo;总空间大小(M)&rdquo;,
+D.TOT_GROOTTE_MB - F.TOTAL_BYTES &ldquo;已使用空间大小(M)&rdquo;,
+TO_CHAR(ROUND(( D.TOT_GROOTTE_MB - F.TOTAL_BYTES ) / D.TOT_GROOTTE_MB * 100, 2), &lsquo;990.99&rsquo;)
+|| &lsquo;%&rsquo;                           &ldquo;空间使用率&rdquo;,
+F.TOTAL_BYTES                    &ldquo;剩余空间(M)&rdquo;,
+F.MAX_BYTES                      &ldquo;最大块大小(M)&rdquo;
+FROM   (SELECT TABLESPACE_NAME,
+ROUND(SUM(BYTES) / ( 1024 * 1024 ), 2) TOTAL_BYTES,
+ROUND(MAX(BYTES) / ( 1024 * 1024 ), 2) MAX_BYTES
+FROM   SYS.DBA_FREE_SPACE
+GROUP  BY TABLESPACE_NAME) F,
+(SELECT DD.TABLESPACE_NAME,
+ROUND(SUM(DD.BYTES) / ( 1024 * 1024 ), 2) TOT_GROOTTE_MB
+FROM   SYS.DBA_DATA_FILES DD
+GROUP  BY DD.TABLESPACE_NAME) D
+WHERE  D.TABLESPACE_NAME = F.TABLESPACE_NAME
+ORDER  BY 1;</p>
+<p>&ndash;select * from dba_data_files where tablespace_name=&lsquo;ZF&rsquo;</p>
+<p>&ndash;alter database datafile &lsquo;/u01/oracle/oradata/zf02.dbf&rsquo; resize 30g;              &mdash;-扩容文件
+&ndash;alter tablespace zf add datafile &lsquo;/u01/oracle/oradata/zf04.dbf&rsquo; size 20G;    &mdash;-增加文件</p>
+<p>Q.数据库闪回
+alter table 表名 enable row movement;&ndash;必须先执行
+flashback table 表名 to timestamp to_timestamp(&lsquo;2022-12-08 09:35:00&rsquo;,&lsquo;yyyy-mm-dd hh24:mi:ss&rsquo;);
+alter table 表名 disable row movement;&ndash;必须执行</p>
+<p>Q.授予数据库只读权限的账号
+&ndash;最高权限的只读用户 zfsoft_zd
+&ndash;创建用户
+create user zfsoft_zd
+identified by Zfsoft123_zd
+default tablespace ZF
+temporary tablespace TEMP
+profile DEFAULT;
+&ndash;授权
+grant connect to zfsoft_zd;
+grant select any table to zfsoft_zd;
+&ndash;函数授权
+grant execute on 函数名 to zfsoft_zd</p>
+<p>Q.成绩录入状态由保存改成录入状态
+delete from jw_cj_xscjb_ls where jxb_id=&lsquo;F52096F8C85C1EB9E05347640A0AEBE0&rsquo;
+delete from jw_cj_xmcjb where jxb_id=&lsquo;F52096F8C85C1EB9E05347640A0AEBE0&rsquo;</p>
+<p>Q.成绩已经录入，要把学生从选课名单中删除</p>
+<p>Q.学生选课时按分钟查看选课人数
+select * from (select substr(xksj,1,16) aa,count(*) from jw_xk_xsxkb group by substr(xksj,1,16) )where aa &gt;=&lsquo;2023-09-12 12:00&rsquo; order by aa desc</p>
+<p>Q服务器防火墙
+firewall-cmd &ndash;state
+&mdash;&mdash;如果是running，则依次执行以下两条语句
+firewall-cmd &ndash;zone=public &ndash;add-port=80/tcp &ndash;permanent
+firewall-cmd &ndash;reload</p>
+<p>1配课失败原因不对
+删除表JW_XK_PKSBYYB，重新配</p>
+<p>1刷新配课是更新jxbhbxxb的pkgs</p>
+<p>1生成配课的刷新配课是什么作用
+更新jxbhbxxb的pkgs
+先点下，再配课 下面的配课人数如果不符合的情况下</p>
+<p>1 配课的配不上显示配课成功		 xk_tjkbpk_1
+1)这个教学班学时是空的;rwxzx,xsdm不能为空,sfzjxb要为1
+select sfzjxb from jw_jxrw_jxbxxb whre sfzjxb=&lsquo;1&rsquo; 是否主教学班要为1;
+select sfzjxb,rwzxs,xsdm,sfkxk,sfxkbj,bpkbj from jw_jxrw_jxbxxb where xnm||xqm=&lsquo;20213&rsquo; and jxbmc=&rsquo;&rsquo;
+2)学生专业方向和课程专业方向不一致(查一下合班信息表）;
+3)学生没报到注册,
+select*from zftal_xtgl_xtszb where zs like &lsquo;%配课%&rsquo; or bz like&rsquo;%配课%&rsquo;;
+4)人数为0
+5)主教学班生成了，子教学班没生成（先把主教学班的选课数据删除）
+6)教学班容量满了
+7）设置了不排课，教学班信息表sksj又有值，去判断上课时间了
+8）表空间不够
+9）jw_jxrw_jxbhbxxb &ndash;zh字段清空 迁移数据
+10）zyh_id中间不能有下划线_  像530102_A就不行</p>
+<p>2生成配课提示生成配课失败
+xk_tjkbkcpk_1编译失败</p>
+<p>2删除配课数据
+select<em>from jw_xk_xsxkb where xnm||xqm=&lsquo;202112&rsquo; and xkbj=&lsquo;20&rsquo; and xksj like &lsquo;%2022-02-18 %&rsquo; and jgh_id=&lsquo;admin&rsquo;
+select</em>from jw_xk_xsxkb_0218
+delete from jw_xk_xsxkb where xnm||xqm=&lsquo;202112&rsquo; and xkbj=&lsquo;20&rsquo; and xksj like &lsquo;%2022-02-18 %&rsquo; and jgh_id=&lsquo;admin&rsquo;</p>
+<p>2配课设置默认生成教材	
+select*from jw_jcdml_xtnzb where  zdm=&lsquo;BXLKEMRYDJC&rsquo;</p>
+<p>2配课界面不显示教学班	
+课程性质为选修
+select*from jw_jcdml_xtnzb where  zdm=&lsquo;PKKCXZ&rsquo;
+所有选修都要配的话就设置成bx,xx|
+部分选修课的话后面跟上课程性质代码
+bx|05,06,07,13,27
+update jw_jcdml_xtnzb set zdz=&lsquo;bx,xx|&rsquo; where  zdm=&lsquo;PKKCXZ&rsquo;;
+commit;</p>
+<p>3配课不想配不在校学生，内置表设置
+select*from  zftal_xtgl_xtszb  where zdm=&lsquo;WZCXSBKPK&rsquo; ;
+update zftal_xtgl_xtszb set zdz=&lsquo;1&rsquo; where zdm=&lsquo;WZCXSBKPK&rsquo; ;
+commit;</p>
+<p>4配课未配的学生提示已配入其他教学班	
+之前学年学期有选课还有成绩</p>
+<p>5待配课查询很慢</p>
+<p>解决方法：
+先检查下以下两个索引是否有，没有的话加一下
+create index JW_JXRW_JXBHBXXB_KCXZ on JW_JXRW_JXBHBXXB (KCXZDM);
+create index IDX_JW_XSXJXXB_XN_1 on JW_XJGL_XSXJXXB (XNM, XQM, NJDM_ID, ZYH_ID, BH_ID);</p>
+<p>加了索引后，也没用，需要分析以下表
+analyze table jw_xjgl_xsxjxxb compute statistics;
+analyze table jw_xk_xsxkb compute statistics;
+analyze table jw_jxrw_jxbxxb compute statistics;
+analyze table jw_jxrw_jxbhbxxb compute statistics;
+analyze table jw_xk_xspkztb compute statistics;
+analyze table jw_xk_xsxkpklsb compute statistics;</p>
+<p>Q.数据迁移后绩点批量刷新
+update jw_cj_xscjb set jd=(round(bfzcj,0)-50)/10 where bfzcj&gt;=60</p>
+<p>Q：学生学业情况查询提示当前所在专业没有教学执行计划
+&mdash;&mdash;&mdash;专业方向为空的改成wfx
+update jw_jh_jxzxjhkcxxb set zyfx_id=&lsquo;wfx&rsquo; where zyfx_id is null;
+update jw_jh_pyfakcxxb set zyfx_id=&lsquo;wfx&rsquo; where zyfx_id is null;
+update jw_jh_jxzxjhxfyqxxb set zyfx_id=&lsquo;wfx&rsquo; where zyfx_id is null;
+update jw_jh_pyfaxfyqxxb set zyfx_id=&lsquo;wfx&rsquo; where zyfx_id is null;
+update jw_jh_jxzxjhxfyqxxb set YQZDXF=&lsquo;0&rsquo; where YQZDXF is null;
+update jw_jh_pyfaxfyqxxb set YQZDXF=&lsquo;0&rsquo; where YQZDXF is null;
+update jw_jh_jxzxjhkcyxxdxnxqb set zyfx_id=&lsquo;wfx&rsquo; where zyfx_id is null;
+update jw_xjgl_xsjbxxb set zyfx_id=&lsquo;wfx&rsquo; where zyfx_id is null;
+update jw_xjgl_xsxjxxb set zyfx_id=&lsquo;wfx&rsquo; where zyfx_id is null;</p>
+<p>Q：授课计划清空&ndash;盐城师范
+select  * from jw_jxrw_jxbxxb where jxbmc=&rsquo;(2023-2024-1)-1174100980-02&rsquo;
+delete from jw_jh_jsjxrljcb where jxb_id=&lsquo;FE83FF2A74642F42E0530100007FBE4A&rsquo;
+delete from jw_jh_jsjxrlsjb where jxb_id=&lsquo;FE83FF2A74642F42E0530100007FBE4A&rsquo;
+delete from jw_jh_jsjxrlb where jxb_id=&lsquo;FE83FF2A74642F42E0530100007FBE4A&rsquo;</p>
+<p>Q：学籍异动申请页面zdxxkzb
+必填字段控制：select * from jw_xjgl_xjydzdxxkzb  where gnmkdm=&lsquo;N102008&rsquo;，
+字段参考select * from jw_xj_zdxxkzb where gnmkdm=&lsquo;N102020&rsquo;;</p>
+<p>Q:节次截取并且行转列
+1-2,4-6
+变成
+1-2
+4-6<br>
+select fn_jqzd(t1.jcmc,&rsquo;,&rsquo;,t2.rn) from v_jssykb_1 t1,
+(select rownum rn from zftal_xtgl_jcsjb where rownum &lt;=10) t2
+where fn_jsfgfs(t1.jcmc,&rsquo;,&rsquo;) +1 &gt;= t2.rn</p>
+<p>Q：学校学生专业所属学院调整，需要清洗的数据</p>
+<p>&mdash;&mdash;&ndash;涉及到的表
+zftal_xtgl_zydmb
+zftal_xtgl_bjdmb
+jw_xjgl_xsjbxxb
+jw_xjgl_xsxjxxb
+jw_jh_kcdmb
+jw_jh_pyfakcxxb
+jw_jh_jxzxjhkcxxb
+jw_jxrw_jxbxxb
+jw_jg_jzgxxb &mdash;主要看教学秘书，教学院长等需要参与审批的人员以及他们的数据归属范围（学生、教师、课程）</p>
+<p>&mdash;&mdash;&mdash;&mdash;-备份&mdash;&mdash;&ndash;
+create table zftal_xtgl_bjdmb20231102 as select * from zftal_xtgl_bjdmb
+create table jw_jxrw_jxbxxb20231102 as select * from jw_jxrw_jxbxxb</p>
+<p>&mdash;&mdash;&mdash;&mdash;课程开课学院
+update jw_jh_kcdmb set kkbm_id=&rsquo;&rsquo;  where kkbm_id =&lsquo;1873202&rsquo;</p>
+<p>&mdash;&mdash;&mdash;&mdash;-培养方案开课学院&mdash;&ndash;
+select * from jw_jh_pyfakcxxb where xfyqjd_id in (select  xfyqjd_id from jw_jh_pyfaxfyqxxb where pyfaxx_id in (select pyfaxx_id from jw_jh_pyfaxxb where zyh_id in(&lsquo;3101&rsquo;,&lsquo;2302&rsquo;,&lsquo;2305&rsquo;))
+)           and kkbm_id=&lsquo;1873202&rsquo;</p>
+<p>update jw_jh_pyfakcxxb set kkbm_id=&lsquo;1873205&rsquo;where xfyqjd_id in
+(select  xfyqjd_id from jw_jh_pyfaxfyqxxb where pyfaxx_id in (select pyfaxx_id from jw_jh_pyfaxxb where zyh_id in(&lsquo;2812&rsquo;,&lsquo;2804&rsquo;))
+)           and kkbm_id=&lsquo;1873202&rsquo;</p>
+<p>&mdash;&mdash;&mdash;&mdash;-教学计划开课学院&mdash;&ndash;
+select  * from jw_jh_jxzxjhkcxxb where kkbm_id =&lsquo;1873202&rsquo; and njdm_id&gt;2020 and zyh_id in(&lsquo;3101&rsquo;,&lsquo;2302&rsquo;,&lsquo;2305&rsquo;)
+update jw_jh_jxzxjhkcxxb set kkbm_id=&lsquo;1873203&rsquo;  where kkbm_id =&lsquo;1873202&rsquo; and njdm_id&gt;2020 and zyh_id in(&lsquo;3101&rsquo;,&lsquo;2302&rsquo;,&lsquo;2305&rsquo;)</p>
+<p>update jw_jh_jxzxjhkcxxb set kkbm_id=&lsquo;1873205&rsquo;  where kkbm_id =&lsquo;1873202&rsquo; and njdm_id&gt;2020 and zyh_id in(&lsquo;2812&rsquo;,&lsquo;2804&rsquo;)</p>
+<p>&mdash;&mdash;&mdash;&mdash;教学任务开课学院&mdash;&mdash;&mdash;
+select  * from jw_jxrw_jxbxxb where jxb_id in
+(
+select  distinct jxb_id from jw_jxrw_jxbhbxxb  where zyh_id in (&lsquo;3101&rsquo;,&lsquo;2302&rsquo;,&lsquo;2305&rsquo;) and njdm_id&gt;2020</p>
+<p>) and kkbm_id=&lsquo;187320&rsquo;</p>
+<p>update jw_jxrw_jxbxxb set  kkbm_id=&lsquo;1873205&rsquo; where jxb_id in
+(
+select  distinct jxb_id from jw_jxrw_jxbhbxxb  where zyh_id in (&lsquo;2812&rsquo;,&lsquo;2804&rsquo;) and njdm_id&gt;2020</p>
+<p>) and kkbm_id=&lsquo;1873202&rsquo;</p>
+<p>&mdash;&mdash;&mdash;&mdash;&mdash;-班级所在学院&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;
+select * from zftal_xtgl_bjdmb where zyh_id=&lsquo;2302&rsquo; and njdm_id&gt;2020 for update</p>
+<p>update zftal_xtgl_bjdmb set jg_id=&lsquo;1873203&rsquo; where zyh_id=&lsquo;3101&rsquo; and njdm_id&gt;2020
+update zftal_xtgl_bjdmb set jg_id=&lsquo;1873205&rsquo; where zyh_id in (&lsquo;2812&rsquo;,&lsquo;2804&rsquo;) and njdm_id&gt;2020</p>
+<p>&mdash;&mdash;&mdash;&mdash;&mdash;学生所在学院&mdash;&mdash;&mdash;&mdash;
+select * from jw_xjgl_xsjbxxb where zyh_id in (&lsquo;3101&rsquo;,&lsquo;2302&rsquo;,&lsquo;2305&rsquo;) and njdm_id&gt;2020
+update jw_xjgl_xsjbxxb set jg_id=&lsquo;1873203&rsquo; where zyh_id in (&lsquo;3101&rsquo;,&lsquo;2302&rsquo;,&lsquo;2305&rsquo;) and njdm_id&gt;2020
+update jw_xjgl_xsxjxxb set jg_id=&lsquo;1873203&rsquo; where zyh_id in (&lsquo;3101&rsquo;,&lsquo;2302&rsquo;,&lsquo;2305&rsquo;) and njdm_id&gt;2020 and xnm=&lsquo;2023&rsquo;
+update jw_xjgl_xsxjxxb set jg_id=&lsquo;1873205&rsquo; where zyh_id in (&lsquo;2812&rsquo;,&lsquo;2804&rsquo;) and njdm_id&gt;2020 and xnm=&lsquo;2023&rsquo;
+update zftal_xtgl_yhb a set jgdm =(select jg_id from jw_xjgl_xsjbxxb b where a.yhm=b.xh) where yhm in (select xh from jw_xjgl_xsjbxxb where njdm_id&gt;2020 and
+zyh_id in (&lsquo;3101&rsquo;,&lsquo;2302&rsquo;,&lsquo;2305&rsquo;,&lsquo;2812&rsquo;,&lsquo;2804&rsquo;))</p>
+<p>&mdash;&mdash;&mdash;&mdash;&ndash;专业和教师信息前台维护&mdash;&mdash;&ndash;
+&mdash;&mdash;&mdash;&mdash;&ndash;数据归属范围前台维护&mdash;&mdash;&ndash;</p>
+<p>Q：基本选课规则页面，需要不及格课程可以选课（kklxdm换一下）
+select * from jw_xk_xkkzxmbb where kklxdm=&lsquo;99&rsquo; and zdm in (&lsquo;SFKGBCX&rsquo;,&lsquo;BJGKCZXBBJWCX&rsquo;)</p>
+<p>Q：oracle自动生成随机数
+select unique round(dbms_random.value *100) sjs from dual   &ndash;100以内随机数</p>
+<p>Q：体育版块课【生成学生等级】没有数据
+select * from jw_jcdml_xtnzb  where zdm = &lsquo;BKKPKFS&rsquo; for update  改成0
+生成对应学期学生时盒信息</p>
+<p>&mdash;&mdash;&mdash;&mdash;&mdash;-建中间库并授权创建表权限&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;
+create user dtw_jwuser   identified by dtw_jwuser;
+alter user dtw_jwuser   default tablespace zf;
+grant create session,create view to  dtw_jwuser ;
+grant create table to  dtw_jwuser ;
+grant unlimited tablespace to dtw_jwuser ;
+alter user dtw_jwuser   quota unlimited on zf;</p>
+<p>&mdash;跨服务器scp
+scp -r <a href="mailto:root@10.10.10.49">root@10.10.10.49</a>:/u01/dist-deluxe/apps/zftal-ui-v5-1.0.2  /u01/dist-deluxe/apps&mdash;-远程到本地</p>
+<p>&mdash;-周次节次转换函数
+select fn_bittozc(384*2) from dual;  &ndash;384为jw_pk_kbsjb中的jc或者zcd，8,9
+select get_jctobinary(&lsquo;8,9&rsquo;) from dual;–384
+select get_jctobinary(&lsquo;01-04,07-10,13-16&rsquo;) from dual;&mdash;周次转化</p>
+<p>正方 杨孝健:
+get_jxbkcxzxx(jxb.jxb_id,&lsquo;2&rsquo;) as KCXZM,
+get_jxbkcxzxx(jxb.jxb_id,&lsquo;0&rsquo;) as KCXZ,</p>
+<p>get_weeksdesc(a.zcd) as SKZC,&ndash;1-5周(单),11-19周(单)
+get_jcbinarydesc(kb.zcd,&rsquo;&rsquo;)as SKZC,&ndash;1-1,3-3,5-5,11-11,13-13,15-15,17-17,19-19
+fn_bittozc(kb.zcd*2) as SKZC,&ndash;1,2,3,5,6,8
+fn_bittozcmx(zcd) SKZC,&mdash;111100011
+fn_kckssj(jxb_id),&ndash;课程开始时间
+fn_kcjssj(jxb_id),&ndash;课程结束时间</p>
+<p>Ⅴ、功能页面授权给老师角色
+jstopmkmcb_id值取zftal_xtgl_jstopmkmcb
+select *from zftal_xtgl_jstopmkmcb;
+insert into zftal_xtgl_jsgnmkgxb (JSTOPMKMCB_ID, GNMKDM, XSXH) values (&lsquo;64&rsquo;, &lsquo;N214505&rsquo;, 5);</p>
+<p>生成试卷号，有几个考试任务生成不出来
+1、考试形式是否有维护
+2、需要生成的任务的同门课是否已经有排过考试时间的</p>
+<p>&mdash;&mdash;-全库解析
+select &lsquo;analyze table    &rsquo;   ||table_name || &rsquo; compute statistics;&rsquo;   from    user_tables;</p>
+<p>&mdash;&mdash;&mdash;&mdash;页面打开提示无权限</p>
+
+
+<h3 class="relative group">N302005成绩录入设置 
+    <div id="n302005%E6%88%90%E7%BB%A9%E5%BD%95%E5%85%A5%E8%AE%BE%E7%BD%AE" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#n302005%E6%88%90%E7%BB%A9%E5%BD%95%E5%85%A5%E8%AE%BE%E7%BD%AE" aria-label="锚点">#</a>
+    </span>        
+    
+</h3>
+<p>update zftal_xtgl_gnmkczb set qxdm=&rsquo;/cjlrkzsz/cjlrkzsz_cxCjlrkzsz.html:cx&rsquo;where  gnmkdm=&lsquo;N302005&rsquo; and czdm=&lsquo;cx&rsquo;;
+commit;</p>
+
+
+<h3 class="relative group">N302010 补考成绩录入设置 
+    <div id="n302010-%E8%A1%A5%E8%80%83%E6%88%90%E7%BB%A9%E5%BD%95%E5%85%A5%E8%AE%BE%E7%BD%AE" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#n302010-%E8%A1%A5%E8%80%83%E6%88%90%E7%BB%A9%E5%BD%95%E5%85%A5%E8%AE%BE%E7%BD%AE" aria-label="锚点">#</a>
+    </span>        
+    
+</h3>
+<p>update zftal_xtgl_gnmkczb set qxdm=&rsquo;/bkcjlrsz/bkcjlrsz_cxBkcjlrsz.html:cx&rsquo;where  gnmkdm=&lsquo;N302010&rsquo; and czdm=&lsquo;cx&rsquo;;
+commit;</p>
+
+
+<h3 class="relative group">N153505 教学执行计划 
+    <div id="n153505-%E6%95%99%E5%AD%A6%E6%89%A7%E8%A1%8C%E8%AE%A1%E5%88%92" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#n153505-%E6%95%99%E5%AD%A6%E6%89%A7%E8%A1%8C%E8%AE%A1%E5%88%92" aria-label="锚点">#</a>
+    </span>        
+    
+</h3>
+<p>update zftal_xtgl_gnmkczb set qxdm=&lsquo;&lsquo;where  gnmkdm=&lsquo;N153505&rsquo;  and qxdm is not null ;
+commit;</p>
+
+
+<h3 class="relative group">N300403-教学班成绩分项设置 
+    <div id="n300403-%E6%95%99%E5%AD%A6%E7%8F%AD%E6%88%90%E7%BB%A9%E5%88%86%E9%A1%B9%E8%AE%BE%E7%BD%AE" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#n300403-%E6%95%99%E5%AD%A6%E7%8F%AD%E6%88%90%E7%BB%A9%E5%88%86%E9%A1%B9%E8%AE%BE%E7%BD%AE" aria-label="锚点">#</a>
+    </span>        
+    
+</h3>
+<p>select * from zftal_xtgl_gnmkczb where  gnmkdm=&lsquo;N300403&rsquo;
+update zftal_xtgl_gnmkczb set qxdm=&rsquo;/cjblxxgl/cjbl_cxCjblxx.html:cx&rsquo; where  gnmkdm=&lsquo;N300403&rsquo;  and czdm=&lsquo;cx&rsquo;;
+commit;
+insert into zftal_xtgl_jsgnmkczb (JSDM, GNMKDM, CZDM, DYYM, CZMC)
+values (&lsquo;admin&rsquo;, &lsquo;N300403&rsquo;, &lsquo;cx&rsquo;, null, null);
+commit;</p>
+
+
+<h3 class="relative group">N300402-成绩分项比例维护 
+    <div id="n300402-%E6%88%90%E7%BB%A9%E5%88%86%E9%A1%B9%E6%AF%94%E4%BE%8B%E7%BB%B4%E6%8A%A4" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#n300402-%E6%88%90%E7%BB%A9%E5%88%86%E9%A1%B9%E6%AF%94%E4%BE%8B%E7%BB%B4%E6%8A%A4" aria-label="锚点">#</a>
+    </span>        
+    
+</h3>
+<p>select * from zftal_xtgl_gnmkczb where  gnmkdm=&lsquo;N300402&rsquo;
+update zftal_xtgl_gnmkczb set qxdm=&rsquo;/cjblxxgl/cjbl_cxCjblxx.html:cx&rsquo; where  gnmkdm=&lsquo;N300402&rsquo;  and czdm=&lsquo;cx&rsquo;;
+commit;
+insert into zftal_xtgl_jsgnmkczb (JSDM, GNMKDM, CZDM, DYYM, CZMC)
+values (&lsquo;admin&rsquo;, &lsquo;N300402&rsquo;, &lsquo;cx&rsquo;, null, null);
+commit;</p>
+
+
+<h3 class="relative group">ftp服务器重启tomcat 
+    <div id="ftp%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%87%8D%E5%90%AFtomcat" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#ftp%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%87%8D%E5%90%AFtomcat" aria-label="锚点">#</a>
+    </span>        
+    
+</h3>
+<p>systemctl stop vsftpd
+ps -ef|grep vsftpd
+systemctl start vsftpd</p>
+
+
+<h3 class="relative group">数据库删除归档日志 ORA-00257: archiver error. Connect internal only, until freed. 
+    <div id="%E6%95%B0%E6%8D%AE%E5%BA%93%E5%88%A0%E9%99%A4%E5%BD%92%E6%A1%A3%E6%97%A5%E5%BF%97-ora-00257-archiver-error-connect-internal-only-until-freed" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E5%88%A0%E9%99%A4%E5%BD%92%E6%A1%A3%E6%97%A5%E5%BF%97-ora-00257-archiver-error-connect-internal-only-until-freed" aria-label="锚点">#</a>
+    </span>        
+    
+</h3>
+<p>su - oracle
+rman target /
+delete archivelog all;</p>
+
+
+<h3 class="relative group">创建定时任务 
+    <div id="%E5%88%9B%E5%BB%BA%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%E5%88%9B%E5%BB%BA%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1" aria-label="锚点">#</a>
+    </span>        
+    
+</h3>
+
+
+<h4 class="relative group">1.创建存储过程 
+    <div id="1%E5%88%9B%E5%BB%BA%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#1%E5%88%9B%E5%BB%BA%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B" aria-label="锚点">#</a>
+    </span>        
+    
+</h4>
+<p>create or replace procedure njgydxbdzctb /<em>正脉报到注册zzdy.t_BDZCB同步至教务系统</em>/ as
+begin
+update jw_xjgl_xsjbxxb set bdzcbj=&lsquo;2&rsquo;
+/*SELECT * FROM jw_xjgl_xsjbxxb */WHERE
+XH IN (select XH from zzdy.t_BDZCB where XN=(SELECT XNMC FROM JW_JCDM_XNB WHERE XNM=( select ZDZ  from zftal_xtgl_xtszb where zdm=&lsquo;DQXNM&rsquo;))
+AND XQ=(SELECT mc FROM ZFTAL_XTGL_JCSJB WHERE LX=&lsquo;0001&rsquo; and dm=(select ZDZ  from zftal_xtgl_xtszb where zdm=&lsquo;DQXQM&rsquo;)));</p>
+<p>update jw_xjgl_xsxjxxb xj set bdzcbj=&lsquo;2&rsquo;
+/* SELECT * FROM jw_xjgl_xsxjxxb xj */WHERE
+(select xh from jw_xjgl_xsjbxxb xs where xs.xh_id=xj.xh_id) IN (select XH from zzdy.t_BDZCB where XN=(SELECT XNMC FROM JW_JCDM_XNB WHERE XNM=( select ZDZ  from zftal_xtgl_xtszb where zdm=&lsquo;DQXNM&rsquo;))
+AND XQ=(SELECT mc FROM ZFTAL_XTGL_JCSJB WHERE LX=&lsquo;0001&rsquo; and dm=(select ZDZ  from zftal_xtgl_xtszb where zdm=&lsquo;DQXQM&rsquo;)))
+and xj.xnm=(select zdz  from zftal_xtgl_xtszb where zdm=&lsquo;DQXNM&rsquo;)
+and xj.xqm=(select zdz  from zftal_xtgl_xtszb where zdm=&lsquo;DQXQM&rsquo;)
+commit;
+end;</p>
+
+
+<h4 class="relative group">2.查询当前定时任务 
+    <div id="2%E6%9F%A5%E8%AF%A2%E5%BD%93%E5%89%8D%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#2%E6%9F%A5%E8%AF%A2%E5%BD%93%E5%89%8D%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1" aria-label="锚点">#</a>
+    </span>        
+    
+</h4>
+<p>select * from all_jobs</p>
+
+
+<h4 class="relative group">删除定时任务语句 
+    <div id="%E5%88%A0%E9%99%A4%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E8%AF%AD%E5%8F%A5" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%E5%88%A0%E9%99%A4%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E8%AF%AD%E5%8F%A5" aria-label="锚点">#</a>
+    </span>        
+    
+</h4>
+<p>BEGIN
+DBMS_JOB.REMOVE(job =&gt; job编号);
+END;
+/</p>
+
+
+<h4 class="relative group">3.创建定时任务 
+    <div id="3%E5%88%9B%E5%BB%BA%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#3%E5%88%9B%E5%BB%BA%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1" aria-label="锚点">#</a>
+    </span>        
+    
+</h4>
+<p>declare
+job number;
+BEGIN
+DBMS_JOB.SUBMIT(
+job        =&gt; job,  &ndash; 这里&lt;job_number&gt;是一个变量，用来存储作业号
+what       =&gt; &lsquo;BEGIN njgydxbdzctb; END;&rsquo;,&mdash;-BEGIN 存储过程名称；END;
+next_date  =&gt; TRUNC(SYSDATE) + INTERVAL &lsquo;4&rsquo; HOUR + INTERVAL &lsquo;1&rsquo; DAY,  &ndash; 明天4点开始执行
+interval   =&gt; &lsquo;TRUNC(SYSDATE) + INTERVAL &lsquo;&lsquo;1&rsquo;&rsquo; DAY&rsquo;  &ndash; 每天执行一次
+);
+END;
+/</p>
+
+
+<h4 class="relative group">4.查询当前定时任务（检查是否创建成功） 
+    <div id="4%E6%9F%A5%E8%AF%A2%E5%BD%93%E5%89%8D%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E6%A3%80%E6%9F%A5%E6%98%AF%E5%90%A6%E5%88%9B%E5%BB%BA%E6%88%90%E5%8A%9F" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#4%E6%9F%A5%E8%AF%A2%E5%BD%93%E5%89%8D%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E6%A3%80%E6%9F%A5%E6%98%AF%E5%90%A6%E5%88%9B%E5%BB%BA%E6%88%90%E5%8A%9F" aria-label="锚点">#</a>
+    </span>        
+    
+</h4>
+<p>select * from all_jobs</p>
+
+
+<h3 class="relative group">死锁查询并杀死 
+    <div id="%E6%AD%BB%E9%94%81%E6%9F%A5%E8%AF%A2%E5%B9%B6%E6%9D%80%E6%AD%BB" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%E6%AD%BB%E9%94%81%E6%9F%A5%E8%AF%A2%E5%B9%B6%E6%9D%80%E6%AD%BB" aria-label="锚点">#</a>
+    </span>        
+    
+</h3>
+<p>SELECT &rsquo; alter system kill session  &rsquo; ||&rsquo;&rsquo;&rsquo;&rsquo;||l.session_id ||&rsquo;,&rsquo; ||s.serial#||&rsquo;,&rsquo;||&rsquo;@&rsquo;||s.inst_id||&rsquo;&rsquo;&rsquo;;&rsquo; sgw ,
+l.locked_mode,
+&lsquo;kill -9 &lsquo;||(select spid from gv$process where addr=s.PADDR and rownum=&lsquo;1&rsquo;) spid,
+l.oracle_username,
+l.os_user_name,
+s.machine,
+s.terminal,
+o.object_name,
+s.logon_time
+FROM gv$locked_object l, all_objects o, gv$session s
+WHERE l.object_id = o.object_id
+AND l.session_id = s.sid  &ndash;and object_name=&lsquo;JW_KW_KSMCJXBDZB&rsquo;
+ORDER BY sid, s.serial#;</p>
+
+
+<h3 class="relative group">教学任务设置增加修改字段： 
+    <div id="%E6%95%99%E5%AD%A6%E4%BB%BB%E5%8A%A1%E8%AE%BE%E7%BD%AE%E5%A2%9E%E5%8A%A0%E4%BF%AE%E6%94%B9%E5%AD%97%E6%AE%B5" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%E6%95%99%E5%AD%A6%E4%BB%BB%E5%8A%A1%E8%AE%BE%E7%BD%AE%E5%A2%9E%E5%8A%A0%E4%BF%AE%E6%94%B9%E5%AD%97%E6%AE%B5" aria-label="锚点">#</a>
+    </span>        
+    
+</h3>
+<p>1、课程性质：
+insert into ZFTAL_XTGL_PLXGXXB (GNMKDM, ZDDM, ZDMC, ZDBM, XSSX, SFQY, ZDCD, ZDZYQ, ZDLX, ZDLY)
+values (&lsquo;N154501&rsquo;, &lsquo;kcxzdm&rsquo;, &lsquo;课程性质&rsquo;, &lsquo;jw_jxrw_jxbhbxxb&rsquo;, 1, &lsquo;1&rsquo;, &lsquo;21&rsquo;, &lsquo;&rsquo;, 1, &lsquo;database:select kcxzdm key,kcxzmc value from jw_jh_kcxzdmb where sfty=&lsquo;&lsquo;0&rsquo;&rsquo;&rsquo;);
+2、课程类型：
+insert into ZFTAL_XTGL_PLXGXXB (GNMKDM, ZDDM, ZDMC, ZDBM, XSSX, SFQY, ZDCD, ZDZYQ, ZDLX, ZDLY)
+values (&lsquo;N154501&rsquo;, &lsquo;kclxdm&rsquo;, &lsquo;课程类型&rsquo;, &lsquo;jw_jxrw_jxbxxb&rsquo;, 1, &lsquo;1&rsquo;, &lsquo;20&rsquo;, &lsquo;&rsquo;, 1, &lsquo;database:select kclxdm key,kclxmc value from jw_jh_kclxdmb where tybj=&lsquo;&lsquo;0&rsquo;&rsquo;&rsquo;);
+3、课程类别
+insert into zftal_xtgl_plxgxxb (GNMKDM, ZDDM, ZDMC, ZDBM, XSSX, SFQY, ZDCD, ZDZYQ, ZDLX, ZDLY)
+values (&lsquo;N154501&rsquo;, &lsquo;kclbdm&rsquo;, &lsquo;课程类别&rsquo;, &lsquo;jw_jxrw_jxbhbxxb&rsquo;, 1, &lsquo;1&rsquo;, &lsquo;21&rsquo;, &lsquo;&rsquo;, 1, &lsquo;database:select kclbdm key,kclbmc value from jw_jh_kclbdmb where tybj=&lsquo;&lsquo;0&rsquo;&rsquo;&rsquo;);
+4、学时类型
+insert into ZFTAL_XTGL_PLXGXXB (GNMKDM, ZDDM, ZDMC, ZDBM, XSSX, SFQY, ZDCD, ZDZYQ, ZDLX, ZDLY)
+values (&lsquo;N154501&rsquo;, &lsquo;xsdm&rsquo;, &lsquo;学时类型&rsquo;, &lsquo;jw_jxrw_jxbxxb&rsquo;, 1, &lsquo;1&rsquo;, &lsquo;20&rsquo;, &lsquo;&rsquo;, 1, &lsquo;database:select xsdm key,xsmc value from jw_jh_kcxsxxdmb where sfqy=&lsquo;&lsquo;1&rsquo;&rsquo;&rsquo;);
+5、学分
+insert into ZFTAL_XTGL_PLXGXXB (GNMKDM, ZDDM, ZDMC, ZDBM, XSSX, SFQY, ZDCD, ZDZYQ, ZDLX, ZDLY)
+values (&lsquo;N154501&rsquo;, &lsquo;xf&rsquo;, &lsquo;学分&rsquo;, &lsquo;jw_jxrw_jxbxxb&rsquo;, 1, &lsquo;1&rsquo;, &lsquo;20&rsquo;, &lsquo;&rsquo;, 2, &lsquo;basedata:isNot&rsquo;);
+6、开课学院
+insert into ZFTAL_XTGL_PLXGXXB (GNMKDM, ZDDM, ZDMC, ZDBM, XSSX, SFQY, ZDCD, ZDZYQ, ZDLX, ZDLY)
+values (&lsquo;N154501&rsquo;, &lsquo;kkbm_id&rsquo;, &lsquo;开课学院&rsquo;, &lsquo;jw_jxrw_jxbxxb&rsquo;, 1, &lsquo;1&rsquo;, &lsquo;50&rsquo;, &lsquo;{required:true}&rsquo;, 1, &lsquo;database:select jg_id key,jgmc value from zftal_xtgl_jgdmb&rsquo; );</p>
+<p>&mdash;&mdash;&mdash;&ndash;学籍预警不考虑绩点统计课程
+insert into zftal_xtgl_xtszb (XTSZ_ID, ZDM, ZDZ, SSMK, ZS, BZ, SSGNMKDM, ZDZYQ, ZDLX, ZDLY, XTSZBLYB)
+values (&lsquo;SFKLCZKCSZJDTJ&rsquo;, &lsquo;SFKLCZKCSZJDTJ&rsquo;, &lsquo;0&rsquo;, &lsquo;CJMK&rsquo;, &lsquo;是否考虑参加绩点统计课程设置&rsquo;, &lsquo;0：否，1：是&rsquo;, &lsquo;&rsquo;, &lsquo;{required:true}&rsquo;, 3, &lsquo;fixed:0,1&rsquo;, &lsquo;&rsquo;);</p>
+<p>&mdash;&ndash;sql直接配课
+insert into  jw_xk_xsxkb(xnm,xqm,jxb_id,xh_id,kch_id,xklc,xkbj,zy,bz)
+select &lsquo;2024&rsquo;xnm ,&lsquo;3&rsquo; xqm ,a.jxb_id,b.xh_id , c.kch_id ,&lsquo;1&rsquo; xklc,&lsquo;30&rsquo; xkbj ,&lsquo;1&rsquo; zy ,&lsquo;zq20240910&rsquo; bz
+from jw_jxrw_jxbhbxxb  a   , jw_jxrw_jxbxxb  c  ,jw_xjgl_xsjbxxb b
+where a.bh_id=b.bh_id and a.zyh_id=b.zyh_id and a.njdm_id=b.njdm_id   and a.jxb_id=c.jxb_id  &mdash;and a.zyfx_id=b.zyfx_id
+and exists (select 1 from jw_jxrw_jxbhbxxb a  , jw_jxrw_jxbxxb  c  where a.jxb_id=c.jxb_id  )
+&mdash; and   b.njdm_id in (&lsquo;2015&rsquo;,&lsquo;2014&rsquo;,&lsquo;2013&rsquo;,&lsquo;2012&rsquo;)
+&ndash; and  b.xnm=&lsquo;2016&rsquo; and b.xqm=&lsquo;12&rsquo;<br>
+and  b.sfzx=&lsquo;1&rsquo; &mdash;and b.xjztdm=&lsquo;1&rsquo;
+&mdash;and   a.njdm_id in (&lsquo;2015&rsquo;,&lsquo;2014&rsquo;,&lsquo;2013&rsquo;,&lsquo;2012&rsquo;)<br>
+and  c.kkzt=&lsquo;1&rsquo;
+and  c.xnm||c.xqm=&lsquo;20243&rsquo;  &mdash;and kch_id  in (select  kch_id from jw_jh_kcdmb where  kcmc like &lsquo;%体育%&rsquo;)
+&mdash;and a.kcxzdm not in (select kcxzdm from jw_jh_kcxzdmb where kcxzmc in (&lsquo;专业选修课&rsquo;, &lsquo;专业任选课&rsquo;, &lsquo;学科基础选修课&rsquo;, &lsquo;专业基础选修课&rsquo;,&lsquo;辅修课&rsquo;))
+&mdash;- and  kch_id  in (select  kch_id from jw_jh_kcdmb where kcmc  like &lsquo;%STUDIO (1)观念与形式%&rsquo;)</p>
+<p>and   not exists (select 1 from  jw_xk_xsxkb d  where   d.jxb_id=a.jxb_id  and d.xh_id=b.xh_id)</p>
+
+
+<h3 class="relative group">学生选课提示未完全评教 
+    <div id="%E5%AD%A6%E7%94%9F%E9%80%89%E8%AF%BE%E6%8F%90%E7%A4%BA%E6%9C%AA%E5%AE%8C%E5%85%A8%E8%AF%84%E6%95%99" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%E5%AD%A6%E7%94%9F%E9%80%89%E8%AF%BE%E6%8F%90%E7%A4%BA%E6%9C%AA%E5%AE%8C%E5%85%A8%E8%AF%84%E6%95%99" aria-label="锚点">#</a>
+    </span>        
+    
+</h3>
+<p>&mdash;-学生提交评价结果更新状态标记&mdash;&mdash;&mdash;&mdash;&mdash;-
+状态标记:0-初始值(评价记录为保存状态);1-完全评价;2-部分评价
+select * from jw_pj_xspjztb where xnm=&lsquo;2024&rsquo; and xqm=&lsquo;3&rsquo; and ztbj!=&lsquo;1&rsquo;
+update jw_pj_xspjztb set ztbj=&lsquo;1&rsquo; where xnm=&lsquo;2024&rsquo; and xqm=&lsquo;3&rsquo; and ztbj!=&lsquo;1&rsquo;</p>
+
+
+<h3 class="relative group">打印成绩总表时选择等级考试项目 
+    <div id="%E6%89%93%E5%8D%B0%E6%88%90%E7%BB%A9%E6%80%BB%E8%A1%A8%E6%97%B6%E9%80%89%E6%8B%A9%E7%AD%89%E7%BA%A7%E8%80%83%E8%AF%95%E9%A1%B9%E7%9B%AE" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%E6%89%93%E5%8D%B0%E6%88%90%E7%BB%A9%E6%80%BB%E8%A1%A8%E6%97%B6%E9%80%89%E6%8B%A9%E7%AD%89%E7%BA%A7%E8%80%83%E8%AF%95%E9%A1%B9%E7%9B%AE" aria-label="锚点">#</a>
+    </span>        
+    
+</h3>
+<p>insert into JW_BYGL_CJZBDYSZXXXB(xxdm,szxmc,szxdm,px,xsbz) values(&lsquo;00000&rsquo;,&lsquo;需打印等级考试项目&rsquo;,&lsquo;xdydjksxm&rsquo;,&lsquo;10&rsquo;,&lsquo;以下项目勾选后，将在成绩总表打印时打印&rsquo;);&ndash;执行时请修改学校代码
+commit;</p>
+
+
+<h3 class="relative group">批量给老师、学生、管理员插入我的应用 
+    <div id="%E6%89%B9%E9%87%8F%E7%BB%99%E8%80%81%E5%B8%88%E5%AD%A6%E7%94%9F%E7%AE%A1%E7%90%86%E5%91%98%E6%8F%92%E5%85%A5%E6%88%91%E7%9A%84%E5%BA%94%E7%94%A8" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%E6%89%B9%E9%87%8F%E7%BB%99%E8%80%81%E5%B8%88%E5%AD%A6%E7%94%9F%E7%AE%A1%E7%90%86%E5%91%98%E6%8F%92%E5%85%A5%E6%88%91%E7%9A%84%E5%BA%94%E7%94%A8" aria-label="锚点">#</a>
+    </span>        
+    
+</h3>
+<p>1、	教师：
+（1）清空教师角色我的应用
+create table bak_jsyy03  as
+select * from zftal_xtgl_jsgnmkyyb where jsdm=&lsquo;js&rsquo;;<br>
+delete from zftal_xtgl_jsgnmkyyb where jsdm=&lsquo;js&rsquo; ;
+（2）把admin切换到教师角色，把常用的功能加入我的应用，然后查询下
+select * from zftal_xtgl_jsgnmkyyb where jsdm=&lsquo;js&rsquo;;
+（3）根据教师角色admin用户增加的我的应用，把教师常用功能插入我的应用
+insert into zftal_xtgl_jsgnmkyyb(yhid,yhlx,jsdm,gnmkdm,gnmkmc,dyym,xssx,tblj,gnmkjc)
+select a.jgh_id,b.yhlx,b.jsdm,b.gnmkdm,b.gnmkmc,b.dyym,b.xssx,b.tblj,b.gnmkjc   from jw_jg_jzgxxb  a,zftal_xtgl_jsgnmkyyb b
+where   b.jsdm=&lsquo;js&rsquo;   and jgh_id&lt;&gt;&lsquo;admin&rsquo;;
+2、	学生
+（1）清空学生角色我的应用
+create table bak_xsyy03  as
+select * from zftal_xtgl_jsgnmkyyb where jsdm=&lsquo;xs&rsquo;;<br>
+delete from zftal_xtgl_jsgnmkyyb where jsdm=&lsquo;xs&rsquo; and yhid not in (‘admin’);
+（2）把admin切换到学生角色，把常用的功能加入我的应用，然后查询下
+select * from zftal_xtgl_jsgnmkyyb where jsdm=&lsquo;xs&rsquo;;
+（3）根据学生角色admin用户增加的我的应用，把学生常用功能插入我的应用
+insert into zftal_xtgl_jsgnmkyyb(yhid,yhlx,jsdm,gnmkdm,gnmkmc,dyym,xssx,tblj,gnmkjc)
+select a.xh_id,b.yhlx,b.jsdm,b.gnmkdm,b.gnmkmc,b.dyym,b.xssx,b.tblj,b.gnmkjc   from jw_xjgl_xsjbxxb  a,zftal_xtgl_jsgnmkyyb b
+where  a.xh_id&lt;&gt;&lsquo;admin&rsquo; and b.jsdm=&lsquo;xs&rsquo;;</p>
+
+
+<h3 class="relative group">学生密码批量初始化为身份证后6位 
+    <div id="%E5%AD%A6%E7%94%9F%E5%AF%86%E7%A0%81%E6%89%B9%E9%87%8F%E5%88%9D%E5%A7%8B%E5%8C%96%E4%B8%BA%E8%BA%AB%E4%BB%BD%E8%AF%81%E5%90%8E6%E4%BD%8D" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%E5%AD%A6%E7%94%9F%E5%AF%86%E7%A0%81%E6%89%B9%E9%87%8F%E5%88%9D%E5%A7%8B%E5%8C%96%E4%B8%BA%E8%BA%AB%E4%BB%BD%E8%AF%81%E5%90%8E6%E4%BD%8D" aria-label="锚点">#</a>
+    </span>        
+    
+</h3>
+<p>update zftal_xtgl_yhb yh set
+kl=(select getmd5(substr(zjhm,-6,6)) zj from jw_xjgl_xsjbxxb xs where xs.xh=yh.yhm) where yhlx=&lsquo;student&rsquo;
+and yhm in (select xh
+from jw_xjgl_xsjbxxb
+where zjhm is not null
+and njdm_id &gt;/<em>2020</em>/);</p>
+
+
+<h3 class="relative group">2 
+    <div id="2" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#2" aria-label="锚点">#</a>
+    </span>        
+    
+</h3>
+
+
+<h3 class="relative group">查服务器系统环境 
+    <div id="%E6%9F%A5%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%B3%BB%E7%BB%9F%E7%8E%AF%E5%A2%83" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%E6%9F%A5%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%B3%BB%E7%BB%9F%E7%8E%AF%E5%A2%83" aria-label="锚点">#</a>
+    </span>        
+    
+</h3>
+<p>cat /etc/os-release</p>
+
+
+<h3 class="relative group">日均访问登录量，需替换日期 
+    <div id="%E6%97%A5%E5%9D%87%E8%AE%BF%E9%97%AE%E7%99%BB%E5%BD%95%E9%87%8F%E9%9C%80%E6%9B%BF%E6%8D%A2%E6%97%A5%E6%9C%9F" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%E6%97%A5%E5%9D%87%E8%AE%BF%E9%97%AE%E7%99%BB%E5%BD%95%E9%87%8F%E9%9C%80%E6%9B%BF%E6%8D%A2%E6%97%A5%E6%9C%9F" aria-label="锚点">#</a>
+    </span>        
+    
+</h3>
+<p>select round(to_number(dll)/(to_date(&lsquo;2025-07-31&rsquo;, &lsquo;yyyy-mm-dd&rsquo;)-to_date(&lsquo;2025-01-01&rsquo;, &lsquo;yyyy-mm-dd&rsquo;)+1))
+from (select count(*) dll from zftal_xtgl_czrzb a where czrq between &lsquo;2025-01-01&rsquo; and &lsquo;2025-07-31&rsquo;and czlx=&lsquo;login&rsquo;)</p>
+
+
+<h3 class="relative group">访问量最高值，需替换日期 
+    <div id="%E8%AE%BF%E9%97%AE%E9%87%8F%E6%9C%80%E9%AB%98%E5%80%BC%E9%9C%80%E6%9B%BF%E6%8D%A2%E6%97%A5%E6%9C%9F" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%E8%AE%BF%E9%97%AE%E9%87%8F%E6%9C%80%E9%AB%98%E5%80%BC%E9%9C%80%E6%9B%BF%E6%8D%A2%E6%97%A5%E6%9C%9F" aria-label="锚点">#</a>
+    </span>        
+    
+</h3>
+<p>select * from (select rq,count(1) dll from<br>
+(select substr(czrq,1,10) rq,a.* from zftal_xtgl_czrzb a where czrq between &lsquo;2025-01-01&rsquo; and &lsquo;2025-07-31&rsquo;and czlx=&lsquo;login&rsquo;
+) group by rq order by dll desc) where rownum=1</p>
+<p>SELECT SUM(sm) sm ,MAX(sm) zdrsmf FROM<br>
+(
+select xkfz,count(1) sm from<br>
+(select substr(xksj,1,16) xkfz,xksj,a.* from jw_xk_xsxkb a where /<em>xkbj = &lsquo;10&rsquo; AND</em>/ xksj BETWEEN &lsquo;2025-06-18&rsquo; and &lsquo;2025-06-23&rsquo;
+)
+group by xkfz order by xkfz) t
+;</p>
+<p>select * from zftal_xtgl_bbjlb</p>
+
+          
+          
+          
+        </div>
+        
+        
+
+        
+        
+
+        
+        
+        
+        <div class="pt-3">
+          <hr class="border-dotted border-neutral-300 dark:border-neutral-600" />
+          <div class="pt-3">
+            
+<div>
+    <div class="pagination__title">
+        <span class="pagination__title-h" style="font-size: 20px;">💬评论</span>
+        <hr />
+    </div>
+    <div id="tcomment"></div>
+    <script src="https://cdn.jsdelivr.net/npm/twikoo@1.6.44/dist/twikoo.all.min.js"></script>
+    <script>
+        twikoo.init({
+            envId: "https://www.antwen.com/twikoo",
+            el: "#tcomment",
+            lang: 'zh-CN',
+            region: '', 
+            path: "\/posts\/zf-sql\/",
+        });
+    </script>
+</div>
+          </div>
+        </div>
+        
+        
+        
+        
+
+
+<h2 class="mt-8 text-2xl font-extrabold mb-10">相关文章</h2>
+<section class="w-full grid gap-4 sm:grid-cols-2 md:grid-cols-3">
+  
+  
+
+  <a href="/posts/zf-jwxt/" class="min-w-full h-full">
+    
+    <div class="h-full border border-neutral-200 dark:border-neutral-700 border-2 rounded overflow-hidden shadow-2xl relative backdrop-blur-lg bg-white/70 dark:bg-black/50 flex flex-col">
+        
+        <div class="w-full thumbnail_card_related nozoom" style="background-image:url(/posts/zf-jwxt/featured_hu_c4a0043e5c4c35f8.png);"></div>
+        
+      
+
+      <div class="px-6 py-4 flex-grow flex flex-col">
+        <div class="flex-grow">
+          
+          <div class="font-bold text-xl text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
+            href="/posts/zf-jwxt/">演示系统安装部署</div>
+          
+        </div>
+
+        <div class="mt-auto">
+          <div class="text-sm text-neutral-500 dark:text-neutral-400">
+            
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+  <time datetime="2025-08-06T00:00:00&#43;00:00">6 August 2025</time><span class="px-2 text-primary-500">&middot;</span><span>428 字</span><span class="px-2 text-primary-500">&middot;</span><span title="预计阅读">3 分钟</span>
+  
+
+  
+  
+</div>
+
+
+
+
+
+
+
+
+          </div>
+
+          
+          <div class="mt-2">
+            
+            <span class="inline-block bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-200 text-xs px-2 py-1 rounded mr-1 mb-1">
+              ZF
+            </span>
+            
+            <span class="inline-block bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-200 text-xs px-2 py-1 rounded mr-1 mb-1">
+              实施
+            </span>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </a>
+  
+  
+
+  <a href="/posts/%E4%BB%8E%E6%B8%B8%E6%88%8F%E5%86%85%E7%BD%91%E7%AB%99%E4%B8%AD%E7%A7%BB%E9%99%A4%E7%9A%84%E8%BD%BD%E5%85%B7/" class="min-w-full h-full">
+    
+    <div class="h-full border border-neutral-200 dark:border-neutral-700 border-2 rounded overflow-hidden shadow-2xl relative backdrop-blur-lg bg-white/70 dark:bg-black/50 flex flex-col">
+        
+        <div class="w-full thumbnail_card_related nozoom" style="background-image:url(/posts/%E4%BB%8E%E6%B8%B8%E6%88%8F%E5%86%85%E7%BD%91%E7%AB%99%E4%B8%AD%E7%A7%BB%E9%99%A4%E7%9A%84%E8%BD%BD%E5%85%B7/featured_hu_60601d32348696f5.png);"></div>
+        
+      
+
+      <div class="px-6 py-4 flex-grow flex flex-col">
+        <div class="flex-grow">
+          
+          <div class="font-bold text-xl text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
+            href="/posts/%E4%BB%8E%E6%B8%B8%E6%88%8F%E5%86%85%E7%BD%91%E7%AB%99%E4%B8%AD%E7%A7%BB%E9%99%A4%E7%9A%84%E8%BD%BD%E5%85%B7/">从游戏内网站中移除的载具</div>
+          
+        </div>
+
+        <div class="mt-auto">
+          <div class="text-sm text-neutral-500 dark:text-neutral-400">
+            
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+  <time datetime="2025-08-26T00:00:00&#43;00:00">26 August 2025</time><span class="px-2 text-primary-500">&middot;</span><span>1056 字</span><span class="px-2 text-primary-500">&middot;</span><span title="预计阅读">5 分钟</span>
+  
+
+  
+  
+</div>
+
+
+
+
+
+
+
+
+          </div>
+
+          
+          <div class="mt-2">
+            
+            <span class="inline-block bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-200 text-xs px-2 py-1 rounded mr-1 mb-1">
+              GTA
+            </span>
+            
+            <span class="inline-block bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-200 text-xs px-2 py-1 rounded mr-1 mb-1">
+              攻略
+            </span>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </a>
+  
+  
+
+  <a href="/posts/%E5%90%8D%E9%92%BB%E5%81%87%E6%97%A5%E8%B5%8C%E5%9C%BA%E7%9A%84%E6%9C%8D%E8%A3%85%E5%A5%96%E5%93%81/" class="min-w-full h-full">
+    
+    <div class="h-full border border-neutral-200 dark:border-neutral-700 border-2 rounded overflow-hidden shadow-2xl relative backdrop-blur-lg bg-white/70 dark:bg-black/50 flex flex-col">
+        
+        <div class="w-full thumbnail_card_related nozoom" style="background-image:url(/posts/%E5%90%8D%E9%92%BB%E5%81%87%E6%97%A5%E8%B5%8C%E5%9C%BA%E7%9A%84%E6%9C%8D%E8%A3%85%E5%A5%96%E5%93%81/featured_hu_baebc9d0a59817ff.png);"></div>
+        
+      
+
+      <div class="px-6 py-4 flex-grow flex flex-col">
+        <div class="flex-grow">
+          
+          <div class="font-bold text-xl text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
+            href="/posts/%E5%90%8D%E9%92%BB%E5%81%87%E6%97%A5%E8%B5%8C%E5%9C%BA%E7%9A%84%E6%9C%8D%E8%A3%85%E5%A5%96%E5%93%81/">名钻假日赌场的服装奖品</div>
+          
+        </div>
+
+        <div class="mt-auto">
+          <div class="text-sm text-neutral-500 dark:text-neutral-400">
+            
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+  <time datetime="2025-08-26T00:00:00&#43;00:00">26 August 2025</time><span class="px-2 text-primary-500">&middot;</span><span>75 字</span><span class="px-2 text-primary-500">&middot;</span><span title="预计阅读">1 分钟</span>
+  
+
+  
+  
+</div>
+
+
+
+
+
+
+
+
+          </div>
+
+          
+          <div class="mt-2">
+            
+            <span class="inline-block bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-200 text-xs px-2 py-1 rounded mr-1 mb-1">
+              GTA
+            </span>
+            
+            <span class="inline-block bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-200 text-xs px-2 py-1 rounded mr-1 mb-1">
+              攻略
+            </span>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </a>
+  
+  
+
+  <a href="/posts/%E5%90%8D%E9%92%BB%E8%B5%8C%E5%9C%BA%E8%B1%AA%E5%8A%AB%E7%9A%84%E6%95%B0%E5%80%BC%E8%AE%BE%E5%AE%9A/" class="min-w-full h-full">
+    
+    <div class="h-full border border-neutral-200 dark:border-neutral-700 border-2 rounded overflow-hidden shadow-2xl relative backdrop-blur-lg bg-white/70 dark:bg-black/50 flex flex-col">
+        
+        <div class="w-full thumbnail_card_related nozoom" style="background-image:url(/posts/%E5%90%8D%E9%92%BB%E8%B5%8C%E5%9C%BA%E8%B1%AA%E5%8A%AB%E7%9A%84%E6%95%B0%E5%80%BC%E8%AE%BE%E5%AE%9A/featured_hu_ebe521fa1727458b.png);"></div>
+        
+      
+
+      <div class="px-6 py-4 flex-grow flex flex-col">
+        <div class="flex-grow">
+          
+          <div class="font-bold text-xl text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
+            href="/posts/%E5%90%8D%E9%92%BB%E8%B5%8C%E5%9C%BA%E8%B1%AA%E5%8A%AB%E7%9A%84%E6%95%B0%E5%80%BC%E8%AE%BE%E5%AE%9A/">名钻赌场豪劫的数值设定</div>
+          
+        </div>
+
+        <div class="mt-auto">
+          <div class="text-sm text-neutral-500 dark:text-neutral-400">
+            
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+  <time datetime="2025-08-26T00:00:00&#43;00:00">26 August 2025</time><span class="px-2 text-primary-500">&middot;</span><span>208 字</span><span class="px-2 text-primary-500">&middot;</span><span title="预计阅读">1 分钟</span>
+  
+
+  
+  
+</div>
+
+
+
+
+
+
+
+
+          </div>
+
+          
+          <div class="mt-2">
+            
+            <span class="inline-block bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-200 text-xs px-2 py-1 rounded mr-1 mb-1">
+              GTA
+            </span>
+            
+            <span class="inline-block bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-200 text-xs px-2 py-1 rounded mr-1 mb-1">
+              攻略
+            </span>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </a>
+  
+  
+
+  <a href="/posts/gta6%E6%B0%B4%E4%BD%93%E6%96%B0%E9%97%BB/" class="min-w-full h-full">
+    
+    <div class="h-full border border-neutral-200 dark:border-neutral-700 border-2 rounded overflow-hidden shadow-2xl relative backdrop-blur-lg bg-white/70 dark:bg-black/50 flex flex-col">
+        
+        <div class="w-full thumbnail_card_related nozoom" style="background-image:url(/posts/gta6%E6%B0%B4%E4%BD%93%E6%96%B0%E9%97%BB/featured_hu_4a794b8356c62dbc.png);"></div>
+        
+      
+
+      <div class="px-6 py-4 flex-grow flex flex-col">
+        <div class="flex-grow">
+          
+          <div class="font-bold text-xl text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
+            href="/posts/gta6%E6%B0%B4%E4%BD%93%E6%96%B0%E9%97%BB/">曝GTA6斥资2-3亿美元研发水体物理，打造游戏史上最真实水体</div>
+          
+        </div>
+
+        <div class="mt-auto">
+          <div class="text-sm text-neutral-500 dark:text-neutral-400">
+            
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+  <time datetime="2025-08-26T00:00:00&#43;00:00">26 August 2025</time><span class="px-2 text-primary-500">&middot;</span><span>3 字</span><span class="px-2 text-primary-500">&middot;</span><span title="预计阅读">1 分钟</span>
+  
+
+  
+  
+</div>
+
+
+
+
+
+
+
+
+          </div>
+
+          
+          <div class="mt-2">
+            
+            <span class="inline-block bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-200 text-xs px-2 py-1 rounded mr-1 mb-1">
+              GTA
+            </span>
+            
+            <span class="inline-block bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-200 text-xs px-2 py-1 rounded mr-1 mb-1">
+              新闻
+            </span>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </a>
+  
+  
+
+  <a href="/posts/%E6%B4%9B%E5%9C%A3%E9%83%BD%E8%BD%A6%E5%8F%8B%E4%BC%9A%E5%A3%B0%E6%9C%9B%E5%80%BC%E7%9A%84%E8%8E%B7%E5%8F%96%E6%95%B0%E5%80%BC%E8%AE%BE%E5%AE%9A/" class="min-w-full h-full">
+    
+    <div class="h-full border border-neutral-200 dark:border-neutral-700 border-2 rounded overflow-hidden shadow-2xl relative backdrop-blur-lg bg-white/70 dark:bg-black/50 flex flex-col">
+        
+        <div class="w-full thumbnail_card_related nozoom" style="background-image:url(/posts/%E6%B4%9B%E5%9C%A3%E9%83%BD%E8%BD%A6%E5%8F%8B%E4%BC%9A%E5%A3%B0%E6%9C%9B%E5%80%BC%E7%9A%84%E8%8E%B7%E5%8F%96%E6%95%B0%E5%80%BC%E8%AE%BE%E5%AE%9A/featured_hu_27392e3c699e67b8.png);"></div>
+        
+      
+
+      <div class="px-6 py-4 flex-grow flex flex-col">
+        <div class="flex-grow">
+          
+          <div class="font-bold text-xl text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
+            href="/posts/%E6%B4%9B%E5%9C%A3%E9%83%BD%E8%BD%A6%E5%8F%8B%E4%BC%9A%E5%A3%B0%E6%9C%9B%E5%80%BC%E7%9A%84%E8%8E%B7%E5%8F%96%E6%95%B0%E5%80%BC%E8%AE%BE%E5%AE%9A/">洛圣都车友会声望值的获取数值设定</div>
+          
+        </div>
+
+        <div class="mt-auto">
+          <div class="text-sm text-neutral-500 dark:text-neutral-400">
+            
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+  <time datetime="2025-08-26T00:00:00&#43;00:00">26 August 2025</time><span class="px-2 text-primary-500">&middot;</span><span>472 字</span><span class="px-2 text-primary-500">&middot;</span><span title="预计阅读">3 分钟</span>
+  
+
+  
+  
+</div>
+
+
+
+
+
+
+
+
+          </div>
+
+          
+          <div class="mt-2">
+            
+            <span class="inline-block bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-200 text-xs px-2 py-1 rounded mr-1 mb-1">
+              GTA
+            </span>
+            
+            <span class="inline-block bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-200 text-xs px-2 py-1 rounded mr-1 mb-1">
+              攻略
+            </span>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </a>
+  
+</section>
+
+  
+      </div>
+     
+      
+      
+        
+        
+          
+          
+        
+      <script>
+        var oid = "views_posts\\ZF-SQL\\index.md"
+        var oid_likes = "likes_posts\\ZF-SQL\\index.md"
+      </script>
+      
+      
+      <script type="text/javascript" src="/js/page.min.0860cf4e04fa2d72cc33ddba263083464d48f67de06114529043cb4623319efed4f484fd7f1730df5abea0e2da6f3538855634081d02f2d6e920b956f063e823.js" integrity="sha512-CGDPTgT6LXLMM926JjCDRk1I9n3gYRRSkEPLRiMxnv7U9IT9fxcw31q&#43;oOLabzU4hVY0CB0C8tbpILlW8GPoIw=="></script>
+      
+  
+    </section>
+  <footer class="pt-8 max-w-prose print:hidden">
+
+    
+  
+    
+    
+    
+      
+      
+    
+    <div class="pt-8">
+      <hr class="border-dotted border-neutral-300 dark:border-neutral-600" />
+      <div class="flex justify-between pt-3">
+        <span>
+          
+            <a class="flex group mr-3" href="/posts/%E6%AF%8F%E5%91%A8%E6%9B%B4%E6%96%B0917/">
+              <span
+                class="mr-3 text-neutral-700 group-hover:text-primary-600 ltr:inline rtl:hidden dark:text-neutral dark:group-hover:text-primary-400"
+                >&larr;</span
+              >
+              <span
+                class="ml-3 text-neutral-700 group-hover:text-primary-600 ltr:hidden rtl:inline dark:text-neutral dark:group-hover:text-primary-400"
+                >&rarr;</span
+              >
+              <span class="flex flex-col">
+                <span
+                  class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
+                  >邻里守望活动：获得全新洛圣都警局制服套装及更多内容</span
+                >
+                <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
+                  
+                    <time datetime="2025-09-17T00:00:00&#43;00:00">17 September 2025</time>
+                  
+                </span>
+              </span>
+            </a>
+          
+        </span>
+        <span>
+          
+            <a class="flex text-right group ml-3" href="/posts/%E4%BB%8E%E6%B8%B8%E6%88%8F%E5%86%85%E7%BD%91%E7%AB%99%E4%B8%AD%E7%A7%BB%E9%99%A4%E7%9A%84%E8%BD%BD%E5%85%B7/">
+              <span class="flex flex-col">
+                <span
+                  class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
+                  >从游戏内网站中移除的载具</span
+                >
+                <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
+                  
+                    <time datetime="2025-08-26T00:00:00&#43;00:00">26 August 2025</time>
+                  
+                </span>
+              </span>
+              <span
+                class="ml-3 text-neutral-700 group-hover:text-primary-600 ltr:inline rtl:hidden dark:text-neutral dark:group-hover:text-primary-400"
+                >&rarr;</span
+              >
+              <span
+                class="mr-3 text-neutral-700 group-hover:text-primary-600 ltr:hidden rtl:inline dark:text-neutral dark:group-hover:text-primary-400"
+                >&larr;</span
+              >
+            </a>
+          
+        </span>
+      </div>
+    </div>
+  
+
+
+  </footer>
+</article>
+
+
+      <div id="top-scroller" class="pointer-events-none absolute top-[110vh] bottom-0 w-12 ltr:right-0 rtl:left-0">
+  <a href="#the-top"
+    class="pointer-events-auto sticky top-[calc(100vh-5.5rem)] flex h-12 w-12 mb-16 items-center justify-center rounded-full bg-neutral/50 text-xl text-neutral-700 hover:text-primary-600 dark:bg-neutral-800/50 dark:text-neutral dark:hover:text-primary-400"
+    aria-label="返回顶部" title="返回顶部">
+    &uarr;
+  </a>
+</div>
+    </main><footer id="site-footer" class="py-10 print:hidden">
+  
+  
+    
+    <nav class="flex flex-row pb-4 text-base font-medium text-neutral-500 dark:text-neutral-400">
+      <ul class="flex flex-col list-none sm:flex-row">
+        
+        <li class="flex mb-1 ltr:text-right rtl:text-left sm:mb-0 ltr:sm:mr-7 ltr:sm:last:mr-0 rtl:sm:ml-7 rtl:sm:last:ml-0">
+          <a class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2 flex items-center" href=""
+            title="">
+            
+            
+          </a>
+        </li>
+        
+      </ul>
+    </nav>
+    
+  
+  <div class="flex items-center justify-between">
+
+    
+    
+    <p class="text-sm text-neutral-500 dark:text-neutral-400">
+      &copy;
+      2025
+      安稳Antwen
+    </p>
+    
+
+    
+    
+
+  </div>
+  <script>
+    
+    mediumZoom(document.querySelectorAll("img:not(.nozoom)"), {
+      margin: 24,
+      background: 'rgba(0,0,0,0.5)',
+      scrollOffset: 0,
+    })
+    
+  </script>
+  
+  
+  <script type="text/javascript" src="/js/process.min.ee03488f19c93c2efb199e2e3014ea5f3cb2ce7d45154adb3399a158cac27ca52831db249ede5bb602700ef87eb02434139de0858af1818ab0fb4182472204a4.js" integrity="sha512-7gNIjxnJPC77GZ4uMBTqXzyyzn1FFUrbM5mhWMrCfKUoMdsknt5btgJwDvh&#43;sCQ0E53ghYrxgYqw&#43;0GCRyIEpA=="></script>
+  
+  
+  
+</footer>
+<div
+  id="search-wrapper"
+  class="invisible fixed inset-0 flex h-screen w-screen cursor-default flex-col bg-neutral-500/50 p-4 backdrop-blur-sm dark:bg-neutral-900/50 sm:p-6 md:p-[10vh] lg:p-[12vh]"
+  data-url="http://localhost:1313/"
+  style="z-index:500"
+>
+  <div
+    id="search-modal"
+    class="flex flex-col w-full max-w-3xl min-h-0 mx-auto border rounded-md shadow-lg top-20 border-neutral-200 bg-neutral dark:border-neutral-700 dark:bg-neutral-800"
+  >
+    <header class="relative z-10 flex items-center justify-between flex-none px-2">
+      <form class="flex items-center flex-auto min-w-0">
+        <div class="flex items-center justify-center w-8 h-8 text-neutral-400">
+          
+
+  <span class="relative block icon">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+
+  </span>
+
+
+        </div>
+        <input
+          type="search"
+          id="search-query"
+          class="flex flex-auto h-12 mx-1 bg-transparent appearance-none focus:outline-dotted focus:outline-2 focus:outline-transparent"
+          placeholder="搜索"
+          tabindex="0"
+        />
+      </form>
+      <button
+        id="close-search-button"
+        class="flex items-center justify-center w-8 h-8 text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+        title="关闭 (Esc)"
+      >
+        
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+
+  </span>
+
+
+      </button>
+    </header>
+    <section class="flex-auto px-2 overflow-auto">
+      <ul id="search-results">
+        
+      </ul>
+    </section>
+  </div>
+</div>
+
+  </div>
+</body>
+
+</html>

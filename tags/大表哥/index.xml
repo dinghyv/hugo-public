@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>大表哥 on Antwen</title>
+    <link>http://localhost:1313/tags/%E5%A4%A7%E8%A1%A8%E5%93%A5/</link>
+    <description>Recent content in 大表哥 on Antwen</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>© 2025 安稳Antwen</copyright>
+    <lastBuildDate>Wed, 20 Aug 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/%E5%A4%A7%E8%A1%A8%E5%93%A5/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>牛仔必知！《荒野大镖客2》隐藏抢劫位置</title>
+      <link>http://localhost:1313/posts/rdr2/</link>
+      <pubDate>Wed, 20 Aug 2025 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/rdr2/</guid>
+      <description></description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/posts/rdr2/featured.png" />
+    </item>
+    
+    <item>
+      <title>荒野大镖客2-马匹六边形属性分析，谁才是真正的六边形战马？</title>
+      <link>http://localhost:1313/posts/rdr1/</link>
+      <pubDate>Tue, 19 Aug 2025 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/rdr1/</guid>
+      <description></description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/posts/rdr1/featured.png" />
+    </item>
+    
+  </channel>
+</rss>

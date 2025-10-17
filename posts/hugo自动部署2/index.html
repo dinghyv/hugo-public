@@ -1,0 +1,2233 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr" class="scroll-smooth" data-default-appearance="dark"
+  data-auto-appearance="true"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8" />
+  
+  <meta http-equiv="content-language" content="zh-cn" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  
+  <title>Hugo 自动化部署方案2：服务器编译 &middot; Antwen</title>
+  <meta name="title" content="Hugo 自动化部署方案2：服务器编译 &middot; Antwen" />
+  
+  <meta name="description" content="使用 1Panel 与 Git Webhook 实现 Hugo 博客自动化部署全流程指南" />
+  <meta name="keywords" content="linux, 博客, " />
+  
+  
+  <link rel="canonical" href="http://localhost:1313/posts/hugo%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B22/" />
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <link type="text/css" rel="stylesheet" href="/css/main.bundle.min.2ca0b1a00ef4973a5286bec5771e38ee66eff626a5052ffd60756c02e78db48798c8c9636e3985ab996a0c392d2b1c58aaf7ffd3599a7e77ab7aa9c7df322631.css"
+    integrity="sha512-LKCxoA70lzpShr7Fdx447mbv9ialBS/9YHVsAueNtIeYyMljbjmFq5lqDDktKxxYqvf/01mafnereqnH3zImMQ==" />
+  
+  
+  <script type="text/javascript" src="/js/appearance.min.516a16745bea5a9bd011138d254cc0fd3973cd55ce6e15f3dec763e7c7c2c7448f8fe7b54cca811cb821b0c7e12cd161caace1dd794ac3d34d40937cbcc9ee12.js"
+    integrity="sha512-UWoWdFvqWpvQERONJUzA/TlzzVXObhXz3sdj58fCx0SPj&#43;e1TMqBHLghsMfhLNFhyqzh3XlKw9NNQJN8vMnuEg=="></script>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script defer type="text/javascript" id="script-bundle" src="/js/main.bundle.min.3ad74b33440334ca29f8801ec6dac1f314951cf580e503d49631816b48d1f28d03543275f92b651565b48045b90731f47595b1396214b8b6aa11c6990f867f7e.js"
+    integrity="sha512-OtdLM0QDNMop&#43;IAextrB8xSVHPWA5QPUljGBa0jR8o0DVDJ1&#43;StlFWW0gEW5BzH0dZWxOWIUuLaqEcaZD4Z/fg==" data-copy="复制" data-copied="已复制"></script>
+  
+  
+  
+  <script src="/lib/zoom/zoom.min.f592a181a15d2a5b042daa7f746c3721acf9063f8b6acd175d989129865a37d400ae0e85b640f9ad42cd98d1f8ad30931718cf8811abdcc5fcb264400d1a2b0c.js" integrity="sha512-9ZKhgaFdKlsELap/dGw3Iaz5Bj&#43;Las0XXZiRKYZaN9QArg6FtkD5rULNmNH4rTCTFxjPiBGr3MX8smRADRorDA=="></script>
+  
+  
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:url" content="http://localhost:1313/posts/hugo%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B22/">
+  <meta property="og:site_name" content="Antwen">
+  <meta property="og:title" content="Hugo 自动化部署方案2：服务器编译">
+  <meta property="og:description" content="使用 1Panel 与 Git Webhook 实现 Hugo 博客自动化部署全流程指南">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-08-07T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-08-07T00:00:00+00:00">
+    <meta property="article:tag" content="Linux">
+    <meta property="article:tag" content="博客">
+    <meta property="og:image" content="http://localhost:1313/posts/hugo%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B22/featured.png">
+
+  
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="http://localhost:1313/posts/hugo%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B22/featured.png">
+  <meta name="twitter:title" content="Hugo 自动化部署方案2：服务器编译">
+  <meta name="twitter:description" content="使用 1Panel 与 Git Webhook 实现 Hugo 博客自动化部署全流程指南">
+
+  
+  <script type="application/ld+json">
+  [{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "articleSection": "Posts",
+    "name": "Hugo 自动化部署方案2：服务器编译",
+    "headline": "Hugo 自动化部署方案2：服务器编译",
+    "description": "使用 1Panel 与 Git Webhook 实现 Hugo 博客自动化部署全流程指南",
+    
+    "inLanguage": "zh-cn",
+    "url" : "http:\/\/localhost:1313\/posts\/hugo%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B22\/",
+    "author" : {
+      "@type": "Person",
+      "name": "安稳Antwen"
+    },
+    "copyrightYear": "2025",
+    "dateCreated": "2025-08-07T00:00:00\u002b00:00",
+    "datePublished": "2025-08-07T00:00:00\u002b00:00",
+    
+    "dateModified": "2025-08-07T00:00:00\u002b00:00",
+    
+    "keywords": ["linux","博客"],
+    
+    "mainEntityOfPage": "true",
+    "wordCount": "616"
+  }]
+  </script>
+
+
+  
+  
+  <meta name="author" content="安稳Antwen" />
+  
+  
+  
+  
+  
+  
+  
+  
+  <link href="https://github.com/dinghy421" rel="me" />
+  
+  
+  
+  
+  <link href="https://share.antwen.com" rel="me" />
+  
+  
+  
+  
+  <link href="https://space.bilibili.com/513000931?spm_id_from=333.1007.0.0" rel="me" />
+  
+  
+  
+  
+  
+
+<script src="/lib/jquery/jquery.slim.min.b0dca576e87d7eaa5850ae4e61759c065786cdb6489d68fcc82240539eebd5da522bdb4fda085ffd245808c8fe2acb2516408eb774ef26b5f6015fc6737c0ea8.js" integrity="sha512-sNylduh9fqpYUK5OYXWcBleGzbZInWj8yCJAU57r1dpSK9tP2ghf/SRYCMj&#43;KsslFkCOt3TvJrX2AV/Gc3wOqA=="></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+  
+  
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <meta name="theme-color"/>
+  
+  
+</head>
+<body
+  class="flex flex-col h-screen px-6 m-auto text-lg leading-7 max-w-7xl bg-neutral text-neutral-900 dark:bg-neutral-800 dark:text-neutral sm:px-14 md:px-24 lg:px-32 scrollbar-thin scrollbar-track-neutral-200 scrollbar-thumb-neutral-400 dark:scrollbar-track-neutral-800 dark:scrollbar-thumb-neutral-600">
+  <div id="the-top" class="absolute flex self-center">
+    <a class="px-3 py-1 text-sm -translate-y-8 rounded-b-lg bg-primary-200 focus:translate-y-0 dark:bg-neutral-600"
+      href="#main-content"><span
+        class="font-bold text-primary-600 ltr:pr-2 rtl:pl-2 dark:text-primary-400">&darr;</span>跳过正文</a>
+  </div>
+  
+  
+  <div class="min-h-[148px]"></div>
+
+
+<div id="island-header"
+  class="fixed rounded-full place-self-center top-4 pl-[24px] pr-[24px] w-full min-w-se max-w-se se:max-w-sm sm:max-w-md md:max-w-xl lg:max-w-2xl"
+  style="z-index: 100;">
+  <div id="menu-blur"
+    class="absolute rounded-full opacity-0 inset-x-0 h-full nozoom shadow-2xl backdrop-blur-2xl shadow-lg">
+  </div>
+  <div class="relative max-w-[64rem] ml-auto mr-auto">
+    <div style="padding-left:0;padding-right:0;padding-top:2px;padding-bottom:3px"
+      class="main-menu flex items-center justify-between px-4 py-6 sm:px-6 md:justify-start space-x-3">
+      
+      <div class="flex flex-1 items-center justify-between">
+        <nav id="title-bar"  class="hidden se:flex md:ml-7">
+
+          
+          <a id="page-title-bar" href="/"
+            class="relative text-base font-bold text-gray-500 hover:text-gray-900">Antwen</a>
+          
+          <a id="article-title-bar" href="#the-top"
+            class="absolute se:flex text-sm md:text-base font-bold text-gray-500 hover:text-gray-900">Hugo 自动化部署方案2：服务器编译</a>
+        </nav>
+        <nav class="space-x-3"></nav>
+        <nav class="main-menu hidden md:flex items-center space-x-5 md:ml-12 h-12">
+            
+            
+            
+  <a href="/"  class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+    
+    <p class="text-base font-medium" title="">
+        Home
+    </p>
+</a>
+
+
+
+            
+            
+  <a href="/tags/gta/"  class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+    
+    <p class="text-base font-medium" title="GTA">
+        GTAO
+    </p>
+</a>
+
+
+
+            
+            
+  <a href="/tags/gta5/"  class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+    
+    <p class="text-base font-medium" title="GTA5">
+        GTA5
+    </p>
+</a>
+
+
+
+            
+            
+  <a href=""  class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+    
+    <p class="text-base font-medium" title="">
+        RDR2
+    </p>
+</a>
+
+
+
+            
+            
+  <a href="/tags/gta6/"  class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+    
+    <p class="text-base font-medium" title="GTA6">
+        GTA6
+    </p>
+</a>
+
+
+
+            
+            
+  <a href=""  class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+    
+    <p class="text-base font-medium" title="">
+        
+    </p>
+</a>
+
+
+
+            
+            
+
+            
+
+
+            
+            <button id="search-button" aria-label="Search"
+              class="text-base hover:text-primary-600 dark:hover:text-primary-400" title="搜索 (/)">
+              
+
+  <span class="relative block icon">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+
+  </span>
+
+
+            </button>
+            
+
+          
+          
+
+        </nav>
+        <div class="flex md:hidden items-center space-x-5 md:ml-12 h-12">
+
+          <span></span>
+
+          
+
+
+          
+          <button id="search-button-mobile" aria-label="Search"
+            class="text-base hover:text-primary-600 dark:hover:text-primary-400" title="搜索 (/)">
+            
+
+  <span class="relative block icon">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+
+  </span>
+
+
+          </button>
+          
+
+          
+          
+
+        </div>
+      </div>
+      <div class="-my-2 -mr-2 md:hidden">
+
+        <label id="menu-button" class="block">
+          
+          <div class="cursor-pointer hover:text-primary-600 dark:hover:text-primary-400">
+            
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M0 96C0 78.33 14.33 64 32 64H416C433.7 64 448 78.33 448 96C448 113.7 433.7 128 416 128H32C14.33 128 0 113.7 0 96zM0 256C0 238.3 14.33 224 32 224H416C433.7 224 448 238.3 448 256C448 273.7 433.7 288 416 288H32C14.33 288 0 273.7 0 256zM416 448H32C14.33 448 0 433.7 0 416C0 398.3 14.33 384 32 384H416C433.7 384 448 398.3 448 416C448 433.7 433.7 448 416 448z"/></svg>
+
+  </span>
+
+
+          </div>
+          <div id="menu-wrapper" style="padding-top:5px;"
+            class="fixed inset-0 z-30 invisible w-screen h-screen m-0 overflow-auto transition-opacity opacity-0 cursor-default bg-neutral-100/50 backdrop-blur-sm dark:bg-neutral-900/50">
+            <ul
+              class="flex space-y-2 mt-3 flex-col items-end w-full px-6 py-6 mx-auto overflow-visible list-none ltr:text-right rtl:text-left max-w-7xl">
+
+              <li id="menu-close-button">
+                <span
+                  class="cursor-pointer inline-block align-text-bottom hover:text-primary-600 dark:hover:text-primary-400">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+
+  </span>
+
+</span>
+              </li>
+
+              
+
+              
+  <li class="mt-1">
+    <a href="/"  class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+        
+        <p class="text-bg font-bg" title="">
+            Home
+        </p>
+    </a>
+</li>
+
+
+
+
+              
+
+              
+  <li class="mt-1">
+    <a href="/tags/gta/"  class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+        
+        <p class="text-bg font-bg" title="GTA">
+            GTAO
+        </p>
+    </a>
+</li>
+
+
+
+
+              
+
+              
+  <li class="mt-1">
+    <a href="/tags/gta5/"  class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+        
+        <p class="text-bg font-bg" title="GTA5">
+            GTA5
+        </p>
+    </a>
+</li>
+
+
+
+
+              
+
+              
+  <li class="mt-1">
+    <a href=""  class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+        
+        <p class="text-bg font-bg" title="">
+            RDR2
+        </p>
+    </a>
+</li>
+
+
+
+
+              
+
+              
+  <li class="mt-1">
+    <a href="/tags/gta6/"  class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+        
+        <p class="text-bg font-bg" title="GTA6">
+            GTA6
+        </p>
+    </a>
+</li>
+
+
+
+
+              
+
+              
+  <li class="mt-1">
+    <a href=""  class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+        
+        <p class="text-bg font-bg" title="">
+            
+        </p>
+    </a>
+</li>
+
+
+
+
+              
+
+            </ul>
+            
+            
+
+          </div>
+        </label>
+      </div>
+    </div>
+
+    
+
+    
+
+  </div>
+</div>
+
+<style>
+ 
+.main-menu nav:not(#title-bar),
+.subnavigation-section {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+ 
+.title-switched + nav,
+.title-switched ~ .subnavigation-section {
+  opacity: 0;
+  pointer-events: none;
+}
+</style>
+
+<script>
+let lastScroll = 0;
+let isArticleTitleVisible = false;
+
+window.addEventListener("scroll", function (e) {
+  const scroll = window.pageYOffset || document.documentElement.scrollTop;
+  const scrollDirection = scroll > lastScroll ? "down" : "up";
+
+  const title_bar = document.getElementById("title-bar");
+  const heading = document.querySelector("h1");
+  const mainMenu = document.querySelectorAll('.main-menu nav:not(#title-bar)');
+  const subnavigationSections = document.querySelectorAll('.main-menu');
+  const menuBlur = document.getElementById('menu-blur');
+
+  
+  if (menuBlur) {
+    menuBlur.style.opacity = Math.min(scroll / 300, 1);
+    menuBlur.style.transition = 'opacity 0.3s ease';
+  }
+
+  
+  if (window.location.pathname === "/" || window.location.pathname.startsWith("/page/")) {
+    
+    title_bar.classList.remove("title-switched");
+    isArticleTitleVisible = false;
+    mainMenu.forEach(menu => {
+      menu.style.opacity = '1';
+      menu.style.pointerEvents = 'auto';
+    });
+  } 
+  
+  else if (heading) {
+    const headingRect = heading.getBoundingClientRect();
+    const headingOffset = headingRect.bottom + scroll;
+    const switchPoint = headingOffset - 200; 
+    const restorePoint = headingOffset + 100; 
+
+    if (scrollDirection === "down" && scroll > switchPoint && !isArticleTitleVisible) {
+      
+      title_bar.classList.add("title-switched");
+      isArticleTitleVisible = true;
+      
+      
+      mainMenu.forEach(menu => {
+        menu.style.opacity = '0';
+        menu.style.pointerEvents = 'none';
+        menu.style.transition = 'opacity 0.3s ease';
+      });
+    } else if (scrollDirection === "up" && scroll < restorePoint && isArticleTitleVisible) {
+      
+      title_bar.classList.remove("title-switched");
+      isArticleTitleVisible = false;
+      
+      
+      mainMenu.forEach(menu => {
+        menu.style.opacity = '1';
+        menu.style.pointerEvents = 'auto';
+      });
+    }
+  }
+
+  lastScroll = scroll <= 0 ? 0 : scroll; 
+});
+</script>
+
+  
+  <div class="relative flex flex-col grow">
+    <main id="main-content" class="grow">
+      
+
+
+<article>
+  
+  
+  
+  
+  
+  
+
+
+<div id="hero" class="h-[150px] md:h-[200px]"></div>
+
+
+
+    
+    <div class="fixed inset-x-0 top-0 h-[800px] single_hero_background nozoom"
+    style="background-image:url(/posts/hugo%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B22/featured_hu_a9fa6fed039a911e.png);">
+    
+
+
+    <div class="absolute inset-0 bg-gradient-to-t from-neutral dark:from-neutral-800 to-transparent mix-blend-normal">
+    </div>
+    <div
+        class="absolute inset-0 opacity-60 bg-gradient-to-t from-neutral dark:from-neutral-800 to-neutral-100 dark:to-neutral-800 mix-blend-normal">
+    </div>
+</div>
+
+<div id="background-blur" class="fixed opacity-0 inset-x-0 top-0 h-full single_hero_background nozoom backdrop-blur-2xl"></div>
+<script>
+    window.addEventListener('scroll', function (e) {
+        var scroll = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+        var background_blur = document.getElementById('background-blur');
+        background_blur.style.opacity = (scroll / 300)
+    });
+</script>
+
+  
+  
+
+  <header id="single_header" class="mt-5 max-w-prose">
+    
+    <ol class="text-sm text-neutral-500 dark:text-neutral-400 print:hidden">
+  
+  
+    
+  
+    
+  
+  <li class="hidden">
+    <a
+      class="hover:underline decoration-neutral-300 dark:underline-neutral-600"
+      href="/"
+      ></a
+    ><span class="px-1 text-primary-500">/</span>
+  </li>
+
+  
+  <li class="inline">
+    <a
+      class="hover:underline decoration-neutral-300 dark:underline-neutral-600"
+      href="/posts/"
+      >Posts</a
+    ><span class="px-1 text-primary-500">/</span>
+  </li>
+
+  
+  <li class="hidden">
+    <a
+      class="hover:underline decoration-neutral-300 dark:underline-neutral-600"
+      href="/posts/hugo%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B22/"
+      >Hugo 自动化部署方案2：服务器编译</a
+    ><span class="px-1 text-primary-500">/</span>
+  </li>
+
+</ol>
+
+
+    
+    <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
+      Hugo 自动化部署方案2：服务器编译
+    </h1>
+    <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
+      
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+  <time datetime="2025-08-07T00:00:00&#43;00:00">7 August 2025</time><span class="px-2 text-primary-500">&middot;</span><span>616 字</span><span class="px-2 text-primary-500">&middot;</span><span title="预计阅读">3 分钟</span>
+  
+
+  
+  
+</div>
+
+
+
+
+
+
+
+
+    </div>
+
+    
+    
+    
+    
+    
+
+    
+
+    
+      
+      
+        
+        
+<div class="flex author">
+  
+    
+    
+      
+    
+    
+      
+        
+      
+      <img class="!mt-0 !mb-0 h-24 w-24 rounded-full ltr:mr-4 rtl:ml-4" width="96" height="96"
+      alt="安稳Antwen" src="/421_hu_cb5721ad2e2dc727.jpg" />
+    
+  
+  <div class="place-self-center">
+    
+    <div class="text-[0.6rem] uppercase leading-3 text-neutral-500 dark:text-neutral-400">
+      作者
+    </div>
+    <div class="font-semibold leading-6 text-neutral-800 dark:text-neutral-300">
+      安稳Antwen
+    </div>
+    
+    
+    <div class="text-sm text-neutral-700 dark:text-neutral-400">一个GTA玩家</div>
+    
+    <div class="text-2xl sm:text-lg">
+  <div class="flex flex-wrap text-neutral-400 dark:text-neutral-500">
+    
+      
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="mailto:me@antwen.info"
+          target="_blank"
+          aria-label="Email"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M207.8 20.73c-93.45 18.32-168.7 93.66-187 187.1c-27.64 140.9 68.65 266.2 199.1 285.1c19.01 2.888 36.17-12.26 36.17-31.49l.0001-.6631c0-15.74-11.44-28.88-26.84-31.24c-84.35-12.98-149.2-86.13-149.2-174.2c0-102.9 88.61-185.5 193.4-175.4c91.54 8.869 158.6 91.25 158.6 183.2l0 16.16c0 22.09-17.94 40.05-40 40.05s-40.01-17.96-40.01-40.05v-120.1c0-8.847-7.161-16.02-16.01-16.02l-31.98 .0036c-7.299 0-13.2 4.992-15.12 11.68c-24.85-12.15-54.24-16.38-86.06-5.106c-38.75 13.73-68.12 48.91-73.72 89.64c-9.483 69.01 43.81 128 110.9 128c26.44 0 50.43-9.544 69.59-24.88c24 31.3 65.23 48.69 109.4 37.49C465.2 369.3 496 324.1 495.1 277.2V256.3C495.1 107.1 361.2-9.332 207.8 20.73zM239.1 304.3c-26.47 0-48-21.56-48-48.05s21.53-48.05 48-48.05s48 21.56 48 48.05S266.5 304.3 239.1 304.3z"/></svg>
+
+  </span>
+
+</span></a
+        >
+      
+    
+      
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="https://github.com/dinghy421"
+          target="_blank"
+          aria-label="Github"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+
+  </span>
+
+</span></a
+        >
+      
+    
+      
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="https://share.antwen.com"
+          target="_blank"
+          aria-label="Twitter"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+
+  </span>
+
+</span></a
+        >
+      
+    
+      
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="https://space.bilibili.com/513000931?spm_id_from=333.1007.0.0"
+          target="_blank"
+          aria-label="Youtube"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
+
+  </span>
+
+</span></a
+        >
+      
+    
+  </div>
+
+</div>
+  </div>
+</div>
+
+      
+
+      
+
+      
+      <div class="mb-5"></div>
+      
+
+    
+
+  </header>
+  
+  <section class="flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row">
+    
+     <div
+      class="order-first lg:ml-auto px-0 lg:order-last ltr:lg:pl-8 rtl:lg:pr-8">
+      <div class="toc ltr:pl-5 rtl:pr-5 print:hidden lg:sticky lg:top-10">
+
+         <details open id="TOCView"
+  class="toc-right mt-0 overflow-y-scroll overscroll-contain scrollbar-thin scrollbar-track-neutral-200 scrollbar-thumb-neutral-400 dark:scrollbar-track-neutral-800 dark:scrollbar-thumb-neutral-600 rounded-lg ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 hidden lg:block">
+  <summary
+    class="block py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
+    目录
+  </summary>
+  <div
+    class="min-w-[220px] py-2 border-dotted ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#hugo-自动化部署方案2服务器编译">Hugo 自动化部署方案2：服务器编译</a>
+      <ul>
+        <li><a href="#一-引言为何要自动化">一、 引言：为何要自动化？</a></li>
+        <li><a href="#二-phase-1规范化您的-git-仓库">二、 Phase 1：规范化您的 Git 仓库</a>
+          <ul>
+            <li><a href="#步骤-11配置"><strong>步骤 1.1：配置 <code>.gitignore</code>（至关重要）</strong></a></li>
+            <li><a href="#步骤-12从-git-历史中移除已追踪的产物目录"><strong>步骤 1.2：从 Git 历史中移除已追踪的产物目录</strong></a></li>
+          </ul>
+        </li>
+        <li><a href="#三-phase-2配置云服务器环境">三、 Phase 2：配置云服务器环境</a>
+          <ul>
+            <li><a href="#步骤-21安装必要的软件"><strong>步骤 2.1：安装必要的软件</strong></a></li>
+            <li><a href="#步骤-22创建服务器专属的-ssh-部署密钥"><strong>步骤 2.2：创建服务器专属的 SSH 部署密钥</strong></a></li>
+            <li><a href="#步骤-23在-github-中添加部署密钥-deploy-key"><strong>步骤 2.3：在 GitHub 中添加部署密钥 (Deploy Key)</strong></a></li>
+            <li><a href="#步骤-24克隆项目源代码至服务器"><strong>步骤 2.4：克隆项目源代码至服务器</strong></a></li>
+          </ul>
+        </li>
+        <li><a href="#四-phase-3配置-1panel-自动化工作流">四、 Phase 3：配置 1Panel 自动化工作流</a>
+          <ul>
+            <li><a href="#步骤-31在-1panel-中创建静态网站"><strong>步骤 3.1：在 1Panel 中创建静态网站</strong></a></li>
+            <li><a href="#步骤-32编写服务器端部署脚本-"><strong>步骤 3.2：编写服务器端部署脚本 (<code>deploy.sh</code>)</strong></a></li>
+            <li><a href="#步骤-33创建-webhook-触发器"><strong>步骤 3.3：创建 Webhook 触发器</strong></a></li>
+            <li><a href="#步骤-34关联-github-与-1panel"><strong>步骤 3.4：关联 GitHub 与 1Panel</strong></a></li>
+          </ul>
+        </li>
+        <li><a href="#五-phase-4域名配置与优化">五、 Phase 4：域名配置与优化</a></li>
+        <li><a href="#六-结论新工作流">六、 结论：新工作流</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</details>
+<details class="toc-inside mt-0 overflow-hidden rounded-lg ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 lg:hidden">
+  <summary
+    class="py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
+    目录
+  </summary>
+  <div
+    class="py-2 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#hugo-自动化部署方案2服务器编译">Hugo 自动化部署方案2：服务器编译</a>
+      <ul>
+        <li><a href="#一-引言为何要自动化">一、 引言：为何要自动化？</a></li>
+        <li><a href="#二-phase-1规范化您的-git-仓库">二、 Phase 1：规范化您的 Git 仓库</a>
+          <ul>
+            <li><a href="#步骤-11配置"><strong>步骤 1.1：配置 <code>.gitignore</code>（至关重要）</strong></a></li>
+            <li><a href="#步骤-12从-git-历史中移除已追踪的产物目录"><strong>步骤 1.2：从 Git 历史中移除已追踪的产物目录</strong></a></li>
+          </ul>
+        </li>
+        <li><a href="#三-phase-2配置云服务器环境">三、 Phase 2：配置云服务器环境</a>
+          <ul>
+            <li><a href="#步骤-21安装必要的软件"><strong>步骤 2.1：安装必要的软件</strong></a></li>
+            <li><a href="#步骤-22创建服务器专属的-ssh-部署密钥"><strong>步骤 2.2：创建服务器专属的 SSH 部署密钥</strong></a></li>
+            <li><a href="#步骤-23在-github-中添加部署密钥-deploy-key"><strong>步骤 2.3：在 GitHub 中添加部署密钥 (Deploy Key)</strong></a></li>
+            <li><a href="#步骤-24克隆项目源代码至服务器"><strong>步骤 2.4：克隆项目源代码至服务器</strong></a></li>
+          </ul>
+        </li>
+        <li><a href="#四-phase-3配置-1panel-自动化工作流">四、 Phase 3：配置 1Panel 自动化工作流</a>
+          <ul>
+            <li><a href="#步骤-31在-1panel-中创建静态网站"><strong>步骤 3.1：在 1Panel 中创建静态网站</strong></a></li>
+            <li><a href="#步骤-32编写服务器端部署脚本-"><strong>步骤 3.2：编写服务器端部署脚本 (<code>deploy.sh</code>)</strong></a></li>
+            <li><a href="#步骤-33创建-webhook-触发器"><strong>步骤 3.3：创建 Webhook 触发器</strong></a></li>
+            <li><a href="#步骤-34关联-github-与-1panel"><strong>步骤 3.4：关联 GitHub 与 1Panel</strong></a></li>
+          </ul>
+        </li>
+        <li><a href="#五-phase-4域名配置与优化">五、 Phase 4：域名配置与优化</a></li>
+        <li><a href="#六-结论新工作流">六、 结论：新工作流</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</details>
+
+<script>
+
+  var margin = 200;
+  var marginError = 50;
+
+  (function () {
+    var $window = $(window);
+    var $toc = $('#TOCView');
+    var tocHeight = $toc.height();
+
+    function onResize() {
+      var windowAndMarginHeight = $window.height() - margin;
+      if(tocHeight >= windowAndMarginHeight) {
+        $toc.css("overflow-y", "scroll")
+        $toc.css("max-height", (windowAndMarginHeight + marginError) + "px")
+      } else {
+        $toc.css("overflow-y", "hidden")
+        $toc.css("max-height", "9999999px")
+      }
+    }
+
+    $window.on('resize', onResize);
+    $(document).ready(onResize);
+  })();
+
+
+
+  (function () {
+    var $toc = $('#TableOfContents');
+    if ($toc.length > 0) {
+      var $window = $(window);
+
+      function onScroll() {
+        var currentScroll = $window.scrollTop();
+        var h = $('.anchor');
+        var id = "";
+        h.each(function (i, e) {
+          e = $(e);
+          if (e.offset().top - $(window).height()/3 <= currentScroll) {
+            id = decodeURIComponent(e.attr('id'));
+          }
+        });
+        var active = $toc.find('a.active');      
+        if (active.length == 1 && active.eq(0).attr('href') == '#' + id) return true;
+
+        active.each(function (i, e) {
+          
+            $(e).removeClass('active');
+          
+        });
+        $toc.find('a[href="#' + id + '"]').addClass('active')
+        $toc.find('a[href="#' + id + '"]').parentsUntil('#TableOfContents').each(function (i, e) {
+          $(e).children('a').parents('ul').show();          
+        });
+      }
+
+      $window.on('scroll', onScroll);
+      $(document).ready(function () {
+        
+        onScroll();
+      });
+    }
+  })();
+
+
+</script>
+   </div>
+      </div>
+      
+
+      <div class="min-w-0 min-h-0 max-w-fit">
+        
+        
+
+
+        <div class="article-content max-w-prose mb-20">
+          
+
+<h2 class="relative group">Hugo 自动化部署方案2：服务器编译 
+    <div id="hugo-%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E6%96%B9%E6%A1%882%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BC%96%E8%AF%91" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#hugo-%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E6%96%B9%E6%A1%882%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BC%96%E8%AF%91" aria-label="锚点">#</a>
+    </span>        
+    
+</h2>
+<p>本文将深入探讨如何利用云服务器上的 1Panel 管理面板，结合 Git 与 Webhook 技术，为 Hugo 静态博客搭建一套专业、高效的自动化部署（CI/CD）流水线。我们将摒弃手动上传或提交构建产物（<code>public</code> 目录）的传统模式，转向更为先进和可靠的“服务器端构建”方案，实现真正意义上的 <code>git push</code> 即部署。</p>
+
+
+<h3 class="relative group">一、 引言：为何要自动化？ 
+    <div id="%E4%B8%80-%E5%BC%95%E8%A8%80%E4%B8%BA%E4%BD%95%E8%A6%81%E8%87%AA%E5%8A%A8%E5%8C%96" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%E4%B8%80-%E5%BC%95%E8%A8%80%E4%B8%BA%E4%BD%95%E8%A6%81%E8%87%AA%E5%8A%A8%E5%8C%96" aria-label="锚点">#</a>
+    </span>        
+    
+</h3>
+<p>对于每一位 Hugo 博主而言，将本地撰写的 Markdown 文章发布到线上服务器，是创作流程的最后一环。传统的 <code>hugo</code> 构建后，通过 FTP 或 SCP 手动上传 <code>public</code> 文件夹的方式，不仅效率低下、过程繁琐，更容易因人工疏忽导致文件遗漏或版本错乱。</p>
+<p>现代化的开发工作流追求的是<strong>持续集成与持续部署 (CI/CD)</strong>。其核心理念在于将代码的集成、测试、构建和部署等环节自动化，以提升效率、降低风险。本文将要实现的，正是这一理念在个人博客部署场景下的一个完美实践。</p>
+<p><strong>核心思想：</strong> 我们将 Git 仓库（如 GitHub）作为我们网站<strong>源代码（Source Code）的唯一真实来源 (Single Source of Truth)</strong>。我们的云服务器则扮演“自动化工厂”的角色，在接收到更新通知后，自动拉取最新的源代码，并在服务器本地环境中进行“编译打包”（<code>hugo</code> 构建），最终将成品无缝发布。</p>
+<p><strong>技术栈:</strong></p>
+<ul>
+<li><strong>本地环境:</strong> 任意操作系统（Windows/macOS/Linux）</li>
+<li><strong>版本控制:</strong> Git &amp; GitHub (或 Gitee/GitLab 等)</li>
+<li><strong>静态网站生成器:</strong> Hugo</li>
+<li><strong>服务器环境:</strong> 装有 1Panel 面板的 Linux 云服务器</li>
+</ul>
+<p>通过本指南，您将告别手动部署的“石器时代”，步入优雅高效的自动化“现代文明”。</p>
+
+
+<h3 class="relative group">二、 Phase 1：规范化您的 Git 仓库 
+    <div id="%E4%BA%8C-phase-1%E8%A7%84%E8%8C%83%E5%8C%96%E6%82%A8%E7%9A%84-git-%E4%BB%93%E5%BA%93" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%E4%BA%8C-phase-1%E8%A7%84%E8%8C%83%E5%8C%96%E6%82%A8%E7%9A%84-git-%E4%BB%93%E5%BA%93" aria-label="锚点">#</a>
+    </span>        
+    
+</h3>
+<p>在开始之前，我们需要确保您的 Hugo 项目仓库处于一个干净、专业的状态。此阶段所有操作均在您的<strong>本地电脑</strong>上完成。</p>
+
+
+<h4 class="relative group"><strong>步骤 1.1：配置 <code>.gitignore</code>（至关重要）</strong> 
+    <div id="%E6%AD%A5%E9%AA%A4-11%E9%85%8D%E7%BD%AE" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%E6%AD%A5%E9%AA%A4-11%E9%85%8D%E7%BD%AE" aria-label="锚点">#</a>
+    </span>        
+    
+</h4>
+<p><code>.gitignore</code> 文件用于告知 Git 哪些文件或目录不应被纳入版本控制。在“服务器端构建”模型中，我们<strong>绝不</strong>应该追踪由机器生成的 <code>public</code> 和 <code>resources</code> 目录。</p>
+<ol>
+<li>
+<p>在您 Hugo 项目的根目录，找到或创建 <code>.gitignore</code> 文件。</p>
+</li>
+<li>
+<p>确保其内容如下，如果不是，请用以下内容覆盖：</p>
+<p>Code snippet</p>
+<pre tabindex="0"><code># Hugo 生成的部署文件和缓存，必须忽略
+/public/
+/resources/
+hugo_stats.json
+
+# 常见操作系统的临时文件
+.DS_Store
+Thumbs.db
+</code></pre></li>
+</ol>
+
+
+<h4 class="relative group"><strong>步骤 1.2：从 Git 历史中移除已追踪的产物目录</strong> 
+    <div id="%E6%AD%A5%E9%AA%A4-12%E4%BB%8E-git-%E5%8E%86%E5%8F%B2%E4%B8%AD%E7%A7%BB%E9%99%A4%E5%B7%B2%E8%BF%BD%E8%B8%AA%E7%9A%84%E4%BA%A7%E7%89%A9%E7%9B%AE%E5%BD%95" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%E6%AD%A5%E9%AA%A4-12%E4%BB%8E-git-%E5%8E%86%E5%8F%B2%E4%B8%AD%E7%A7%BB%E9%99%A4%E5%B7%B2%E8%BF%BD%E8%B8%AA%E7%9A%84%E4%BA%A7%E7%89%A9%E7%9B%AE%E5%BD%95" aria-label="锚点">#</a>
+    </span>        
+    
+</h4>
+<p>如果您之前的仓库追踪了 <code>public</code> 或 <code>resources</code> 目录，我们需要将它们从 Git 的追踪记录中移除。</p>
+<ol>
+<li>
+<p>在项目根目录打开终端，执行以下命令：</p>
+<p>Bash</p>
+<pre tabindex="0"><code># 分别移除 public 和 resources 目录的追踪记录
+# --cached 参数确保只删除追踪记录，不删除您本地的文件夹
+git rm -r --cached public
+git rm -r --cached resources
+</code></pre><p><em>如果某个目录之前未被追踪，执行命令时会提示错误，直接忽略即可。</em></p>
+</li>
+<li>
+<p>提交这次清理操作：</p>
+<p>Bash</p>
+<pre tabindex="0"><code>git commit -m &#34;chore: Stop tracking generated directories (public, resources)&#34;
+git push origin main
+</code></pre></li>
+</ol>
+
+
+<h3 class="relative group">三、 Phase 2：配置云服务器环境 
+    <div id="%E4%B8%89-phase-2%E9%85%8D%E7%BD%AE%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%8E%AF%E5%A2%83" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%E4%B8%89-phase-2%E9%85%8D%E7%BD%AE%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%8E%AF%E5%A2%83" aria-label="锚点">#</a>
+    </span>        
+    
+</h3>
+<p>此阶段，我们需要登录云服务器，为其赋予自动构建您网站的能力。</p>
+
+
+<h4 class="relative group"><strong>步骤 2.1：安装必要的软件</strong> 
+    <div id="%E6%AD%A5%E9%AA%A4-21%E5%AE%89%E8%A3%85%E5%BF%85%E8%A6%81%E7%9A%84%E8%BD%AF%E4%BB%B6" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%E6%AD%A5%E9%AA%A4-21%E5%AE%89%E8%A3%85%E5%BF%85%E8%A6%81%E7%9A%84%E8%BD%AF%E4%BB%B6" aria-label="锚点">#</a>
+    </span>        
+    
+</h4>
+<p>您的服务器需要安装 Git 和 Hugo。</p>
+<p>Bash</p>
+<pre tabindex="0"><code># 以 Debian/Ubuntu 系统为例
+sudo apt update
+sudo apt install -y git
+
+# 安装 Hugo (推荐从 GitHub Releases 安装最新的 extended 版本)
+# 1. 访问 https://github.com/gohugoio/hugo/releases 找到最新的 .deb 包链接
+# 2. 复制链接地址，并在服务器上执行
+wget [您复制的 .deb 文件链接]
+sudo dpkg -i [下载的 .deb 文件名]
+
+# 3. 验证安装成功
+hugo version
+</code></pre>
+
+<h4 class="relative group"><strong>步骤 2.2：创建服务器专属的 SSH 部署密钥</strong> 
+    <div id="%E6%AD%A5%E9%AA%A4-22%E5%88%9B%E5%BB%BA%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%93%E5%B1%9E%E7%9A%84-ssh-%E9%83%A8%E7%BD%B2%E5%AF%86%E9%92%A5" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%E6%AD%A5%E9%AA%A4-22%E5%88%9B%E5%BB%BA%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%93%E5%B1%9E%E7%9A%84-ssh-%E9%83%A8%E7%BD%B2%E5%AF%86%E9%92%A5" aria-label="锚点">#</a>
+    </span>        
+    
+</h4>
+<p>为了让服务器能安全、免密地从您的私有 GitHub 仓库拉取代码，我们将使用 SSH 密钥认证。</p>
+<ol>
+<li>
+<p>在服务器终端执行，生成一对新的 SSH 密钥。<code>ed25519</code> 是目前推荐的高安全性算法。</p>
+<p>Bash</p>
+<pre tabindex="0"><code>ssh-keygen -t ed25519 -C &#34;hugo_deploy_key_for_antwen.com&#34;
+</code></pre></li>
+<li>
+<p>过程中会提问三次，<strong>请连续按三次回车</strong>，使用默认设置且不添加密码。</p>
+</li>
+<li>
+<p>查看并复制生成的公钥（<code>.pub</code> 文件）。</p>
+<p>Bash</p>
+<pre tabindex="0"><code>cat ~/.ssh/id_ed25519.pub
+</code></pre><p>请完整复制输出的、以 <code>ssh-ed25519</code> 开头的全部内容。</p>
+</li>
+</ol>
+
+
+<h4 class="relative group"><strong>步骤 2.3：在 GitHub 中添加部署密钥 (Deploy Key)</strong> 
+    <div id="%E6%AD%A5%E9%AA%A4-23%E5%9C%A8-github-%E4%B8%AD%E6%B7%BB%E5%8A%A0%E9%83%A8%E7%BD%B2%E5%AF%86%E9%92%A5-deploy-key" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%E6%AD%A5%E9%AA%A4-23%E5%9C%A8-github-%E4%B8%AD%E6%B7%BB%E5%8A%A0%E9%83%A8%E7%BD%B2%E5%AF%86%E9%92%A5-deploy-key" aria-label="锚点">#</a>
+    </span>        
+    
+</h4>
+<ol>
+<li>在浏览器中，进入您博客的 GitHub 仓库页面，导航至 <code>Settings</code> &gt; <code>Deploy Keys</code>。</li>
+<li>点击 <code>Add deploy key</code>。
+<ul>
+<li><strong>Title:</strong> 填写一个便于识别的名称，如 <code>1Panel Production Server</code>。</li>
+<li><strong>Key:</strong> 粘贴您刚刚从服务器复制的公钥。</li>
+<li><strong>Allow write access:</strong> <strong>请勿勾选</strong>。我们遵循最小权限原则，服务器只需读取代码。</li>
+</ul>
+</li>
+<li>点击 <code>Add key</code> 保存。</li>
+</ol>
+
+
+<h4 class="relative group"><strong>步骤 2.4：克隆项目源代码至服务器</strong> 
+    <div id="%E6%AD%A5%E9%AA%A4-24%E5%85%8B%E9%9A%86%E9%A1%B9%E7%9B%AE%E6%BA%90%E4%BB%A3%E7%A0%81%E8%87%B3%E6%9C%8D%E5%8A%A1%E5%99%A8" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%E6%AD%A5%E9%AA%A4-24%E5%85%8B%E9%9A%86%E9%A1%B9%E7%9B%AE%E6%BA%90%E4%BB%A3%E7%A0%81%E8%87%B3%E6%9C%8D%E5%8A%A1%E5%99%A8" aria-label="锚点">#</a>
+    </span>        
+    
+</h4>
+<p>现在，服务器已经有权限拉取代码了。我们将项目克隆到一个统一的源代码存放目录。</p>
+<ol>
+<li>
+<p>在 GitHub 仓库页面，点击绿色 <code>&lt;&gt; Code</code> 按钮，选择 <strong>SSH</strong> 标签页，复制 SSH 格式的 URL。</p>
+</li>
+<li>
+<p>在服务器终端中执行：</p>
+<p>Bash</p>
+<pre tabindex="0"><code># 创建一个用于存放所有网站源码的父目录
+sudo mkdir -p /opt/hugo_source
+
+# 克隆您的项目
+git clone [您复制的SSH格式URL] /opt/hugo_source/your_project_name
+</code></pre><p>例如: <code>git clone git@github.com:dinghyv/myhugo.git /opt/hugo_source/antwen-blog</code></p>
+</li>
+</ol>
+
+
+<h3 class="relative group">四、 Phase 3：配置 1Panel 自动化工作流 
+    <div id="%E5%9B%9B-phase-3%E9%85%8D%E7%BD%AE-1panel-%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E4%BD%9C%E6%B5%81" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%E5%9B%9B-phase-3%E9%85%8D%E7%BD%AE-1panel-%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E4%BD%9C%E6%B5%81" aria-label="锚点">#</a>
+    </span>        
+    
+</h3>
+<p>这是整个流程的核心，我们将利用 1Panel 的功能，将所有环节串联起来。</p>
+
+
+<h4 class="relative group"><strong>步骤 3.1：在 1Panel 中创建静态网站</strong> 
+    <div id="%E6%AD%A5%E9%AA%A4-31%E5%9C%A8-1panel-%E4%B8%AD%E5%88%9B%E5%BB%BA%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%E6%AD%A5%E9%AA%A4-31%E5%9C%A8-1panel-%E4%B8%AD%E5%88%9B%E5%BB%BA%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99" aria-label="锚点">#</a>
+    </span>        
+    
+</h4>
+<ol>
+<li>登录 1Panel，进入 “网站” &gt; “创建网站”，选择 “静态网站”。</li>
+<li><strong>主域名:</strong> 填写您的域名，如 <code>www.antwen.com</code>。</li>
+<li><strong>网站目录:</strong> 1Panel 会为您生成一个固定的网站根目录。请<strong>务必记下这个路径</strong>，例如 <code>/opt/1panel/apps/openresty/openresty/www/sites/www.antwen.com/index</code>。</li>
+<li>保存网站。</li>
+</ol>
+
+
+<h4 class="relative group"><strong>步骤 3.2：编写服务器端部署脚本 (<code>deploy.sh</code>)</strong> 
+    <div id="%E6%AD%A5%E9%AA%A4-32%E7%BC%96%E5%86%99%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF%E9%83%A8%E7%BD%B2%E8%84%9A%E6%9C%AC-" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%E6%AD%A5%E9%AA%A4-32%E7%BC%96%E5%86%99%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF%E9%83%A8%E7%BD%B2%E8%84%9A%E6%9C%AC-" aria-label="锚点">#</a>
+    </span>        
+    
+</h4>
+<p>此脚本是自动化部署的“大脑”，定义了服务器在收到通知后需要执行的所有操作。</p>
+<ol>
+<li>
+<p>进入您在服务器上克隆的项目源码目录：</p>
+<p>Bash</p>
+<pre tabindex="0"><code>cd /opt/hugo_source/your_project_name
+nano deploy.sh
+</code></pre></li>
+<li>
+<p>将以下脚本内容完整粘贴进去。<strong>请务必根据您的实际情况，修改 <code>SOURCE_DIR</code> 和 <code>DEST_DIR</code> 两个变量的值！</strong></p>
+<p>Bash</p>
+<pre tabindex="0"><code>#!/bin/bash
+
+# --- 请根据您的实际情况修改以下变量 ---
+# 您的项目源代码在服务器上的存放路径
+SOURCE_DIR=&#34;/opt/hugo_source/antwen-blog&#34;
+# 1Panel 为您网站指定的、不可更改的根目录
+DEST_DIR=&#34;/opt/1panel/apps/openresty/openresty/www/sites/www.antwen.com/index&#34;
+# --- 修改结束 ---
+
+echo &#34;============================================================&#34;
+echo &#34; executing deployment script for Antwen Blog&#34;
+echo &#34; Stated at: $(date &#39;+%Y-%m-%d %H:%M:%S&#39;)&#34;
+echo &#34;============================================================&#34;
+
+# 进入源代码目录，如果失败则退出
+cd $SOURCE_DIR || exit
+
+# 1. 从 Git 仓库拉取最新的源代码
+echo &#34;&gt;&gt;&gt; Step 1: Pulling latest source code from GitHub...&#34;
+git reset --hard
+git pull origin main
+
+# 2. 初始化并更新主题（Git Submodule）
+# 即使您不使用子模块，执行此命令也无害，这是一个好习惯
+echo &#34;&gt;&gt;&gt; Step 2: Initializing theme submodule (if any)...&#34;
+git submodule update --init --recursive
+
+# 3. 在服务器上执行 Hugo 构建命令
+# 这是整个流程的核心：从最新的源码，构建出最终的网站文件
+# -d 参数指定输出目录为 1Panel 的网站根目录
+# --gc 会执行垃圾回收，清理缓存，优化性能
+# --minify 会压缩 HTML/CSS/JS 文件，提升网站加载速度
+echo &#34;&gt;&gt;&gt; Step 3: Building site with Hugo on the server...&#34;
+hugo --gc --minify -d &#34;$DEST_DIR&#34;
+
+echo &#34;------------------------------------------------------------&#34;
+echo &#34; Hugo deployment successful!&#34;
+echo &#34;============================================================&#34;
+</code></pre></li>
+<li>
+<p>保存并退出编辑器 (<code>Ctrl+X</code>, <code>Y</code>, <code>Enter</code>)。</p>
+</li>
+<li>
+<p>为脚本赋予可执行权限：</p>
+<p>Bash</p>
+<pre tabindex="0"><code>chmod +x deploy.sh
+</code></pre></li>
+</ol>
+
+
+<h4 class="relative group"><strong>步骤 3.3：创建 Webhook 触发器</strong> 
+    <div id="%E6%AD%A5%E9%AA%A4-33%E5%88%9B%E5%BB%BA-webhook-%E8%A7%A6%E5%8F%91%E5%99%A8" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%E6%AD%A5%E9%AA%A4-33%E5%88%9B%E5%BB%BA-webhook-%E8%A7%A6%E5%8F%91%E5%99%A8" aria-label="锚点">#</a>
+    </span>        
+    
+</h4>
+<p>我们将巧妙地利用 1Panel 的“计划任务”功能，来接收 GitHub 发送的 Webhook 通知。</p>
+<ol>
+<li>进入 1Panel 的 “计划任务” &gt; “创建计划任务”。</li>
+<li><strong>任务名称:</strong> 起一个清晰的名字，如 <code>Webhook: Deploy Hugo Blog</code>。</li>
+<li><strong>执行周期:</strong> 选择“手动执行”，我们不依赖它的定时功能。</li>
+<li><strong>脚本内容:</strong> 填写您部署脚本的<strong>绝对路径</strong>，例如 <code>/bin/bash /opt/hugo_source/antwen-blog/deploy.sh</code>。</li>
+<li>保存任务。</li>
+<li>在计划任务列表中找到刚创建的任务，点击右侧的 &ldquo;&hellip;&rdquo; 更多操作，选择 <strong>“Webhook”</strong>，复制弹出的 URL。</li>
+</ol>
+
+
+<h4 class="relative group"><strong>步骤 3.4：关联 GitHub 与 1Panel</strong> 
+    <div id="%E6%AD%A5%E9%AA%A4-34%E5%85%B3%E8%81%94-github-%E4%B8%8E-1panel" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%E6%AD%A5%E9%AA%A4-34%E5%85%B3%E8%81%94-github-%E4%B8%8E-1panel" aria-label="锚点">#</a>
+    </span>        
+    
+</h4>
+<ol>
+<li>回到您的 GitHub 仓库页面，进入 <code>Settings</code> &gt; <code>Webhooks</code> &gt; <code>Add webhook</code>。</li>
+<li><strong>Payload URL:</strong> 粘贴您从 1Panel 复制的 Webhook URL。</li>
+<li><strong>Content type:</strong> 选择 <code>application/json</code>。</li>
+<li>点击 <code>Add webhook</code> 保存。</li>
+</ol>
+<p>至此，您的自动化部署流水线已完全建成！</p>
+
+
+<h3 class="relative group">五、 Phase 4：域名配置与优化 
+    <div id="%E4%BA%94-phase-4%E5%9F%9F%E5%90%8D%E9%85%8D%E7%BD%AE%E4%B8%8E%E4%BC%98%E5%8C%96" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%E4%BA%94-phase-4%E5%9F%9F%E5%90%8D%E9%85%8D%E7%BD%AE%E4%B8%8E%E4%BC%98%E5%8C%96" aria-label="锚点">#</a>
+    </span>        
+    
+</h3>
+<p>最后一步，确保所有用户都能正确访问您的网站。</p>
+<ol>
+<li>
+<p><strong>目标：</strong> 确定一个首选域名（推荐 <code>www.antwen.com</code>），并将不带 <code>www</code> 的 <code>antwen.com</code> 通过 301 永久重定向跳转过去。</p>
+</li>
+<li>
+<p><strong>Hugo <code>baseURL</code>:</strong> 确保您本地 <code>hugo.toml</code> 文件中的 <code>baseURL</code> 设置为您的首选域名，并以 <code>/</code> 结尾。</p>
+<p>Ini, TOML</p>
+<pre tabindex="0"><code>baseURL = &#34;https://www.antwen.com/&#34;
+</code></pre></li>
+<li>
+<p><strong>1Panel 重定向配置:</strong></p>
+<ul>
+<li>进入 <code>www.antwen.com</code> 网站的设置页面，在“域名绑定”中确保两个域名都已添加。</li>
+<li>在“重定向”中创建新规则：
+<ul>
+<li><strong>源域名:</strong> <code>antwen.com</code></li>
+<li><strong>重定向类型:</strong> <code>301</code></li>
+<li><strong>目标 URL:</strong> <code>https://www.antwen.com$request_uri</code> (此变量能保证内页也被正确跳转)</li>
+</ul>
+</li>
+<li>保存并启用规则。</li>
+</ul>
+</li>
+</ol>
+
+
+<h3 class="relative group">六、 结论：新工作流 
+    <div id="%E5%85%AD-%E7%BB%93%E8%AE%BA%E6%96%B0%E5%B7%A5%E4%BD%9C%E6%B5%81" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%E5%85%AD-%E7%BB%93%E8%AE%BA%E6%96%B0%E5%B7%A5%E4%BD%9C%E6%B5%81" aria-label="锚点">#</a>
+    </span>        
+    
+</h3>
+<p>现在，您发布文章的流程已极致简化：</p>
+<ol>
+<li>在本地撰写和修改您的 Markdown 文章和源代码。</li>
+<li>（可选）使用 <code>hugo server</code> 在本地实时预览。</li>
+<li>完成修改后，直接执行 <code>git push</code> 将<strong>源代码</strong>推送到 GitHub。</li>
+</ol>
+
+          
+          
+          
+        </div>
+        
+        
+
+        
+        
+
+        
+        
+        
+        <div class="pt-3">
+          <hr class="border-dotted border-neutral-300 dark:border-neutral-600" />
+          <div class="pt-3">
+            
+<div>
+    <div class="pagination__title">
+        <span class="pagination__title-h" style="font-size: 20px;">💬评论</span>
+        <hr />
+    </div>
+    <div id="tcomment"></div>
+    <script src="https://cdn.jsdelivr.net/npm/twikoo@1.6.44/dist/twikoo.all.min.js"></script>
+    <script>
+        twikoo.init({
+            envId: "https://www.antwen.com/twikoo",
+            el: "#tcomment",
+            lang: 'zh-CN',
+            region: '', 
+            path: "\/posts\/hugo%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B22\/",
+        });
+    </script>
+</div>
+          </div>
+        </div>
+        
+        
+        
+        
+
+
+<h2 class="mt-8 text-2xl font-extrabold mb-10">相关文章</h2>
+<section class="w-full grid gap-4 sm:grid-cols-2 md:grid-cols-3">
+  
+  
+
+  <a href="/posts/hugo%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/" class="min-w-full h-full">
+    
+    <div class="h-full border border-neutral-200 dark:border-neutral-700 border-2 rounded overflow-hidden shadow-2xl relative backdrop-blur-lg bg-white/70 dark:bg-black/50 flex flex-col">
+        
+        <div class="w-full thumbnail_card_related nozoom" style="background-image:url(/posts/hugo%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/featured_hu_35be79a0941b9bc5.png);"></div>
+        
+      
+
+      <div class="px-6 py-4 flex-grow flex flex-col">
+        <div class="flex-grow">
+          
+          <div class="font-bold text-xl text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
+            href="/posts/hugo%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/">使用1Panel与Git的Hugo博客自动化部署</div>
+          
+        </div>
+
+        <div class="mt-auto">
+          <div class="text-sm text-neutral-500 dark:text-neutral-400">
+            
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+  <time datetime="2025-08-07T00:00:00&#43;00:00">7 August 2025</time><span class="px-2 text-primary-500">&middot;</span><span>712 字</span><span class="px-2 text-primary-500">&middot;</span><span title="预计阅读">4 分钟</span>
+  
+
+  
+  
+</div>
+
+
+
+
+
+
+
+
+          </div>
+
+          
+          <div class="mt-2">
+            
+            <span class="inline-block bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-200 text-xs px-2 py-1 rounded mr-1 mb-1">
+              linux
+            </span>
+            
+            <span class="inline-block bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-200 text-xs px-2 py-1 rounded mr-1 mb-1">
+              博客
+            </span>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </a>
+  
+  
+
+  <a href="/posts/zf-jwxt/" class="min-w-full h-full">
+    
+    <div class="h-full border border-neutral-200 dark:border-neutral-700 border-2 rounded overflow-hidden shadow-2xl relative backdrop-blur-lg bg-white/70 dark:bg-black/50 flex flex-col">
+        
+        <div class="w-full thumbnail_card_related nozoom" style="background-image:url(/posts/zf-jwxt/featured_hu_c4a0043e5c4c35f8.png);"></div>
+        
+      
+
+      <div class="px-6 py-4 flex-grow flex flex-col">
+        <div class="flex-grow">
+          
+          <div class="font-bold text-xl text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
+            href="/posts/zf-jwxt/">演示系统安装部署</div>
+          
+        </div>
+
+        <div class="mt-auto">
+          <div class="text-sm text-neutral-500 dark:text-neutral-400">
+            
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+  <time datetime="2025-08-06T00:00:00&#43;00:00">6 August 2025</time><span class="px-2 text-primary-500">&middot;</span><span>428 字</span><span class="px-2 text-primary-500">&middot;</span><span title="预计阅读">3 分钟</span>
+  
+
+  
+  
+</div>
+
+
+
+
+
+
+
+
+          </div>
+
+          
+          <div class="mt-2">
+            
+            <span class="inline-block bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-200 text-xs px-2 py-1 rounded mr-1 mb-1">
+              ZF
+            </span>
+            
+            <span class="inline-block bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-200 text-xs px-2 py-1 rounded mr-1 mb-1">
+              实施
+            </span>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </a>
+  
+  
+
+  <a href="/posts/%E5%B0%84%E5%87%BB%E5%B1%9E%E6%80%A7%E9%80%9F%E5%88%B7/" class="min-w-full h-full">
+    
+    <div class="h-full border border-neutral-200 dark:border-neutral-700 border-2 rounded overflow-hidden shadow-2xl relative backdrop-blur-lg bg-white/70 dark:bg-black/50 flex flex-col">
+        
+        <div class="w-full thumbnail_card_related nozoom" style="background-image:url(/posts/%E5%B0%84%E5%87%BB%E5%B1%9E%E6%80%A7%E9%80%9F%E5%88%B7/featured_hu_6e2daa9f51d87da3.png);"></div>
+        
+      
+
+      <div class="px-6 py-4 flex-grow flex flex-col">
+        <div class="flex-grow">
+          
+          <div class="font-bold text-xl text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
+            href="/posts/%E5%B0%84%E5%87%BB%E5%B1%9E%E6%80%A7%E9%80%9F%E5%88%B7/">GTA线上人物属性速刷教程</div>
+          
+        </div>
+
+        <div class="mt-auto">
+          <div class="text-sm text-neutral-500 dark:text-neutral-400">
+            
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+  <time datetime="2025-05-22T00:00:00&#43;00:00">22 May 2025</time><span class="px-2 text-primary-500">&middot;</span><span>31 字</span><span class="px-2 text-primary-500">&middot;</span><span title="预计阅读">1 分钟</span>
+  
+
+  
+  
+</div>
+
+
+
+
+
+
+
+
+          </div>
+
+          
+          <div class="mt-2">
+            
+            <span class="inline-block bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-200 text-xs px-2 py-1 rounded mr-1 mb-1">
+              GTA
+            </span>
+            
+            <span class="inline-block bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-200 text-xs px-2 py-1 rounded mr-1 mb-1">
+              攻略
+            </span>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </a>
+  
+  
+
+  <a href="/posts/weekly-updates-515/" class="min-w-full h-full">
+    
+    <div class="h-full border border-neutral-200 dark:border-neutral-700 border-2 rounded overflow-hidden shadow-2xl relative backdrop-blur-lg bg-white/70 dark:bg-black/50 flex flex-col">
+        
+        <div class="w-full thumbnail_card_related nozoom" style="background-image:url(/posts/weekly-updates-515/featured_hu_56765a973bc4fc43.png);"></div>
+        
+      
+
+      <div class="px-6 py-4 flex-grow flex flex-col">
+        <div class="flex-grow">
+          
+          <div class="font-bold text-xl text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
+            href="/posts/weekly-updates-515/">在所有 FIB 档案中赚取双倍奖励</div>
+          
+        </div>
+
+        <div class="mt-auto">
+          <div class="text-sm text-neutral-500 dark:text-neutral-400">
+            
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+  <time datetime="2025-05-16T00:00:00&#43;00:00">16 May 2025</time><span class="px-2 text-primary-500">&middot;</span><span>582 字</span><span class="px-2 text-primary-500">&middot;</span><span title="预计阅读">3 分钟</span>
+  
+
+  
+  
+</div>
+
+
+
+
+
+
+
+
+          </div>
+
+          
+          <div class="mt-2">
+            
+            <span class="inline-block bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-200 text-xs px-2 py-1 rounded mr-1 mb-1">
+              GTA
+            </span>
+            
+            <span class="inline-block bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-200 text-xs px-2 py-1 rounded mr-1 mb-1">
+              每周更新
+            </span>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </a>
+  
+  
+
+  <a href="/posts/gta6%E9%A2%84%E5%91%8A%E7%89%872/" class="min-w-full h-full">
+    
+    <div class="h-full border border-neutral-200 dark:border-neutral-700 border-2 rounded overflow-hidden shadow-2xl relative backdrop-blur-lg bg-white/70 dark:bg-black/50 flex flex-col">
+        
+        <div class="w-full thumbnail_card_related nozoom" style="background-image:url(/posts/gta6%E9%A2%84%E5%91%8A%E7%89%872/featured_hu_d22672647b527ad2.png);"></div>
+        
+      
+
+      <div class="px-6 py-4 flex-grow flex flex-col">
+        <div class="flex-grow">
+          
+          <div class="font-bold text-xl text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
+            href="/posts/gta6%E9%A2%84%E5%91%8A%E7%89%872/">GTA6官方设定图合集1</div>
+          
+        </div>
+
+        <div class="mt-auto">
+          <div class="text-sm text-neutral-500 dark:text-neutral-400">
+            
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+  <time datetime="2025-05-07T00:00:00&#43;00:00">7 May 2025</time><span class="px-2 text-primary-500">&middot;</span><span>85 字</span><span class="px-2 text-primary-500">&middot;</span><span title="预计阅读">1 分钟</span>
+  
+
+  
+  
+</div>
+
+
+
+
+
+
+
+
+          </div>
+
+          
+          <div class="mt-2">
+            
+            <span class="inline-block bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-200 text-xs px-2 py-1 rounded mr-1 mb-1">
+              GTA6
+            </span>
+            
+            <span class="inline-block bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-200 text-xs px-2 py-1 rounded mr-1 mb-1">
+              预告片
+            </span>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </a>
+  
+  
+
+  <a href="/posts/gta%E7%BA%BF%E4%B8%8A&#43;%E7%BA%BF%E4%B8%8B%E6%89%80%E6%9C%89%E8%BD%A6%E8%BE%86%E4%BF%A1%E6%81%AF/" class="min-w-full h-full">
+    
+    <div class="h-full border border-neutral-200 dark:border-neutral-700 border-2 rounded overflow-hidden shadow-2xl relative backdrop-blur-lg bg-white/70 dark:bg-black/50 flex flex-col">
+        
+        <div class="w-full thumbnail_card_related nozoom" style="background-image:url(/posts/gta%E7%BA%BF%E4%B8%8A&#43;%E7%BA%BF%E4%B8%8B%E6%89%80%E6%9C%89%E8%BD%A6%E8%BE%86%E4%BF%A1%E6%81%AF/featured_hu_9d1d808ca9e1849b.png);"></div>
+        
+      
+
+      <div class="px-6 py-4 flex-grow flex flex-col">
+        <div class="flex-grow">
+          
+          <div class="font-bold text-xl text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
+            href="/posts/gta%E7%BA%BF%E4%B8%8A&#43;%E7%BA%BF%E4%B8%8B%E6%89%80%E6%9C%89%E8%BD%A6%E8%BE%86%E4%BF%A1%E6%81%AF/">GTA线上+线下所有车辆信息（截至破坏行动探员 v1.70）</div>
+          
+        </div>
+
+        <div class="mt-auto">
+          <div class="text-sm text-neutral-500 dark:text-neutral-400">
+            
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+  <time datetime="2025-05-04T00:00:00&#43;00:00">4 May 2025</time><span class="px-2 text-primary-500">&middot;</span><span>867 字</span><span class="px-2 text-primary-500">&middot;</span><span title="预计阅读">5 分钟</span>
+  
+
+  
+  
+</div>
+
+
+
+
+
+
+
+
+          </div>
+
+          
+          <div class="mt-2">
+            
+            <span class="inline-block bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-200 text-xs px-2 py-1 rounded mr-1 mb-1">
+              GTA
+            </span>
+            
+            <span class="inline-block bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-200 text-xs px-2 py-1 rounded mr-1 mb-1">
+              技术
+            </span>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </a>
+  
+</section>
+
+  
+      </div>
+     
+      
+      
+        
+        
+          
+          
+        
+      <script>
+        var oid = "views_posts\\Hugo自动部署2\\index.md"
+        var oid_likes = "likes_posts\\Hugo自动部署2\\index.md"
+      </script>
+      
+      
+      <script type="text/javascript" src="/js/page.min.0860cf4e04fa2d72cc33ddba263083464d48f67de06114529043cb4623319efed4f484fd7f1730df5abea0e2da6f3538855634081d02f2d6e920b956f063e823.js" integrity="sha512-CGDPTgT6LXLMM926JjCDRk1I9n3gYRRSkEPLRiMxnv7U9IT9fxcw31q&#43;oOLabzU4hVY0CB0C8tbpILlW8GPoIw=="></script>
+      
+  
+    </section>
+  <footer class="pt-8 max-w-prose print:hidden">
+
+    
+  
+    
+    
+    
+      
+      
+    
+    <div class="pt-8">
+      <hr class="border-dotted border-neutral-300 dark:border-neutral-600" />
+      <div class="flex justify-between pt-3">
+        <span>
+          
+            <a class="flex group mr-3" href="/posts/%E6%AF%8F%E5%91%A8%E6%9B%B4%E6%96%B0817/">
+              <span
+                class="mr-3 text-neutral-700 group-hover:text-primary-600 ltr:inline rtl:hidden dark:text-neutral dark:group-hover:text-primary-400"
+                >&larr;</span
+              >
+              <span
+                class="ml-3 text-neutral-700 group-hover:text-primary-600 ltr:hidden rtl:inline dark:text-neutral dark:group-hover:text-primary-400"
+                >&rarr;</span
+              >
+              <span class="flex flex-col">
+                <span
+                  class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
+                  >漂移周登陆 GTA 在线模式，赠送免费载具和街头升级</span
+                >
+                <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
+                  
+                    <time datetime="2025-08-15T00:00:00&#43;00:00">15 August 2025</time>
+                  
+                </span>
+              </span>
+            </a>
+          
+        </span>
+        <span>
+          
+            <a class="flex text-right group ml-3" href="/posts/hugo%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/">
+              <span class="flex flex-col">
+                <span
+                  class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
+                  >使用1Panel与Git的Hugo博客自动化部署</span
+                >
+                <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
+                  
+                    <time datetime="2025-08-07T00:00:00&#43;00:00">7 August 2025</time>
+                  
+                </span>
+              </span>
+              <span
+                class="ml-3 text-neutral-700 group-hover:text-primary-600 ltr:inline rtl:hidden dark:text-neutral dark:group-hover:text-primary-400"
+                >&rarr;</span
+              >
+              <span
+                class="mr-3 text-neutral-700 group-hover:text-primary-600 ltr:hidden rtl:inline dark:text-neutral dark:group-hover:text-primary-400"
+                >&larr;</span
+              >
+            </a>
+          
+        </span>
+      </div>
+    </div>
+  
+
+
+  </footer>
+</article>
+
+
+      <div id="top-scroller" class="pointer-events-none absolute top-[110vh] bottom-0 w-12 ltr:right-0 rtl:left-0">
+  <a href="#the-top"
+    class="pointer-events-auto sticky top-[calc(100vh-5.5rem)] flex h-12 w-12 mb-16 items-center justify-center rounded-full bg-neutral/50 text-xl text-neutral-700 hover:text-primary-600 dark:bg-neutral-800/50 dark:text-neutral dark:hover:text-primary-400"
+    aria-label="返回顶部" title="返回顶部">
+    &uarr;
+  </a>
+</div>
+    </main><footer id="site-footer" class="py-10 print:hidden">
+  
+  
+    
+    <nav class="flex flex-row pb-4 text-base font-medium text-neutral-500 dark:text-neutral-400">
+      <ul class="flex flex-col list-none sm:flex-row">
+        
+        <li class="flex mb-1 ltr:text-right rtl:text-left sm:mb-0 ltr:sm:mr-7 ltr:sm:last:mr-0 rtl:sm:ml-7 rtl:sm:last:ml-0">
+          <a class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2 flex items-center" href=""
+            title="">
+            
+            
+          </a>
+        </li>
+        
+      </ul>
+    </nav>
+    
+  
+  <div class="flex items-center justify-between">
+
+    
+    
+    <p class="text-sm text-neutral-500 dark:text-neutral-400">
+      &copy;
+      2025
+      安稳Antwen
+    </p>
+    
+
+    
+    
+
+  </div>
+  <script>
+    
+    mediumZoom(document.querySelectorAll("img:not(.nozoom)"), {
+      margin: 24,
+      background: 'rgba(0,0,0,0.5)',
+      scrollOffset: 0,
+    })
+    
+  </script>
+  
+  
+  <script type="text/javascript" src="/js/process.min.ee03488f19c93c2efb199e2e3014ea5f3cb2ce7d45154adb3399a158cac27ca52831db249ede5bb602700ef87eb02434139de0858af1818ab0fb4182472204a4.js" integrity="sha512-7gNIjxnJPC77GZ4uMBTqXzyyzn1FFUrbM5mhWMrCfKUoMdsknt5btgJwDvh&#43;sCQ0E53ghYrxgYqw&#43;0GCRyIEpA=="></script>
+  
+  
+  
+</footer>
+<div
+  id="search-wrapper"
+  class="invisible fixed inset-0 flex h-screen w-screen cursor-default flex-col bg-neutral-500/50 p-4 backdrop-blur-sm dark:bg-neutral-900/50 sm:p-6 md:p-[10vh] lg:p-[12vh]"
+  data-url="http://localhost:1313/"
+  style="z-index:500"
+>
+  <div
+    id="search-modal"
+    class="flex flex-col w-full max-w-3xl min-h-0 mx-auto border rounded-md shadow-lg top-20 border-neutral-200 bg-neutral dark:border-neutral-700 dark:bg-neutral-800"
+  >
+    <header class="relative z-10 flex items-center justify-between flex-none px-2">
+      <form class="flex items-center flex-auto min-w-0">
+        <div class="flex items-center justify-center w-8 h-8 text-neutral-400">
+          
+
+  <span class="relative block icon">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+
+  </span>
+
+
+        </div>
+        <input
+          type="search"
+          id="search-query"
+          class="flex flex-auto h-12 mx-1 bg-transparent appearance-none focus:outline-dotted focus:outline-2 focus:outline-transparent"
+          placeholder="搜索"
+          tabindex="0"
+        />
+      </form>
+      <button
+        id="close-search-button"
+        class="flex items-center justify-center w-8 h-8 text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+        title="关闭 (Esc)"
+      >
+        
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+
+  </span>
+
+
+      </button>
+    </header>
+    <section class="flex-auto px-2 overflow-auto">
+      <ul id="search-results">
+        
+      </ul>
+    </section>
+  </div>
+</div>
+
+  </div>
+</body>
+
+</html>
