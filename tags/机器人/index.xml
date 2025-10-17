@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>机器人 on Antwen</title>
-    <link>http://localhost:1313/tags/%E6%9C%BA%E5%99%A8%E4%BA%BA/</link>
+    <link>https://www.421666.cn/tags/%E6%9C%BA%E5%99%A8%E4%BA%BA/</link>
     <description>Recent content in 机器人 on Antwen</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>© 2025 安稳Antwen</copyright>
-    <lastBuildDate>Tue, 19 Aug 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/%E6%9C%BA%E5%99%A8%E4%BA%BA/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 19 Aug 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://www.421666.cn/tags/%E6%9C%BA%E5%99%A8%E4%BA%BA/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>德瑞博士机器人积分抽奖功能规划</title>
-      <link>http://localhost:1313/posts/%E7%A7%AF%E5%88%86%E6%8A%BD%E5%A5%96%E5%8A%9F%E8%83%BD%E8%A7%84%E5%88%92/</link>
+      <link>https://www.421666.cn/posts/%E7%A7%AF%E5%88%86%E6%8A%BD%E5%A5%96%E5%8A%9F%E8%83%BD%E8%A7%84%E5%88%92/</link>
       <pubDate>Tue, 19 Aug 2025 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/posts/%E7%A7%AF%E5%88%86%E6%8A%BD%E5%A5%96%E5%8A%9F%E8%83%BD%E8%A7%84%E5%88%92/</guid>
+      <guid>https://www.421666.cn/posts/%E7%A7%AF%E5%88%86%E6%8A%BD%E5%A5%96%E5%8A%9F%E8%83%BD%E8%A7%84%E5%88%92/</guid>
       <description></description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/posts/%E7%A7%AF%E5%88%86%E6%8A%BD%E5%A5%96%E5%8A%9F%E8%83%BD%E8%A7%84%E5%88%92/featured.JPEG" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://www.421666.cn/posts/%E7%A7%AF%E5%88%86%E6%8A%BD%E5%A5%96%E5%8A%9F%E8%83%BD%E8%A7%84%E5%88%92/featured.JPEG" />
     </item>
     
   </channel>

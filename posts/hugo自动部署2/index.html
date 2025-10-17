@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr" class="scroll-smooth" data-default-appearance="dark"
-  data-auto-appearance="true"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  data-auto-appearance="true"><head>
   <meta charset="utf-8" />
   
   <meta http-equiv="content-language" content="zh-cn" />
@@ -15,7 +15,7 @@
   <meta name="keywords" content="linux, 博客, " />
   
   
-  <link rel="canonical" href="http://localhost:1313/posts/hugo%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B22/" />
+  <link rel="canonical" href="https://www.421666.cn/posts/hugo%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B22/" />
   
   
   
@@ -69,7 +69,7 @@
   
   
   
-  <meta property="og:url" content="http://localhost:1313/posts/hugo%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B22/">
+  <meta property="og:url" content="https://www.421666.cn/posts/hugo%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B22/">
   <meta property="og:site_name" content="Antwen">
   <meta property="og:title" content="Hugo 自动化部署方案2：服务器编译">
   <meta property="og:description" content="使用 1Panel 与 Git Webhook 实现 Hugo 博客自动化部署全流程指南">
@@ -80,11 +80,11 @@
     <meta property="article:modified_time" content="2025-08-07T00:00:00+00:00">
     <meta property="article:tag" content="Linux">
     <meta property="article:tag" content="博客">
-    <meta property="og:image" content="http://localhost:1313/posts/hugo%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B22/featured.png">
+    <meta property="og:image" content="https://www.421666.cn/posts/hugo%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B22/featured.png">
 
   
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="http://localhost:1313/posts/hugo%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B22/featured.png">
+  <meta name="twitter:image" content="https://www.421666.cn/posts/hugo%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B22/featured.png">
   <meta name="twitter:title" content="Hugo 自动化部署方案2：服务器编译">
   <meta name="twitter:description" content="使用 1Panel 与 Git Webhook 实现 Hugo 博客自动化部署全流程指南">
 
@@ -99,7 +99,7 @@
     "description": "使用 1Panel 与 Git Webhook 实现 Hugo 博客自动化部署全流程指南",
     
     "inLanguage": "zh-cn",
-    "url" : "http:\/\/localhost:1313\/posts\/hugo%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B22\/",
+    "url" : "https:\/\/www.421666.cn\/posts\/hugo%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B22\/",
     "author" : {
       "@type": "Person",
       "name": "安稳Antwen"
@@ -1255,8 +1255,8 @@ git clone [您复制的SSH格式URL] /opt/hugo_source/your_project_name
 </h4>
 <ol>
 <li>登录 1Panel，进入 “网站” &gt; “创建网站”，选择 “静态网站”。</li>
-<li><strong>主域名:</strong> 填写您的域名，如 <code>www.antwen.com</code>。</li>
-<li><strong>网站目录:</strong> 1Panel 会为您生成一个固定的网站根目录。请<strong>务必记下这个路径</strong>，例如 <code>/opt/1panel/apps/openresty/openresty/www/sites/www.antwen.com/index</code>。</li>
+<li><strong>主域名:</strong> 填写您的域名，如 <code>www.421666.cn</code>。</li>
+<li><strong>网站目录:</strong> 1Panel 会为您生成一个固定的网站根目录。请<strong>务必记下这个路径</strong>，例如 <code>/opt/1panel/apps/openresty/openresty/www/sites/www.421666.cn/index</code>。</li>
 <li>保存网站。</li>
 </ol>
 
@@ -1288,7 +1288,7 @@ nano deploy.sh
 # 您的项目源代码在服务器上的存放路径
 SOURCE_DIR=&#34;/opt/hugo_source/antwen-blog&#34;
 # 1Panel 为您网站指定的、不可更改的根目录
-DEST_DIR=&#34;/opt/1panel/apps/openresty/openresty/www/sites/www.antwen.com/index&#34;
+DEST_DIR=&#34;/opt/1panel/apps/openresty/openresty/www/sites/www.421666.cn/index&#34;
 # --- 修改结束 ---
 
 echo &#34;============================================================&#34;
@@ -1385,22 +1385,22 @@ echo &#34;============================================================&#34;
 <p>最后一步，确保所有用户都能正确访问您的网站。</p>
 <ol>
 <li>
-<p><strong>目标：</strong> 确定一个首选域名（推荐 <code>www.antwen.com</code>），并将不带 <code>www</code> 的 <code>antwen.com</code> 通过 301 永久重定向跳转过去。</p>
+<p><strong>目标：</strong> 确定一个首选域名（推荐 <code>www.421666.cn</code>），并将不带 <code>www</code> 的 <code>antwen.com</code> 通过 301 永久重定向跳转过去。</p>
 </li>
 <li>
 <p><strong>Hugo <code>baseURL</code>:</strong> 确保您本地 <code>hugo.toml</code> 文件中的 <code>baseURL</code> 设置为您的首选域名，并以 <code>/</code> 结尾。</p>
 <p>Ini, TOML</p>
-<pre tabindex="0"><code>baseURL = &#34;https://www.antwen.com/&#34;
+<pre tabindex="0"><code>baseURL = &#34;https://www.421666.cn/&#34;
 </code></pre></li>
 <li>
 <p><strong>1Panel 重定向配置:</strong></p>
 <ul>
-<li>进入 <code>www.antwen.com</code> 网站的设置页面，在“域名绑定”中确保两个域名都已添加。</li>
+<li>进入 <code>www.421666.cn</code> 网站的设置页面，在“域名绑定”中确保两个域名都已添加。</li>
 <li>在“重定向”中创建新规则：
 <ul>
 <li><strong>源域名:</strong> <code>antwen.com</code></li>
 <li><strong>重定向类型:</strong> <code>301</code></li>
-<li><strong>目标 URL:</strong> <code>https://www.antwen.com$request_uri</code> (此变量能保证内页也被正确跳转)</li>
+<li><strong>目标 URL:</strong> <code>https://www.421666.cn$request_uri</code> (此变量能保证内页也被正确跳转)</li>
 </ul>
 </li>
 <li>保存并启用规则。</li>
@@ -1452,7 +1452,7 @@ echo &#34;============================================================&#34;
     <script src="https://cdn.jsdelivr.net/npm/twikoo@1.6.44/dist/twikoo.all.min.js"></script>
     <script>
         twikoo.init({
-            envId: "https://www.antwen.com/twikoo",
+            envId: "https://www.421666.cn/twikoo",
             el: "#tcomment",
             lang: 'zh-CN',
             region: '', 
@@ -2143,7 +2143,7 @@ echo &#34;============================================================&#34;
     </nav>
     
   
-  <div class="flex items-center justify-between">
+  <div class="flex flex-col items-center justify-center space-y-2">
 
     
     
@@ -2151,12 +2151,24 @@ echo &#34;============================================================&#34;
       &copy;
       2025
       安稳Antwen
+      <span class="mx-2">|</span>
+      <span class="text-xs">基于<a class="hover:underline hover:decoration-primary-400 hover:text-primary-500"
+        href="https://gohugo.io/" target="_blank" rel="noopener noreferrer">Hugo</a>框架</span>
     </p>
     
 
     
     
 
+  </div>
+
+  
+  <div class="flex justify-center mt-4">
+    <p class="text-xs text-neutral-500 dark:text-neutral-400">
+      <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer" class="hover:underline hover:decoration-primary-400 hover:text-primary-500">
+        苏ICP备2025214040号-1
+      </a>
+    </p>
   </div>
   <script>
     
@@ -2177,7 +2189,7 @@ echo &#34;============================================================&#34;
 <div
   id="search-wrapper"
   class="invisible fixed inset-0 flex h-screen w-screen cursor-default flex-col bg-neutral-500/50 p-4 backdrop-blur-sm dark:bg-neutral-900/50 sm:p-6 md:p-[10vh] lg:p-[12vh]"
-  data-url="http://localhost:1313/"
+  data-url="https://www.421666.cn/"
   style="z-index:500"
 >
   <div

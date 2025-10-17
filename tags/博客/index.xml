@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>博客 on Antwen</title>
-    <link>http://localhost:1313/tags/%E5%8D%9A%E5%AE%A2/</link>
+    <link>https://www.421666.cn/tags/%E5%8D%9A%E5%AE%A2/</link>
     <description>Recent content in 博客 on Antwen</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>© 2025 安稳Antwen</copyright>
-    <lastBuildDate>Thu, 07 Aug 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/%E5%8D%9A%E5%AE%A2/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 07 Aug 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://www.421666.cn/tags/%E5%8D%9A%E5%AE%A2/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Hugo 自动化部署方案2：服务器编译</title>
-      <link>http://localhost:1313/posts/hugo%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B22/</link>
+      <link>https://www.421666.cn/posts/hugo%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B22/</link>
       <pubDate>Thu, 07 Aug 2025 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/posts/hugo%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B22/</guid>
+      <guid>https://www.421666.cn/posts/hugo%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B22/</guid>
       <description></description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/posts/hugo%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B22/featured.png" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://www.421666.cn/posts/hugo%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B22/featured.png" />
     </item>
     
     <item>
       <title>使用1Panel与Git的Hugo博客自动化部署</title>
-      <link>http://localhost:1313/posts/hugo%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/</link>
+      <link>https://www.421666.cn/posts/hugo%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/</link>
       <pubDate>Thu, 07 Aug 2025 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/posts/hugo%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/</guid>
+      <guid>https://www.421666.cn/posts/hugo%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/</guid>
       <description></description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/posts/hugo%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/featured.png" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://www.421666.cn/posts/hugo%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/featured.png" />
     </item>
     
   </channel>

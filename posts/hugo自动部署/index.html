@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr" class="scroll-smooth" data-default-appearance="dark"
-  data-auto-appearance="true"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  data-auto-appearance="true"><head>
   <meta charset="utf-8" />
   
   <meta http-equiv="content-language" content="zh-cn" />
@@ -15,7 +15,7 @@
   <meta name="keywords" content="linux, 博客, " />
   
   
-  <link rel="canonical" href="http://localhost:1313/posts/hugo%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/" />
+  <link rel="canonical" href="https://www.421666.cn/posts/hugo%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/" />
   
   
   
@@ -69,7 +69,7 @@
   
   
   
-  <meta property="og:url" content="http://localhost:1313/posts/hugo%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/">
+  <meta property="og:url" content="https://www.421666.cn/posts/hugo%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/">
   <meta property="og:site_name" content="Antwen">
   <meta property="og:title" content="使用1Panel与Git的Hugo博客自动化部署">
   <meta property="og:description" content="使用 1Panel 与 Git Webhook 实现 Hugo 博客自动化部署全流程指南">
@@ -80,11 +80,11 @@
     <meta property="article:modified_time" content="2025-08-07T00:00:00+00:00">
     <meta property="article:tag" content="Linux">
     <meta property="article:tag" content="博客">
-    <meta property="og:image" content="http://localhost:1313/posts/hugo%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/featured.png">
+    <meta property="og:image" content="https://www.421666.cn/posts/hugo%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/featured.png">
 
   
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="http://localhost:1313/posts/hugo%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/featured.png">
+  <meta name="twitter:image" content="https://www.421666.cn/posts/hugo%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/featured.png">
   <meta name="twitter:title" content="使用1Panel与Git的Hugo博客自动化部署">
   <meta name="twitter:description" content="使用 1Panel 与 Git Webhook 实现 Hugo 博客自动化部署全流程指南">
 
@@ -99,7 +99,7 @@
     "description": "使用 1Panel 与 Git Webhook 实现 Hugo 博客自动化部署全流程指南",
     
     "inLanguage": "zh-cn",
-    "url" : "http:\/\/localhost:1313\/posts\/hugo%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2\/",
+    "url" : "https:\/\/www.421666.cn\/posts\/hugo%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2\/",
     "author" : {
       "@type": "Person",
       "name": "安稳Antwen"
@@ -1368,8 +1368,8 @@ git clone git@github.com:dinghyv/myhugo.git /opt/hugo_source/my-blog
 <ol>
 <li>登录 1Panel，进入 “网站” -&gt; “创建网站”。</li>
 <li>选择 “静态网站”。</li>
-<li><strong>主域名:</strong> 填写您的主域名，例如 <code>www.antwen.com</code>。</li>
-<li><strong>网站目录:</strong> 1Panel 会自动为您生成一个不可更改的目录，例如 <code>/opt/1panel/apps/openresty/openresty/www/sites/www.antwen.com/index</code>。请记下这个路径，我们稍后会用到。</li>
+<li><strong>主域名:</strong> 填写您的主域名，例如 <code>www.421666.cn</code>。</li>
+<li><strong>网站目录:</strong> 1Panel 会自动为您生成一个不可更改的目录，例如 <code>/opt/1panel/apps/openresty/openresty/www/sites/www.421666.cn/index</code>。请记下这个路径，我们稍后会用到。</li>
 <li>完成其他配置并创建网站。</li>
 </ol>
 
@@ -1401,7 +1401,7 @@ nano deploy.sh
 SOURCE_DIR=&#34;/opt/hugo_source/my-blog&#34;
 
 # 1Panel 指定的网站根目录 (请务必替换成您自己的真实路径!)
-DEST_DIR=&#34;/opt/1panel/apps/openresty/openresty/www/sites/www.antwen.com/index&#34;
+DEST_DIR=&#34;/opt/1panel/apps/openresty/openresty/www/sites/www.421666.cn/index&#34;
 
 echo &#34;============ 开始同步网站文件 ============&#34;
 echo &#34;同步时间: $(date &#39;+%Y-%m-%d %H:%M:%S&#39;)&#34;
@@ -1508,24 +1508,24 @@ echo &#34;============ 同步完成！网站已更新。 ============&#34;
     </span>        
     
 </h4>
-<p>为了用户体验和 SEO，我们需要在 <code>www.antwen.com</code> 和 <code>antwen.com</code> 中选择一个作为唯一“官方”地址，并将另一个地址永久重定向过去。</p>
-<p><strong>推荐选择 <code>www.antwen.com</code> 作为首选域名。</strong></p>
+<p>为了用户体验和 SEO，我们需要在 <code>www.421666.cn</code> 和 <code>antwen.com</code> 中选择一个作为唯一“官方”地址，并将另一个地址永久重定向过去。</p>
+<p><strong>推荐选择 <code>www.421666.cn</code> 作为首选域名。</strong></p>
 <ol>
 <li>
 <p><strong>确认 Hugo <code>baseURL</code>:</strong> 检查您本地项目的 <code>hugo.toml</code> 文件，确保 <code>baseURL</code> 设置为带 <code>www</code> 的版本。</p>
 <p>Ini, TOML</p>
-<pre tabindex="0"><code>baseURL = &#34;https://www.antwen.com/&#34;
+<pre tabindex="0"><code>baseURL = &#34;https://www.421666.cn/&#34;
 </code></pre></li>
 <li>
 <p><strong>配置 1Panel 重定向:</strong></p>
 <ul>
-<li>进入 1Panel 中 <code>www.antwen.com</code> 网站的设置页面。</li>
-<li>点击 <strong>“域名绑定”</strong>，确保 <code>www.antwen.com</code> 和 <code>antwen.com</code> 都已添加。</li>
+<li>进入 1Panel 中 <code>www.421666.cn</code> 网站的设置页面。</li>
+<li>点击 <strong>“域名绑定”</strong>，确保 <code>www.421666.cn</code> 和 <code>antwen.com</code> 都已添加。</li>
 <li>点击 <strong>“重定向”</strong>，创建一条新规则：
 <ul>
 <li><strong>源域名:</strong> <code>antwen.com</code></li>
 <li><strong>重定向类型:</strong> <code>301</code></li>
-<li><strong>目标 URL:</strong> <code>https://www.antwen.com$request_uri</code></li>
+<li><strong>目标 URL:</strong> <code>https://www.421666.cn$request_uri</code></li>
 </ul>
 </li>
 <li>保存并启用规则。<code>$request_uri</code> 变量会确保所有内页都能被正确跳转。</li>
@@ -1544,7 +1544,7 @@ echo &#34;============ 同步完成！网站已更新。 ============&#34;
     </span>        
     
 </h4>
-<p>设置完成后，清空浏览器缓存或使用无痕模式访问 <code>http://antwen.com</code>，观察它是否自动、正确地跳转到了 <code>https://www.antwen.com</code>。</p>
+<p>设置完成后，清空浏览器缓存或使用无痕模式访问 <code>http://antwen.com</code>，观察它是否自动、正确地跳转到了 <code>https://www.421666.cn</code>。</p>
 <hr>
 
 
@@ -1622,7 +1622,7 @@ git push origin main
     <script src="https://cdn.jsdelivr.net/npm/twikoo@1.6.44/dist/twikoo.all.min.js"></script>
     <script>
         twikoo.init({
-            envId: "https://www.antwen.com/twikoo",
+            envId: "https://www.421666.cn/twikoo",
             el: "#tcomment",
             lang: 'zh-CN',
             region: '', 
@@ -2313,7 +2313,7 @@ git push origin main
     </nav>
     
   
-  <div class="flex items-center justify-between">
+  <div class="flex flex-col items-center justify-center space-y-2">
 
     
     
@@ -2321,12 +2321,24 @@ git push origin main
       &copy;
       2025
       安稳Antwen
+      <span class="mx-2">|</span>
+      <span class="text-xs">基于<a class="hover:underline hover:decoration-primary-400 hover:text-primary-500"
+        href="https://gohugo.io/" target="_blank" rel="noopener noreferrer">Hugo</a>框架</span>
     </p>
     
 
     
     
 
+  </div>
+
+  
+  <div class="flex justify-center mt-4">
+    <p class="text-xs text-neutral-500 dark:text-neutral-400">
+      <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer" class="hover:underline hover:decoration-primary-400 hover:text-primary-500">
+        苏ICP备2025214040号-1
+      </a>
+    </p>
   </div>
   <script>
     
@@ -2347,7 +2359,7 @@ git push origin main
 <div
   id="search-wrapper"
   class="invisible fixed inset-0 flex h-screen w-screen cursor-default flex-col bg-neutral-500/50 p-4 backdrop-blur-sm dark:bg-neutral-900/50 sm:p-6 md:p-[10vh] lg:p-[12vh]"
-  data-url="http://localhost:1313/"
+  data-url="https://www.421666.cn/"
   style="z-index:500"
 >
   <div
