@@ -15,7 +15,7 @@
   <meta name="keywords" content="linux, 博客, " />
   
   
-  <link rel="canonical" href="https://www.421666.cn/posts/hugo%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/" />
+  <link rel="canonical" href="https://blog.antwen.cn/posts/hugo%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/" />
   
   
   
@@ -69,7 +69,7 @@
   
   
   
-  <meta property="og:url" content="https://www.421666.cn/posts/hugo%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/">
+  <meta property="og:url" content="https://blog.antwen.cn/posts/hugo%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/">
   <meta property="og:site_name" content="Antwen">
   <meta property="og:title" content="使用1Panel与Git的Hugo博客自动化部署">
   <meta property="og:description" content="使用 1Panel 与 Git Webhook 实现 Hugo 博客自动化部署全流程指南">
@@ -80,11 +80,11 @@
     <meta property="article:modified_time" content="2025-08-07T00:00:00+00:00">
     <meta property="article:tag" content="Linux">
     <meta property="article:tag" content="博客">
-    <meta property="og:image" content="https://www.421666.cn/posts/hugo%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/featured.png">
+    <meta property="og:image" content="https://blog.antwen.cn/posts/hugo%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/featured.png">
 
   
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://www.421666.cn/posts/hugo%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/featured.png">
+  <meta name="twitter:image" content="https://blog.antwen.cn/posts/hugo%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/featured.png">
   <meta name="twitter:title" content="使用1Panel与Git的Hugo博客自动化部署">
   <meta name="twitter:description" content="使用 1Panel 与 Git Webhook 实现 Hugo 博客自动化部署全流程指南">
 
@@ -99,7 +99,7 @@
     "description": "使用 1Panel 与 Git Webhook 实现 Hugo 博客自动化部署全流程指南",
     
     "inLanguage": "zh-cn",
-    "url" : "https:\/\/www.421666.cn\/posts\/hugo%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2\/",
+    "url" : "https:\/\/blog.antwen.cn\/posts\/hugo%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2\/",
     "author" : {
       "@type": "Person",
       "name": "安稳Antwen"
@@ -1514,7 +1514,7 @@ echo &#34;============ 同步完成！网站已更新。 ============&#34;
 <li>
 <p><strong>确认 Hugo <code>baseURL</code>:</strong> 检查您本地项目的 <code>hugo.toml</code> 文件，确保 <code>baseURL</code> 设置为带 <code>www</code> 的版本。</p>
 <p>Ini, TOML</p>
-<pre tabindex="0"><code>baseURL = &#34;https://www.421666.cn/&#34;
+<pre tabindex="0"><code>baseURL = &#34;https://blog.antwen.cn/&#34;
 </code></pre></li>
 <li>
 <p><strong>配置 1Panel 重定向:</strong></p>
@@ -1525,7 +1525,7 @@ echo &#34;============ 同步完成！网站已更新。 ============&#34;
 <ul>
 <li><strong>源域名:</strong> <code>antwen.com</code></li>
 <li><strong>重定向类型:</strong> <code>301</code></li>
-<li><strong>目标 URL:</strong> <code>https://www.421666.cn$request_uri</code></li>
+<li><strong>目标 URL:</strong> <code>https://blog.antwen.cn$request_uri</code></li>
 </ul>
 </li>
 <li>保存并启用规则。<code>$request_uri</code> 变量会确保所有内页都能被正确跳转。</li>
@@ -1544,7 +1544,7 @@ echo &#34;============ 同步完成！网站已更新。 ============&#34;
     </span>        
     
 </h4>
-<p>设置完成后，清空浏览器缓存或使用无痕模式访问 <code>http://antwen.com</code>，观察它是否自动、正确地跳转到了 <code>https://www.421666.cn</code>。</p>
+<p>设置完成后，清空浏览器缓存或使用无痕模式访问 <code>http://antwen.com</code>，观察它是否自动、正确地跳转到了 <code>https://blog.antwen.cn</code>。</p>
 <hr>
 
 
@@ -1622,7 +1622,7 @@ git push origin main
     <script src="https://cdn.jsdelivr.net/npm/twikoo@1.6.44/dist/twikoo.all.min.js"></script>
     <script>
         twikoo.init({
-            envId: "https://www.421666.cn/twikoo",
+            envId: "https://www.antwen.com/twikoo",
             el: "#tcomment",
             lang: 'zh-CN',
             region: '', 
@@ -2359,7 +2359,7 @@ git push origin main
 <div
   id="search-wrapper"
   class="invisible fixed inset-0 flex h-screen w-screen cursor-default flex-col bg-neutral-500/50 p-4 backdrop-blur-sm dark:bg-neutral-900/50 sm:p-6 md:p-[10vh] lg:p-[12vh]"
-  data-url="https://www.421666.cn/"
+  data-url="https://blog.antwen.cn/"
   style="z-index:500"
 >
   <div
