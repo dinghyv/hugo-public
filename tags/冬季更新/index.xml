@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>冬季更新 on Antwen</title>
+    <link>http://localhost:1313/tags/%E5%86%AC%E5%AD%A3%E6%9B%B4%E6%96%B0/</link>
+    <description>Recent content in 冬季更新 on Antwen</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>© 2026 安稳Antwen</copyright>
+    <lastBuildDate>Fri, 05 Dec 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/%E5%86%AC%E5%AD%A3%E6%9B%B4%E6%96%B0/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>麦克重磅回归！《GTA在线模式：山中安全屋》12月10日实装全解析</title>
+      <link>http://localhost:1313/posts/2025%E5%86%AC%E5%AD%A3%E6%9B%B4%E6%96%B0%E9%A2%84%E7%83%AD/</link>
+      <pubDate>Fri, 05 Dec 2025 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/2025%E5%86%AC%E5%AD%A3%E6%9B%B4%E6%96%B0%E9%A2%84%E7%83%AD/</guid>
+      <description></description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/posts/2025%E5%86%AC%E5%AD%A3%E6%9B%B4%E6%96%B0%E9%A2%84%E7%83%AD/featured.jpg" />
+    </item>
+    
+  </channel>
+</rss>
